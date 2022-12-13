@@ -11,38 +11,24 @@ import {
 } from "../styles/A";
 import * as I from "../assets/svg";
 import { useState } from "react";
-import axios from "axios";
+import { LoginInterface } from "../utils/AuthInterface";
+import Auth from "../api/Auth";
+import { useForm } from "react-hook-form";
 
 function Login(): JSX.Element {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
-  const onChangeId: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setId(e.target.value);
-  };
-  const onChangePw: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setPw(e.target.value);
-  };
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    Login(id, pw);
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<LoginInterface>();
 
-  const Login = async (id: string, pw: string) => {
+  const Login = async (data: LoginInterface) => {
     try {
-      // const response: any = await axios.post(
-      //   `http://10.82.17.76:8080/auth/login`,
-      //   config
-      // );
-      console.log(id);
-      console.log(pw);
-      const response: any = await axios(`http://10.82.17.76:8080/auth/login`, {
-        method: "POST",
-        withCredentials: true,
-        data: {
-          id: id,
-          password: pw,
-        },
-      });
+      console.log(data.id);
+      console.log(data.password);
+
+      const response: any = await Auth.login(data);
 
       console.log("login success");
       localStorage.setItem("token", JSON.stringify(response.data));
@@ -50,7 +36,9 @@ function Login(): JSX.Element {
         throw new Error(`No token`);
       }
       console.log(JSON.parse(localStorage.getItem("token") || "").accessToken);
-    } catch (e) {}
+    } catch (e) {
+      alert("아이디 또는 비밀번호가 올바르지 않아요!");
+    }
   };
 
   return (
@@ -62,24 +50,23 @@ function Login(): JSX.Element {
           </Logo>
           <Title>LOGIN</Title>
           <Description>앱을 사용하기 위해선 로그인이 필요합니다.</Description>
-          <InputBox>
-            <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit(Login)}>
+            <InputBox>
               <Input
                 placeholder="아이디를 입력해주세요"
-                onChange={onChangeId}
-                value={id}
+                {...register("id", { required: true, maxLength: 8 })}
               ></Input>
               <Input
                 placeholder="비밀번호를 입력해주세요"
-                onChange={onChangePw}
-                value={pw}
+                {...register("password", { required: true })}
               ></Input>
-            </form>
-            <StyledLink to="/find">
-              비밀번호 또는 아이디를 잊어버리셨나요?
-            </StyledLink>
-            <NextPage onClick={() => Login(id, pw)}>Login</NextPage>
-          </InputBox>
+
+              <StyledLink to="/find">
+                비밀번호 또는 아이디를 잊어버리셨나요?
+              </StyledLink>
+              <NextPage>Login</NextPage>
+            </InputBox>
+          </form>
         </Frame>
       </Setting>
     </>
