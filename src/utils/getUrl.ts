@@ -11,4 +11,8 @@ export const getAuth = {
   mailConfirm: () => {
     return REACT_APP_BASE_URL + "auth/mailconfirm";
   },
+
+  tokenReissuance: () => {
+    return REACT_APP_BASE_URL + "/auth";
+  },
 };

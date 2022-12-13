@@ -12,7 +12,7 @@ import {
 import * as I from "../assets/svg";
 import { useState } from "react";
 import { LoginInterface } from "../utils/AuthInterface";
-import Auth from "../api/Auth";
+//import Auth from "../api/Auth";
 import { useForm } from "react-hook-form";
 
 function Login(): JSX.Element {
@@ -28,10 +28,10 @@ function Login(): JSX.Element {
       console.log(data.id);
       console.log(data.password);
 
-      const response: any = await Auth.login(data);
+      //const response: any = await Auth.login(data);
 
       console.log("login success");
-      localStorage.setItem("token", JSON.stringify(response.data));
+      //localStorage.setItem("token", JSON.stringify(response.data));
       if (localStorage.getItem("token") === null) {
         throw new Error(`No token`);
       }
