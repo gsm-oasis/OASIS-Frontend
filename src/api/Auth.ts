@@ -3,13 +3,27 @@ import { LoginInterface, SignUpInterface } from "../interfaces/AuthInterface";
 import AxiosInstance from "../lib/axios";
 
 class Auth {
-  mailConfirm(data: { code: string }) {
+  mailConfirm(checkNum: string) {
     try {
       return AxiosInstance({
         method: "POST",
         url: getAuth.mailConfirm(),
         data: {
-          code: data.code,
+          code: checkNum,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  sendMail(email: string) {
+    try {
+      return AxiosInstance({
+        method: "POST",
+        url: getAuth.sendMail(),
+        data: {
+          email: email,
         },
       });
     } catch (error) {
@@ -41,7 +55,7 @@ class Auth {
           id: data.id,
           password: data.password,
           email: data.email,
-          nickname: data.nickName,
+          nickname: data.nickname,
         },
       });
     } catch (error) {

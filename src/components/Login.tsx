@@ -24,19 +24,23 @@ function Login() {
     formState: { errors },
   } = useForm<LoginInterface>();
 
-  const [logged, setLogged] = useRecoilState(loggedAtom);
+  const [, setLogged] = useRecoilState(loggedAtom);
 
   const onValid = async (data: LoginInterface) => {
     try {
       const response: any = await Auth.login(data);
-      console.log(response.status);
 
       localStorage.setItem("token", JSON.stringify(response.data));
       if (localStorage.getItem("token") === null) {
         throw new Error(`No token`);
       }
 
-      setLogged(true);
+      if (response.status === 200) {
+        setLogged(true);
+        console.log(
+          JSON.parse(localStorage.getItem("token") || "").accessToken
+        );
+      }
     } catch (e) {
       console.log(e);
     }
@@ -72,6 +76,10 @@ function Login() {
               <NextPage>Login</NextPage>
             </InputBox>
           </form>
+          <div style={{ marginTop: 100, fontSize: 12 }}>
+            <span style={{ color: "#959595" }}>이미 계정이 있으신가요? </span>
+            <span style={{ color: "#E4B3B5", fontWeight: 700 }}>로그인</span>
+          </div>
         </Frame>
       </Setting>
     </>

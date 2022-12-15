@@ -14,7 +14,6 @@ root.render(
   <RecoilRoot>
     <BrowserRouter>
       <GlobalStyle />
-
       <App />
     </BrowserRouter>
   </RecoilRoot>

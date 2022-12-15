@@ -10,6 +10,9 @@ export const getAuth = {
   mailConfirm: () => {
     return REACT_APP_BASE_URL + "auth/mailconfirm";
   },
+  sendMail: () => {
+    return REACT_APP_BASE_URL + "auth/sendmail";
+  },
 
   tokenReissuance: () => {
     return REACT_APP_BASE_URL + "auth";

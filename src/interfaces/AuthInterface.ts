@@ -7,7 +7,7 @@ export interface SignUpInterface {
   id: string;
   password: string;
   email: string;
-  nickName: string;
+  nickname: string;
 }
 
 export interface TokenInterface {
