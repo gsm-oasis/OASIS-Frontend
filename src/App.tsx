@@ -13,7 +13,7 @@ function App() {
     console.log(logged);
     if (logged) {
       navigate("/");
-    } else navigate("login");
+    } else navigate("/login");
   }, [logged]);
 
   return (

@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
 
 
   font-family: 'Apple SD Gothic Neo';
+  
 `;
 
 export default GlobalStyle;

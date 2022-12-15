@@ -4,8 +4,9 @@ import {
   passwordAtom,
   SignUpPageAtom,
   userIdAtom,
-} from "../../atoms/AtomContainer";
-import { Input, NextPage } from "../../styles/A";
+} from "../../../atoms/AtomContainer";
+import { Input } from "../A";
+import { NextPage } from "../../Common/Button";
 
 function IDPW() {
   const [userId, setIdAtom] = useRecoilState(userIdAtom);

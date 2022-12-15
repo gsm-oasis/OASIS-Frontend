@@ -1,14 +1,13 @@
 import {
+  BottomText,
+  BottomTextBox,
   Description,
-  Frame,
   InputBox,
   Logo,
-  NextPage,
-  Setting,
   Title,
-} from "../../styles/A";
-import * as I from "../../assets/svg";
-import { SignUpInterface } from "../../interfaces/AuthInterface";
+} from "../A";
+import * as I from "../../../assets/svg";
+import { SignUpInterface } from "../../../interfaces/AuthInterface";
 import IDPW from "./IDPW";
 import { useRecoilValue } from "recoil";
 import {
@@ -17,11 +16,13 @@ import {
   passwordAtom,
   emailAtom,
   nickNameAtom,
-} from "../../atoms/AtomContainer";
+} from "../../../atoms/AtomContainer";
 
 import EmailNickName from "./EmailNickName";
-import Auth from "../../api/Auth";
+import Auth from "../../../api/Auth";
 import { useNavigate } from "react-router-dom";
+import { Frame, Setting } from "../../Common/Frame";
+import { NextPage } from "../../Common/Button";
 
 function SignUp(): JSX.Element {
   const next: boolean = useRecoilValue(SignUpPageAtom);
@@ -71,6 +72,18 @@ function SignUp(): JSX.Element {
               </>
             )}
           </InputBox>
+          <BottomTextBox>
+            <BottomText color="#959595" weight="400">
+              이미 계정이 있으신가요?{" "}
+            </BottomText>
+            <BottomText
+              color="#E4B3B5"
+              weight="700"
+              onClick={() => navigate("/login")}
+            >
+              로그인
+            </BottomText>
+          </BottomTextBox>
         </Frame>
       </Setting>
     </>

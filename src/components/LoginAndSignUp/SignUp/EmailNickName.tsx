@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import Auth from "../../api/Auth";
-import { emailAtom, nickNameAtom } from "../../atoms/AtomContainer";
-import { CheckButton, Input, InputAndButton } from "../../styles/A";
+import Auth from "../../../api/Auth";
+import { emailAtom, nickNameAtom } from "../../../atoms/AtomContainer";
+import { Input, InputAndButton } from "../A";
+import { CheckButton } from "../../Common/Button";
 
 function EmailNickName(): JSX.Element {
   const [nickName, setNickName] = useRecoilState(nickNameAtom);

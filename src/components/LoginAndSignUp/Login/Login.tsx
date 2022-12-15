@@ -1,20 +1,22 @@
 import {
+  BottomText,
+  BottomTextBox,
   Description,
-  Frame,
   Input,
   InputBox,
   Logo,
-  NextPage,
-  Setting,
   StyledLink,
   Title,
-} from "../styles/A";
-import * as I from "../assets/svg";
-import { LoginInterface } from "../interfaces/AuthInterface";
+} from "../A";
+import * as I from "../../../assets/svg";
+import { LoginInterface } from "../../../interfaces/AuthInterface";
 import { useForm } from "react-hook-form";
-import Auth from "../api/Auth";
+import Auth from "../../../api/Auth";
 import { useRecoilState } from "recoil";
-import { loggedAtom } from "../atoms/AtomContainer";
+import { loggedAtom } from "../../../atoms/AtomContainer";
+import { Frame, Setting } from "../../Common/Frame";
+import { NextPage } from "../../Common/Button";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const {
@@ -23,7 +25,7 @@ function Login() {
     setError,
     formState: { errors },
   } = useForm<LoginInterface>();
-
+  const navigate = useNavigate();
   const [, setLogged] = useRecoilState(loggedAtom);
 
   const onValid = async (data: LoginInterface) => {
@@ -76,10 +78,18 @@ function Login() {
               <NextPage>Login</NextPage>
             </InputBox>
           </form>
-          <div style={{ marginTop: 100, fontSize: 12 }}>
-            <span style={{ color: "#959595" }}>이미 계정이 있으신가요? </span>
-            <span style={{ color: "#E4B3B5", fontWeight: 700 }}>로그인</span>
-          </div>
+          <BottomTextBox>
+            <BottomText color="#959595" weight="400">
+              계정이 없으신가요?{" "}
+            </BottomText>
+            <BottomText
+              color="#E4B3B5"
+              weight="700"
+              onClick={() => navigate("/signup")}
+            >
+              회원가입
+            </BottomText>
+          </BottomTextBox>
         </Frame>
       </Setting>
     </>
