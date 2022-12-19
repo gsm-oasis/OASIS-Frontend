@@ -24,11 +24,20 @@ export const emailAtom = atom({
 });
 
 export const nickNameAtom = atom({
+  // 사용자 이름
   key: "nickname",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const SignUpPageAtom = atom({
   key: "nextPage",
   default: false,
+});
+
+export const MyCoupleNameAtom = atom({
+  // 내 커플의 이름
+  key: "mycoupleName",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
 });

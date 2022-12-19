@@ -1,19 +1,29 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import Auth from "../../../api/Auth";
 import { Back } from "../../../assets/svg";
+import { MyCoupleNameAtom } from "../../../atoms/AtomContainer";
 import { Frame, Setting } from "../../Common/Frame";
 import { Box, BoxDescription, BoxText, Bt, Title, TitleText } from "../Common";
 import { InputCode, MyCode } from "./style";
 
 function LinkCouple() {
+  const navigate = useNavigate();
   const [coupleCode, setCoupleCode] = useState("");
+  const [, setNamed] = useRecoilState(MyCoupleNameAtom);
   const CoupleCodeChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setCoupleCode(e.target.value);
 
   const LinkMyCouple = async () => {
     try {
       const response: any = await Auth.linkCouple(coupleCode);
-      console.log(response.status);
+
+      if (response.status === 200) {
+        setNamed(response.nickname);
+        console.log(response.nickname);
+        navigate("/setdate");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -24,7 +34,9 @@ function LinkCouple() {
       <Setting>
         <Frame>
           <Title>
-            <Back />
+            <div onClick={() => navigate("/login")}>
+              <Back />
+            </div>
             <TitleText>커플 연결</TitleText>
           </Title>
           <Box>
