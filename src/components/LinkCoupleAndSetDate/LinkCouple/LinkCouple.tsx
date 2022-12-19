@@ -20,8 +20,8 @@ function LinkCouple() {
       const response: any = await Auth.linkCouple(coupleCode);
 
       if (response.status === 200) {
-        setNamed(response.nickname);
-        console.log(response.nickname);
+        setNamed(response.data.nickname);
+        console.log(response.data.nickname);
         navigate("/setdate");
       }
     } catch (error) {
