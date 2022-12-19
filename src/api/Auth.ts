@@ -62,6 +62,20 @@ class Auth {
       return error;
     }
   }
+
+  linkCouple(code: string) {
+    try {
+      return AxiosInstance({
+        method: "POST",
+        url: getAuth.linkCouple(),
+        data: {
+          code: code,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Auth();

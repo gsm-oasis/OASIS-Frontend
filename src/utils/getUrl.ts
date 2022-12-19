@@ -13,6 +13,9 @@ export const getAuth = {
   sendMail: () => {
     return REACT_APP_BASE_URL + "auth/sendmail";
   },
+  linkCouple: () => {
+    return REACT_APP_BASE_URL + "connect/couple";
+  },
 
   tokenReissuance: () => {
     return REACT_APP_BASE_URL + "auth";

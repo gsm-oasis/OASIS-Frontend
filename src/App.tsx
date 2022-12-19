@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import "./App.css";
 import { loggedAtom } from "./atoms/AtomContainer";
+import LinkCouplePage from "./pages/LinkCouplePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 
@@ -12,7 +13,8 @@ function App() {
   useEffect(() => {
     console.log(logged);
     if (logged) {
-      navigate("/");
+      // 커플 연결했는지 않했는지 검사후 메인으로 가기
+      navigate("/linkcouple");
     } else navigate("/login");
   }, [logged]);
 
@@ -21,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/linkcouple" element={<LinkCouplePage />} />
       </Routes>
     </>
   );
