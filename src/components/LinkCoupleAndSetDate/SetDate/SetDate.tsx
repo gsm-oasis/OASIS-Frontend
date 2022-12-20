@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Auth from "../../../api/Auth";
 import { Back } from "../../../assets/svg";
 import { Frame, Setting } from "../../Common/Frame";
-import { Box, BoxDescription, BoxText, Bt, Title, TitleText } from "../Common";
+import { EmptyCompo, Title, TitleText } from "../../Common/Title";
+import { Box, BoxDescription, BoxText, Bt } from "../Common";
 import { InputCode } from "../LinkCouple/style";
 
 function SetDate() {
@@ -32,7 +33,7 @@ function SetDate() {
               <Back />
             </div>
             <TitleText>사귄 날짜 입력</TitleText>
-            <div style={{ width: 1 }}></div>
+            <EmptyCompo></EmptyCompo>
           </Title>
 
           <Box>

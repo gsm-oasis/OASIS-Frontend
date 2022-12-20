@@ -2,6 +2,8 @@ import axios from "axios";
 import { getAuth } from "../utils/getUrl";
 import { REACT_APP_BASE_URL } from "../shared/config";
 import TokenService from "./TokenService";
+import { useRecoilState, useResetRecoilState } from "recoil";
+import { loggedAtom } from "../atoms/AtomContainer";
 
 export const instance = axios.create({
   baseURL: REACT_APP_BASE_URL,
@@ -51,13 +53,16 @@ let authTokenRequest: any;
 
 function getAuthToken() {
   if (!authTokenRequest) {
-    authTokenRequest = makeActualAuthenticationRequest();
+    authTokenRequest = makeActualAuthenticationRequest(); // 재발급요청
     authTokenRequest
       .catch(function () {
+        // 요청에 실패하면 남아있는 토큰 지우고 로그인페이지로 가기
+        const [, setLogged] = useRecoilState(loggedAtom);
         TokenService.removeUser();
-        window.location.replace("/signin");
+        setLogged(false);
+        window.location.replace("/login");
       })
-      .then(resetAuthTokenRequest, resetAuthTokenRequest);
+      .then(resetAuthTokenRequest, resetAuthTokenRequest); // return하고 초기화
   }
 
   return authTokenRequest;
@@ -66,9 +71,10 @@ function getAuthToken() {
 function makeActualAuthenticationRequest() {
   return axios({
     method: "PATCH",
-    url: getAuth.tokenReissuance(),
+    withCredentials: false,
+    url: getAuth.tokenReissuance(), // 토큰 재발급 경로
     headers: {
-      RefreshToken: TokenService.getLocalRefreshToken(),
+      RefreshToken: TokenService.getLocalRefreshToken(), // 요청 형식
     },
   });
 }

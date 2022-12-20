@@ -1,4 +1,4 @@
-import { getAuth } from "../utils/getUrl";
+import { getAuth, getMain, getUser } from "../utils/getUrl";
 import { LoginInterface, SignUpInterface } from "../interfaces/AuthInterface";
 import AxiosInstance from "../lib/axios";
 
@@ -67,7 +67,7 @@ class Auth {
     try {
       return AxiosInstance({
         method: "POST",
-        url: getAuth.linkCouple(),
+        url: getUser.linkCouple(),
         data: {
           code: code,
         },
@@ -81,11 +81,25 @@ class Auth {
     try {
       return AxiosInstance({
         method: "POST",
-        url: getAuth.submitDate(),
+        url: getMain.submitDate(),
         data: {
           firstDay: firstDay,
         },
       });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  postMain(token: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "GET",
+          url: getMain.postMain(),
+        },
+        token
+      );
     } catch (error) {
       return error;
     }

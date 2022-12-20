@@ -39,7 +39,6 @@ function Login() {
       }
 
       if (response.status === 200) {
-        console.log(response.data.couple);
         setisCouple(response.data.couple);
         setLogged(true);
         console.log(

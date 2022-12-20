@@ -5,7 +5,8 @@ import Auth from "../../../api/Auth";
 import { Back } from "../../../assets/svg";
 import { MyCoupleNameAtom } from "../../../atoms/AtomContainer";
 import { Frame, Setting } from "../../Common/Frame";
-import { Box, BoxDescription, BoxText, Bt, Title, TitleText } from "../Common";
+import { EmptyCompo, Title, TitleText } from "../../Common/Title";
+import { Box, BoxDescription, BoxText, Bt } from "../Common";
 import { InputCode, MyCode } from "./style";
 
 function LinkCouple() {
@@ -38,7 +39,7 @@ function LinkCouple() {
               <Back />
             </div>
             <TitleText>커플 연결</TitleText>
-            <div style={{ width: 1 }}></div>
+            <EmptyCompo></EmptyCompo>
           </Title>
           <Box>
             <BoxText>내 코드</BoxText>

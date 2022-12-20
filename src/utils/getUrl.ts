@@ -13,14 +13,23 @@ export const getAuth = {
   sendMail: () => {
     return REACT_APP_BASE_URL + "auth/sendmail";
   },
+
+  tokenReissuance: () => {
+    return REACT_APP_BASE_URL + "auth/refresh";
+  },
+};
+
+export const getUser = {
   linkCouple: () => {
     return REACT_APP_BASE_URL + "user/connect/couple";
   },
+};
+
+export const getMain = {
   submitDate: () => {
     return REACT_APP_BASE_URL + "mainpage/enter/datingdate";
   },
-
-  tokenReissuance: () => {
-    return REACT_APP_BASE_URL + "auth";
+  postMain: () => {
+    return REACT_APP_BASE_URL + "mainpage/";
   },
 };
