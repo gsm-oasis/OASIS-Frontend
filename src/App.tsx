@@ -5,6 +5,7 @@ import "./App.css";
 import { loggedAtom } from "./atoms/AtomContainer";
 import LinkCouplePage from "./pages/LinkCouplePage";
 import LoginPage from "./pages/LoginPage";
+import MainPage from "./pages/MainPage";
 import SetDatePage from "./pages/SetDatePage";
 import SignUpPage from "./pages/SignUpPage";
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/linkcouple" element={<LinkCouplePage />} />

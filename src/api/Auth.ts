@@ -76,6 +76,20 @@ class Auth {
       return error;
     }
   }
+
+  submitDate(firstDay: string) {
+    try {
+      return AxiosInstance({
+        method: "POST",
+        url: getAuth.submitDate(),
+        data: {
+          firstDay: firstDay,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Auth();

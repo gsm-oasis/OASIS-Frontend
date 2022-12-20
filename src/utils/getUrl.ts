@@ -16,6 +16,9 @@ export const getAuth = {
   linkCouple: () => {
     return REACT_APP_BASE_URL + "user/connect/couple";
   },
+  submitDate: () => {
+    return REACT_APP_BASE_URL + "mainpage/enter/datingdate";
+  },
 
   tokenReissuance: () => {
     return REACT_APP_BASE_URL + "auth";

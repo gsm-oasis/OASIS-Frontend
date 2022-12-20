@@ -38,6 +38,7 @@ function LinkCouple() {
               <Back />
             </div>
             <TitleText>커플 연결</TitleText>
+            <div style={{ width: 1 }}></div>
           </Title>
           <Box>
             <BoxText>내 코드</BoxText>
@@ -49,6 +50,7 @@ function LinkCouple() {
               {JSON.parse(localStorage.getItem("token") || "").code}
             </MyCode>
           </Box>
+
           <Box>
             <BoxText>커플 연결을 위해 상대방의 코드를 입력해주세요!</BoxText>
             <BoxDescription>상대방의 코드를 입력해주세요</BoxDescription>
