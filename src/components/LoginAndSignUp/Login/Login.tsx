@@ -13,7 +13,7 @@ import { LoginInterface } from "../../../interfaces/AuthInterface";
 import { useForm } from "react-hook-form";
 import Auth from "../../../api/Auth";
 import { useRecoilState } from "recoil";
-import { loggedAtom } from "../../../atoms/AtomContainer";
+import { isCoupleAtom, loggedAtom } from "../../../atoms/AtomContainer";
 import { Frame, Setting } from "../../Common/Frame";
 import { NextPage } from "../../Common/Button";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +27,7 @@ function Login() {
   } = useForm<LoginInterface>();
   const navigate = useNavigate();
   const [, setLogged] = useRecoilState(loggedAtom);
+  const [, setisCouple] = useRecoilState(isCoupleAtom);
 
   const onValid = async (data: LoginInterface) => {
     try {
@@ -38,6 +39,8 @@ function Login() {
       }
 
       if (response.status === 200) {
+        console.log(response.data.couple);
+        setisCouple(response.data.couple);
         setLogged(true);
         console.log(
           JSON.parse(localStorage.getItem("token") || "").accessToken

@@ -41,3 +41,9 @@ export const MyCoupleNameAtom = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
+
+export const isCoupleAtom = atom({
+  key: "isCouple",
+  default: false,
+  effects_UNSTABLE: [persistAtom],
+});
