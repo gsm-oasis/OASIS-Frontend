@@ -54,6 +54,7 @@ let authTokenRequest: any;
 function getAuthToken() {
   if (!authTokenRequest) {
     authTokenRequest = makeActualAuthenticationRequest(); // 재발급요청
+    console.log("요청을 보냄");
     authTokenRequest
       .catch(function () {
         // 요청에 실패하면 남아있는 토큰 지우고 로그인페이지로 가기
@@ -69,9 +70,9 @@ function getAuthToken() {
 }
 
 function makeActualAuthenticationRequest() {
+  console.log(TokenService.getLocalRefreshToken());
   return axios({
     method: "PATCH",
-    withCredentials: false,
     url: getAuth.tokenReissuance(), // 토큰 재발급 경로
     headers: {
       RefreshToken: TokenService.getLocalRefreshToken(), // 요청 형식

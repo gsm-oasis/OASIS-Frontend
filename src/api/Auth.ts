@@ -1,4 +1,4 @@
-import { getAuth, getMain, getUser } from "../utils/getUrl";
+import { getAuth } from "../utils/getUrl";
 import { LoginInterface, SignUpInterface } from "../interfaces/AuthInterface";
 import AxiosInstance from "../lib/axios";
 
@@ -58,48 +58,6 @@ class Auth {
           nickname: data.nickname,
         },
       });
-    } catch (error) {
-      return error;
-    }
-  }
-
-  linkCouple(code: string) {
-    try {
-      return AxiosInstance({
-        method: "POST",
-        url: getUser.linkCouple(),
-        data: {
-          code: code,
-        },
-      });
-    } catch (error) {
-      return error;
-    }
-  }
-
-  submitDate(firstDay: string) {
-    try {
-      return AxiosInstance({
-        method: "POST",
-        url: getMain.submitDate(),
-        data: {
-          firstDay: firstDay,
-        },
-      });
-    } catch (error) {
-      return error;
-    }
-  }
-
-  postMain(token: string) {
-    try {
-      return AxiosInstance(
-        {
-          method: "GET",
-          url: getMain.postMain(),
-        },
-        token
-      );
     } catch (error) {
       return error;
     }

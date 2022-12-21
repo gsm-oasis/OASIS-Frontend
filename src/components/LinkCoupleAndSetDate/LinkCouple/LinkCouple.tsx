@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import Auth from "../../../api/Auth";
+import User from "../../../api/User";
 import { Back } from "../../../assets/svg";
 import { MyCoupleNameAtom } from "../../../atoms/AtomContainer";
 import { Frame, Setting } from "../../Common/Frame";
@@ -18,7 +18,7 @@ function LinkCouple() {
 
   const LinkMyCouple = async () => {
     try {
-      const response: any = await Auth.linkCouple(coupleCode);
+      const response: any = await User.linkCouple(coupleCode);
 
       if (response.status === 200) {
         setNamed(response.data.nickname);

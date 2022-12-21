@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Auth from "../../../api/Auth";
 import { Back } from "../../../assets/svg";
 import { Frame, Setting } from "../../Common/Frame";
 import { EmptyCompo, Title, TitleText } from "../../Common/Title";
 import { Box, BoxDescription, BoxText, Bt } from "../Common";
 import { InputCode } from "../LinkCouple/style";
+import Main from "../../../api/Main";
 
 function SetDate() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function SetDate() {
 
   const SubmitDate = async () => {
     try {
-      const response: any = await Auth.submitDate(date);
+      const response: any = await Main.submitDate(date);
       if (response.status === 200) {
         console.log(response.status);
         navigate("/");

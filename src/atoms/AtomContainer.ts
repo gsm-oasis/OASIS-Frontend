@@ -47,3 +47,15 @@ export const isCoupleAtom = atom({
   default: false,
   effects_UNSTABLE: [persistAtom],
 });
+
+export const AnniversaryDateAtom = atom({
+  key: "anniversaryDays",
+  default: 100,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const DateDaysAtom = atom({
+  key: "dateDays",
+  default: 0,
+  effects_UNSTABLE: [persistAtom],
+});
