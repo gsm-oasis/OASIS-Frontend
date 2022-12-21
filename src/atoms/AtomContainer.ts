@@ -18,28 +18,19 @@ export const passwordAtom = atom({
   default: "",
 });
 
+export const nickNameAtom = atom({
+  key: "myName",
+  default: "",
+});
+
 export const emailAtom = atom({
   key: "email",
   default: "",
 });
 
-export const nickNameAtom = atom({
-  // 사용자 이름
-  key: "nickname",
-  default: "",
-  effects_UNSTABLE: [persistAtom],
-});
-
 export const SignUpPageAtom = atom({
   key: "nextPage",
   default: false,
-});
-
-export const MyCoupleNameAtom = atom({
-  // 내 커플의 이름
-  key: "mycoupleName",
-  default: "",
-  effects_UNSTABLE: [persistAtom],
 });
 
 export const isCoupleAtom = atom({
@@ -48,14 +39,8 @@ export const isCoupleAtom = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const AnniversaryDateAtom = atom({
-  key: "anniversaryDays",
-  default: 100,
-  effects_UNSTABLE: [persistAtom],
-});
-
-export const DateDaysAtom = atom({
-  key: "dateDays",
-  default: 0,
+export const MainContentAtom = atom({
+  key: "mainContents",
+  default: {},
   effects_UNSTABLE: [persistAtom],
 });

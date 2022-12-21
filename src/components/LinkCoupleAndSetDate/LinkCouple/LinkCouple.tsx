@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
 import User from "../../../api/User";
 import { Back } from "../../../assets/svg";
-import { MyCoupleNameAtom } from "../../../atoms/AtomContainer";
 import { Frame, Setting } from "../../Common/Frame";
 import { EmptyCompo, Title, TitleText } from "../../Common/Title";
 import { Box, BoxDescription, BoxText, Bt } from "../Common";
@@ -12,7 +10,6 @@ import { InputCode, MyCode } from "./style";
 function LinkCouple() {
   const navigate = useNavigate();
   const [coupleCode, setCoupleCode] = useState("");
-  const [, setNamed] = useRecoilState(MyCoupleNameAtom);
   const CoupleCodeChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setCoupleCode(e.target.value);
 
@@ -21,8 +18,6 @@ function LinkCouple() {
       const response: any = await User.linkCouple(coupleCode);
 
       if (response.status === 200) {
-        setNamed(response.data.nickname);
-        console.log(response.data.nickname);
         navigate("/setdate");
       }
     } catch (error) {

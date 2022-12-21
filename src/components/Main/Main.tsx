@@ -1,37 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { BlankHeart, Heart, SettingIcon } from "../../assets/svg";
-import {
-  AnniversaryDateAtom,
-  DateDaysAtom,
-  MyCoupleNameAtom,
-  nickNameAtom,
-} from "../../atoms/AtomContainer";
 import TokenService from "../../lib/TokenService";
-import { Frame, Setting } from "../Common/Frame";
+import { Setting } from "../Common/Frame";
 import * as S from "./style";
 import main from "../../api/Main";
 import Question from "./Question";
-import Diary from "./Diary";
+import DiaryList from "./Diary";
+import { DiaryProps } from "../../interfaces/MainInterface";
 
 function Main() {
-  const [myCoupleName, setMyName] = useRecoilState(nickNameAtom);
-  const [myName, setCoupleName] = useRecoilState(MyCoupleNameAtom);
-  const [dateDays, setDays] = useRecoilState(DateDaysAtom);
-  const [anniversary, setAnnivers] = useRecoilState(AnniversaryDateAtom);
-  const [quesNum, setQuesNum] = useState(0);
-  const [quesContent, setQuesCon] = useState("");
+  const [mainContent, setContent] = useState<DiaryProps>();
 
   const PostMain = async () => {
     try {
       const response: any = await main.postMain(
         TokenService.getLocalAccessToken()
-      ); // 요청받고 처리코드 짜야됨
-      setDays(response.data.datingDate);
-      setCoupleName(response.data.coupleNickname);
-      setMyName(response.data.nickname);
-      setQuesNum(response.data.questionId);
-      setQuesCon(response.data.content);
+      );
+      setContent(response.data);
+      console.log(response.data);
     } catch (error) {
       return error;
     }
@@ -41,6 +28,8 @@ function Main() {
     PostMain();
   }, []);
 
+  // mainContent?하면 됨 근데 렌더링할 때 mainContent에 값이 없는 상황이면 Uncaught TypeError: Cannot read properties of undefined (reading 'map')
+
   return (
     <>
       <Setting>
@@ -48,13 +37,14 @@ function Main() {
           <S.Top>
             <S.LeftBox>
               <S.CoupleName>
-                <div>{myCoupleName}</div>
+                <div>{mainContent.coupleNickname}</div>
                 <Heart />
-                <div>{myName}</div>
+                <div>{mainContent.nickname}</div>
               </S.CoupleName>
-              <S.DateDays>{dateDays} DAYS</S.DateDays>
+              <S.DateDays>{mainContent.datingDate} DAYS</S.DateDays>
               <S.ToAnniversary>
-                {anniversary}일만큼 {anniversary - dateDays}일 남았어요!
+                {mainContent.anniversary}일만큼
+                {mainContent.anniversary - mainContent.datingDate}일 남았어요!
               </S.ToAnniversary>
             </S.LeftBox>
             <S.RightBox>
@@ -62,9 +52,14 @@ function Main() {
               <SettingIcon />
             </S.RightBox>
           </S.Top>
-          <Question questionNum={quesNum} content={quesContent} />
+          <Question
+            questionNum={mainContent.questionId}
+            content={mainContent.content}
+          />
           <S.Line />
-          <Diary />
+          {mainContent.diarys.map((diary) => (
+            <DiaryList DiaryProps={diary} />
+          ))}
         </S.MainFrame>
       </Setting>
     </>
