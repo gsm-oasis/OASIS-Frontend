@@ -41,6 +41,15 @@ export const isCoupleAtom = atom({
 
 export const MainContentAtom = atom({
   key: "mainContents",
-  default: {},
+  default: {
+    nickname: "",
+    coupleNickname: "",
+    heartLevel: 0,
+    datingDate: 0,
+    anniversary: 100,
+    questionId: 0,
+    content: "",
+    diaryListPageResponse: [],
+  },
   effects_UNSTABLE: [persistAtom],
 });

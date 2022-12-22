@@ -4,9 +4,9 @@ import {
   passwordAtom,
   SignUpPageAtom,
   userIdAtom,
-} from "../../../atoms/AtomContainer";
-import { Input } from "../A";
-import { NextPage } from "../../Common/Button";
+} from "../../atoms/AtomContainer";
+import { GradiantButton } from "../Common/Buttons/GradiantButton";
+import { Input } from "../Common/Inputs/AuthInput";
 
 function IDPW() {
   const [userId, setIdAtom] = useRecoilState(userIdAtom);
@@ -30,7 +30,7 @@ function IDPW() {
         onChange={PwChange}
         value={password}
       />
-      <NextPage onClick={() => setNextPage(true)}>다음</NextPage>
+      <GradiantButton onClick={() => setNextPage(true)}>다음</GradiantButton>
     </>
   );
 }

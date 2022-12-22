@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./style";
+import * as S from "../Common/Question";
 
 function Question(props: any): JSX.Element {
   return (

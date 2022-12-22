@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NextPage = styled.button`
+export const GradiantButton = styled.button`
   width: 320px;
   height: 50px;
   border-style: none;
@@ -12,16 +12,4 @@ export const NextPage = styled.button`
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
-`;
-
-export const CheckButton = styled.button`
-  width: 60px;
-  height: 50px;
-  margin-left: 20px;
-  border-style: none;
-  color: #fff;
-  background: #f4cacc;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
 `;

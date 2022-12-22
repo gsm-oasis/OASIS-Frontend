@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import Auth from "../../../api/Auth";
-import { emailAtom, nickNameAtom } from "../../../atoms/AtomContainer";
-import { Input, InputAndButton } from "../A";
-import { CheckButton } from "../../Common/Button";
+import Auth from "../../api/Auth";
+import { emailAtom, nickNameAtom } from "../../atoms/AtomContainer";
+import { InputAndButton } from "./style";
+import { Input } from "../Common/Inputs/AuthInput";
+import { CheckButton } from "../Common/Buttons/CheckButton";
 
 function EmailNickName(): JSX.Element {
   const [nickName, setNickName] = useRecoilState(nickNameAtom);
@@ -48,7 +49,14 @@ function EmailNickName(): JSX.Element {
           value={email}
           style={{ width: "200px" }}
         ></Input>
-        <CheckButton onClick={() => postEmail(email)}>전송</CheckButton>
+        <CheckButton
+          color="f4cacc"
+          weight="60"
+          height="50"
+          onClick={() => postEmail(email)}
+        >
+          전송
+        </CheckButton>
       </InputAndButton>
       <InputAndButton>
         <Input
@@ -57,7 +65,14 @@ function EmailNickName(): JSX.Element {
           value={checkNum}
           style={{ width: "200px" }}
         ></Input>
-        <CheckButton onClick={emailConfirm}>인증</CheckButton>
+        <CheckButton
+          color="f4cacc"
+          weight="60"
+          height="50"
+          onClick={emailConfirm}
+        >
+          인증
+        </CheckButton>
       </InputAndButton>
     </>
   );

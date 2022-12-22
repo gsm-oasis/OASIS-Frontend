@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Back } from "../../../assets/svg";
-import { Frame, Setting } from "../../Common/Frame";
-import { EmptyCompo, Title, TitleText } from "../../Common/Title";
-import { Box, BoxDescription, BoxText, Bt } from "../Common";
-import { InputCode } from "../LinkCouple/style";
-import Main from "../../../api/Main";
+import { Back } from "../../assets/svg";
+import { Frame, Setting } from "../Common/Frame";
+import { EmptyCompo, Title, TitleText } from "../Common/Title";
+import { Box, BoxDescription, BoxText, Bt } from "../Common/BoxWithInput/style";
+import { InputCode } from "../Common/Inputs/InputCode";
+import Main from "../../api/Main";
 
 function SetDate() {
   const navigate = useNavigate();

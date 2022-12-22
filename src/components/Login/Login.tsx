@@ -1,22 +1,22 @@
 import {
-  BottomText,
   BottomTextBox,
   Description,
-  Input,
   InputBox,
-  Logo,
   StyledLink,
   Title,
-} from "../A";
-import * as I from "../../../assets/svg";
-import { LoginInterface } from "../../../interfaces/AuthInterface";
+} from "./style";
+import * as I from "../../assets/svg";
+import { LoginInterface } from "../../interfaces/AuthInterface";
 import { useForm } from "react-hook-form";
-import Auth from "../../../api/Auth";
+import Auth from "../../api/Auth";
 import { useRecoilState } from "recoil";
-import { isCoupleAtom, loggedAtom } from "../../../atoms/AtomContainer";
-import { Frame, Setting } from "../../Common/Frame";
-import { NextPage } from "../../Common/Button";
+import { isCoupleAtom, loggedAtom } from "../../atoms/AtomContainer";
+import { Frame, Setting } from "../Common/Frame";
 import { useNavigate } from "react-router-dom";
+import { Input } from "../Common/Inputs/AuthInput";
+import { Logo } from "../Common/Logos/BigLogo";
+import { BottomText } from "../Common/Texts/BottomText";
+import { GradiantButton } from "../Common/Buttons/GradiantButton";
 
 function Login() {
   const {
@@ -77,7 +77,7 @@ function Login() {
               <StyledLink to="/find">
                 비밀번호 또는 아이디를 잊어버리셨나요?
               </StyledLink>
-              <NextPage>Login</NextPage>
+              <GradiantButton>Login</GradiantButton>
             </InputBox>
           </form>
           <BottomTextBox>
