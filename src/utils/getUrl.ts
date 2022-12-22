@@ -33,3 +33,9 @@ export const getMain = {
     return REACT_APP_BASE_URL + "mainpage/";
   },
 };
+
+export const getDiary = {
+  getDetail: () => {
+    return REACT_APP_BASE_URL + "diary/detail";
+  },
+};

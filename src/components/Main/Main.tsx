@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { BlankHeart, Heart, Plus, SettingIcon } from "../../assets/svg";
+import {
+  BlankHeart,
+  Heart,
+  Plus,
+  RedHeart,
+  SettingIcon,
+} from "../../assets/svg";
 import TokenService from "../../lib/TokenService";
 import { Setting } from "../Common/Frame";
 import * as S from "./style";
@@ -10,6 +16,7 @@ import { DiaryContent, DiaryProps } from "../../interfaces/MainInterface";
 
 function Main() {
   const [mainContent, setContent] = useState<DiaryProps>();
+  const [hoverState, setHover] = useState(false);
 
   const PostMain = async () => {
     try {
@@ -47,7 +54,14 @@ function Main() {
               </S.ToAnniversary>
             </S.LeftBox>
             <S.RightBox>
-              <BlankHeart />
+              <div
+                onMouseOver={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                style={{ cursor: "pointer" }}
+              >
+                {!hoverState && <BlankHeart />}
+                {hoverState && <RedHeart />}
+              </div>
               <SettingIcon />
             </S.RightBox>
           </S.Top>

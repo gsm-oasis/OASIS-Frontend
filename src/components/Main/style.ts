@@ -42,6 +42,7 @@ export const ToAnniversary = styled.div`
 `;
 
 export const RightBox = styled.div`
+  height: 17px;
   display: flex;
   width: 45px;
   justify-content: space-between;

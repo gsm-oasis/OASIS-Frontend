@@ -2,7 +2,7 @@ export { Logo } from "./Logo";
 
 export { Back } from "./Back";
 
-export { Heart, BlankHeart } from "./Heart";
+export { Heart, BlankHeart, RedHeart } from "./Heart";
 
 export { SettingIcon } from "./Setting";
 

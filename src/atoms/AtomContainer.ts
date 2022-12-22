@@ -39,17 +39,14 @@ export const isCoupleAtom = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const MainContentAtom = atom({
+export const DiaryContentAtom = atom({
   key: "mainContents",
   default: {
-    nickname: "",
-    coupleNickname: "",
-    heartLevel: 0,
-    datingDate: 0,
-    anniversary: 100,
-    questionId: 0,
+    imgs: [],
+    title: "",
     content: "",
-    diaryListPageResponse: [],
+    mood: "",
+    writer: "",
   },
   effects_UNSTABLE: [persistAtom],
 });
