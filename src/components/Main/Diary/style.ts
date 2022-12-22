@@ -34,6 +34,26 @@ export const DiaryDate = styled.div`
 
 export const DiaryBody = styled.div`
   width: 300px;
+  height: 40px;
+  margin-bottom: 10px;
   font-size: 11px;
-  margin-top: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const CreatePersonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #5e5e5e;
+  font-weight: 600;
+`;
+
+export const Circle = styled.div`
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #bbd1e4;
+  margin-right: 5px;
 `;

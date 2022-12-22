@@ -19,6 +19,10 @@ function DiaryList(props: DiaryProps): JSX.Element {
             <S.DiaryDate>{props.DiaryProps.createDate}</S.DiaryDate>
           </S.DiaryTitleFrame>
           <S.DiaryBody>{props.DiaryProps.content}</S.DiaryBody>
+          <S.CreatePersonWrapper>
+            <S.Circle />
+            {props.DiaryProps.writer}
+          </S.CreatePersonWrapper>
         </S.DiaryTextFrame>
       </S.DiaryBox>
     </>

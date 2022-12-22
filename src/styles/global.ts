@@ -17,6 +17,8 @@ const GlobalStyle = createGlobalStyle`
   margin-top: 10px;
   color: #959595;
   }
+
+
 `;
 
 export default GlobalStyle;

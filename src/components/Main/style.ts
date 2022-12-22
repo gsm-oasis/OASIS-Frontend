@@ -51,7 +51,7 @@ export const Line = styled.div`
   width: 375px;
   height: 1px;
   background: #eeeeee;
-  margin-top: 50px;
+  margin-top: 40px;
 `;
 
 export const DiaryFrame = styled.div`
@@ -71,4 +71,20 @@ export const DTitle = styled.div`
   font-size: 20px;
   color: #7b7b7b;
   font-weight: 700;
+`;
+
+export const DiaryWrapper = styled.div`
+  padding-left: 20px;
+  margin-left: -20px;
+  width: 395px;
+  height: 440px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 100px;
+    background: #f2c3c3;
+    border-radius: 10px;
+  }
 `;

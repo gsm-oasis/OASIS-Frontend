@@ -64,11 +64,13 @@ function Main() {
               <S.DTitle>공유일기</S.DTitle>
               <Plus />
             </S.DiaryTitleFrame>
-            {mainContent?.diaryListPageResponse &&
-              mainContent.diaryListPageResponse.map((diary: DiaryContent) => (
-                <DiaryList key={diary.diaryId} DiaryProps={diary} />
-                // 지금 더미데이터가 1개라 key 1로 해도 오류안남 고쳐야됨
-              ))}
+            <S.DiaryWrapper>
+              {mainContent?.diaryListPageResponse &&
+                mainContent.diaryListPageResponse.map((diary: DiaryContent) => (
+                  <DiaryList key={diary.diaryId} DiaryProps={diary} />
+                  // 지금 더미데이터가 1개라 key 1로 해도 오류안남 고쳐야됨
+                ))}
+            </S.DiaryWrapper>
           </S.DiaryFrame>
         </S.MainFrame>
       </Setting>
