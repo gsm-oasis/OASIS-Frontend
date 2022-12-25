@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Title = styled.div`
+  width: 375px;
   display: flex;
   align-items: center;
   margin-top: 100px;

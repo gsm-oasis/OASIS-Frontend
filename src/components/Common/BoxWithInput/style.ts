@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Box = styled.div`
   margin-top: 50px;
-  width: 40vw;
+  width: 375px;
   display: flex;
   flex-direction: column;
   justify-content: center;

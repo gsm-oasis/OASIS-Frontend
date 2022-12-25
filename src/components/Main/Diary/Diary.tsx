@@ -25,7 +25,7 @@ function DiaryList(props: DiaryProps): JSX.Element {
         TokenService.getLocalAccessToken()
       );
       setDiaryContent(response.data);
-      navigate("");
+      navigate("/diary");
     } catch (error) {
       return error;
     }

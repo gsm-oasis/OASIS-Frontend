@@ -9,5 +9,12 @@ export const Setting = styled.div`
 
 export const Frame = styled.div`
   width: 40vw;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
+`;
+
+export const ContentFrame = styled.div`
+  width: 375px;
 `;
