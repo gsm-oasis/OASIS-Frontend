@@ -46,7 +46,7 @@ export const DiaryContentAtom = atom({
     title: "",
     content: "",
     mood: "",
-    writer: "",
+    createDate: "",
   },
   effects_UNSTABLE: [persistAtom],
 });

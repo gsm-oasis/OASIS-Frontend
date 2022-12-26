@@ -1,7 +1,7 @@
 export interface diaryDetail {
-  imgs: [];
+  imgs: [{ id: number; imageUrl: "" }];
   title: string;
   content: string;
   mood: string;
-  writer: string;
+  createDate: string;
 }

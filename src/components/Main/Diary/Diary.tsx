@@ -2,9 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import Diary from "../../../api/Diary";
-import { Plus } from "../../../assets/svg";
 import { DiaryContentAtom } from "../../../atoms/AtomContainer";
-import { diaryDetail } from "../../../interfaces/DiaryInterface";
 import { DiaryContent } from "../../../interfaces/MainInterface";
 import TokenService from "../../../lib/TokenService";
 
@@ -25,6 +23,7 @@ function DiaryList(props: DiaryProps): JSX.Element {
         TokenService.getLocalAccessToken()
       );
       setDiaryContent(response.data);
+      console.log(response.data);
       navigate("/diary");
     } catch (error) {
       return error;
