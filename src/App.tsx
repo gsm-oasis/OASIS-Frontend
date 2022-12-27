@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import "./App.css";
 import { isCoupleAtom, loggedAtom } from "./atoms/AtomContainer";
+import CreateDiaryPage from "./pages/CreateDiaryPage";
 import DiaryDetailPage from "./pages/DiaryDetailPage";
 import LinkCouplePage from "./pages/LinkCouplePage";
 import LoginPage from "./pages/LoginPage";
@@ -34,6 +35,7 @@ function App() {
         <Route path="/linkcouple" element={<LinkCouplePage />} />
         <Route path="/setdate" element={<SetDatePage />} />
         <Route path="/diary" element={<DiaryDetailPage />} />
+        <Route path="/createDiary" element={<CreateDiaryPage />} />
       </Routes>
     </>
   );

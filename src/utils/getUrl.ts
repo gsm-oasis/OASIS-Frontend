@@ -38,4 +38,8 @@ export const getDiary = {
   getDetail: () => {
     return REACT_APP_BASE_URL + "diary/detail";
   },
+
+  createDiary: () => {
+    return REACT_APP_BASE_URL + "diary/create";
+  },
 };

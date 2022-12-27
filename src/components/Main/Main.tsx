@@ -13,9 +13,11 @@ import main from "../../api/Main";
 import Question from "./Question";
 import DiaryList from "./Diary/Diary";
 import { DiaryContent, DiaryProps } from "../../interfaces/MainInterface";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
   const [mainContent, setContent] = useState<DiaryProps>();
+  const navigate = useNavigate();
   const [hoverState, setHover] = useState(false);
 
   const PostMain = async () => {
@@ -57,7 +59,6 @@ function Main() {
               <div
                 onMouseOver={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
-                style={{ cursor: "pointer" }}
               >
                 {!hoverState && <BlankHeart />}
                 {hoverState && <RedHeart />}
@@ -65,18 +66,17 @@ function Main() {
               <SettingIcon />
             </S.RightBox>
           </S.Top>
-
           <Question
             questionNum={mainContent?.questionId}
             content={mainContent?.content}
           />
-
           <S.Line />
-
           <S.DiaryFrame>
             <S.DiaryTitleFrame>
               <S.DTitle>공유일기</S.DTitle>
-              <Plus />
+              <div onClick={() => navigate("/createDiary")}>
+                <Plus />
+              </div>
             </S.DiaryTitleFrame>
             <S.DiaryWrapper>
               {mainContent?.diaryListPageResponse &&

@@ -1,6 +1,7 @@
 export const Back = () => {
   return (
     <svg
+      style={{ cursor: "pointer" }}
       width="10"
       height="15"
       viewBox="0 0 8 13"

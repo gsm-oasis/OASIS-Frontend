@@ -31,6 +31,7 @@ export const Heart = () => {
 export const RedHeart = () => {
   return (
     <svg
+      style={{ cursor: "pointer" }}
       width="18"
       height="17"
       viewBox="0 0 18 17"
@@ -49,6 +50,7 @@ export const BlankHeart = () => {
   return (
     <>
       <svg
+        style={{ cursor: "pointer" }}
         width="18"
         height="17"
         viewBox="0 0 18 17"

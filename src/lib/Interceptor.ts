@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAuth } from "../utils/getUrl";
 import { REACT_APP_BASE_URL } from "../shared/config";
 import TokenService from "./TokenService";
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { loggedAtom } from "../atoms/AtomContainer";
 
 export const instance = axios.create({

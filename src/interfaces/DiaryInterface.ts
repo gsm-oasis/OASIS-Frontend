@@ -5,3 +5,11 @@ export interface diaryDetail {
   mood: string;
   createDate: string;
 }
+
+export interface diaryCreateContent {
+  imgs: [{ imageUrl: "" }];
+  title: string;
+  content: string;
+  mood: string;
+  writer: string;
+}
