@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PutImage = styled.div`
+export const PutImage = styled.input`
   width: 180px;
   height: 230px;
   background: #ffffff;
