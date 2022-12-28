@@ -89,7 +89,7 @@ export const MoodCircleBox = styled.div`
   height: 100px;
 `;
 
-export const MoodCircle = styled.div<{ isClick: boolean }>`
+export const MoodButton = styled.label`
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -98,6 +98,18 @@ export const MoodCircle = styled.div<{ isClick: boolean }>`
   justify-content: center;
   font-size: 14px;
   font-weight: 700;
-  color: #${(props) => (props.isClick ? "ffffff" : "969696")};
-  background: #${(props) => (props.isClick ? "F5CACB" : "FAFAFA")};
+
+  background: #fafafa;
+  border: 0.4px solid #e4e4e4;
+  color: #969696;
+`;
+
+export const MoodCircle = styled.input`
+  display: none;
+
+  &:checked + ${MoodButton} {
+    background: #f5cacb;
+    color: white;
+    border: none;
+  }
 `;

@@ -8,8 +8,34 @@ import { ImageBox, ImageFrame, ImageWrapper } from "../DiaryDetail/style";
 import * as S from "./style";
 
 function CreateDiary() {
+  const [diaryTitle, setDiaryTitle] = useState("");
+  const [diaryContent, setDiaryContent] = useState("");
   const [imageSrc, setImageSrc] = useState("");
   const [images, setImages] = useState<string[]>([]);
+  const [btn, setBtn] = useState<{ name: string }>();
+
+  const Moods = [
+    { name: "행복" },
+    { name: "슬픔" },
+    { name: "무난" },
+    { name: "후회" },
+    { name: "설렘" },
+  ];
+
+  const TitleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setDiaryTitle(e.target.value);
+  };
+  const ContentChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
+    setDiaryContent(e.target.value);
+  };
+
+  const btnClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const selected = Moods.filter((color) => color.name === value);
+    if (selected) {
+      setBtn(selected[0]);
+    }
+  };
 
   const encodeFileToBase64 = async (fileBlob: any) => {
     const reader = new FileReader();
@@ -21,6 +47,13 @@ function CreateDiary() {
         setImages([...images, reader.result.toString()]);
       }
     };
+  };
+
+  const createDiary: React.MouseEventHandler<HTMLButtonElement> = () => {
+    console.log(diaryTitle);
+    console.log(diaryContent);
+    console.log(btn?.name);
+    console.log(images);
   };
 
   return (
@@ -64,20 +97,40 @@ function CreateDiary() {
           </div>
 
           <S.TextBox>
-            <S.TitleText placeholder="일기 제목"></S.TitleText>
-            <S.TextArea placeholder="여기에 입력해주세요.."></S.TextArea>
+            <S.TitleText
+              placeholder="일기 제목"
+              onChange={TitleChange}
+              value={diaryTitle}
+            />
+            <S.TextArea
+              placeholder="여기에 입력해주세요.."
+              onChange={ContentChange}
+              value={diaryContent}
+            ></S.TextArea>
           </S.TextBox>
           <S.MoodSelectBox>
             <S.MoodDesc>오늘의 기분을 선택해주세요!</S.MoodDesc>
             <S.MoodCircleBox>
-              <S.MoodCircle isClick={false}>행복</S.MoodCircle>
-              <S.MoodCircle isClick={false}>슬픔</S.MoodCircle>
-              <S.MoodCircle isClick={false}>무난</S.MoodCircle>
-              <S.MoodCircle isClick={false}>후회</S.MoodCircle>
-              <S.MoodCircle isClick={false}>설렘</S.MoodCircle>
+              {Moods.map((mood, index) => {
+                return (
+                  <div key={index}>
+                    <S.MoodCircle
+                      id={mood.name}
+                      name="mood"
+                      value={mood.name}
+                      type="radio"
+                      checked={mood.name === btn?.name}
+                      onChange={btnClick}
+                    ></S.MoodCircle>
+                    <S.MoodButton htmlFor={mood.name}>{mood.name}</S.MoodButton>
+                  </div>
+                );
+              })}
             </S.MoodCircleBox>
           </S.MoodSelectBox>
-          <GradiantButton style={{ marginTop: 30 }}>일기 작성</GradiantButton>
+          <GradiantButton style={{ marginTop: 30 }} onClick={createDiary}>
+            일기 작성
+          </GradiantButton>
         </Frame>
       </Setting>
     </>
