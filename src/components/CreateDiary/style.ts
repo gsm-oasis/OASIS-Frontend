@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
 export const PutImage = styled.input`
-  width: 180px;
-  height: 230px;
+  display: none;
+`;
+
+export const PutImageLabel = styled.label`
+  width: 60px;
+  height: 40px;
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(168, 168, 168, 0.27);
-  border-radius: 18px;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin-top: 40px;
+  //margin-top: 40px;
 `;
 
 export const Description = styled.div`
@@ -74,4 +78,26 @@ export const MoodSelectBox = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
+`;
+
+export const MoodCircleBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 340px;
+  margin-left: 15px;
+  height: 100px;
+`;
+
+export const MoodCircle = styled.div<{ isClick: boolean }>`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #${(props) => (props.isClick ? "ffffff" : "969696")};
+  background: #${(props) => (props.isClick ? "F5CACB" : "FAFAFA")};
 `;

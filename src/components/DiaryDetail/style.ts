@@ -8,6 +8,7 @@ export const ImageFrame = styled.div`
 
 export const ImageWrapper = styled.div`
   display: flex;
+  justify-content: center;
   width: 375px;
   height: 215px;
   overflow-x: auto;
@@ -23,7 +24,10 @@ export const ImageBox = styled.div<{ image: string }>`
   height: 200px;
   margin-right: 10px;
   border-radius: 18px;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 18px rgba(169, 169, 169, 0.25);
 `;
 
 export const ContentBox = styled.div`
