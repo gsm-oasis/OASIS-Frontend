@@ -44,13 +44,18 @@ function CreateDiary() {
     }
   };
 
+  const deleteImg = (index: number) => {
+    const imgArr = images.filter((el, idx) => idx !== index);
+
+    setImages([...imgArr]);
+  };
+
   const encodeFileToBase64 = async (fileBlob: any) => {
     const reader = new FileReader();
     reader.readAsDataURL(fileBlob);
 
     reader.onload = () => {
       if (reader.result) {
-        // setImageSrc(reader.result.toString());
         setImages([...images, reader.result.toString()]);
       }
     };
@@ -108,11 +113,13 @@ function CreateDiary() {
                 {images &&
                   images?.map((image, index) => {
                     return (
-                      <ImageBox
-                        style={{ width: 120 }}
-                        key={index}
-                        image={image}
-                      />
+                      <div key={index}>
+                        <ImageBox style={{ width: 120 }} image={image}>
+                          <S.DeleteImage
+                            onClick={() => deleteImg(index)}
+                          ></S.DeleteImage>
+                        </ImageBox>
+                      </div>
                     );
                   })}
               </ImageWrapper>

@@ -10,9 +10,10 @@ export const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 375px;
-  height: 215px;
+  height: 230px;
   overflow-x: auto;
   white-space: nowrap;
+  align-items: center;
 `;
 
 // export const Image = styled.img``;
@@ -22,6 +23,7 @@ export const ImageBox = styled.div<{ image: string }>`
   width: 140px;
   flex-shrink: 0;
   height: 200px;
+  position: relative;
   margin-right: 10px;
   border-radius: 18px;
   background-size: contain;

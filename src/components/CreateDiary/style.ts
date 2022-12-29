@@ -4,6 +4,16 @@ export const PutImage = styled.input`
   display: none;
 `;
 
+export const DeleteImage = styled.div`
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  margin: 10px 0 0 10px;
+`;
+
 export const PutImageLabel = styled.label`
   width: 60px;
   height: 40px;
@@ -18,7 +28,7 @@ export const PutImageLabel = styled.label`
 `;
 
 export const Description = styled.div`
-  margin-top: 18px;
+  margin-top: 24px;
   font-size: 12px;
   color: #939393;
 `;
