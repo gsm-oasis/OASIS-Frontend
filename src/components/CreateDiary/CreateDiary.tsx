@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import Diary from "../../api/Diary";
 import { Back } from "../../assets/svg";
 import { BoldPlus } from "../../assets/svg/Plus";
+import { nickNameAtom } from "../../atoms/AtomContainer";
+import TokenService from "../../lib/TokenService";
 import { GradiantButton } from "../Common/Buttons/GradiantButton";
 import { Frame, Setting } from "../Common/Frame";
 import { EmptyCompo, Title, TitleText } from "../Common/Title";
@@ -8,11 +13,13 @@ import { ImageBox, ImageFrame, ImageWrapper } from "../DiaryDetail/style";
 import * as S from "./style";
 
 function CreateDiary() {
+  const navigate = useNavigate();
   const [diaryTitle, setDiaryTitle] = useState("");
   const [diaryContent, setDiaryContent] = useState("");
-  const [imageSrc, setImageSrc] = useState("");
+  const [imageSrc, setImageSrc] = useState<File>();
   const [images, setImages] = useState<string[]>([]);
   const [btn, setBtn] = useState<{ name: string }>();
+  const writer: string = useRecoilValue(nickNameAtom);
 
   const Moods = [
     { name: "행복" },
@@ -43,17 +50,38 @@ function CreateDiary() {
 
     reader.onload = () => {
       if (reader.result) {
-        setImageSrc(reader.result.toString());
+        // setImageSrc(reader.result.toString());
         setImages([...images, reader.result.toString()]);
       }
     };
   };
 
-  const createDiary: React.MouseEventHandler<HTMLButtonElement> = () => {
-    console.log(diaryTitle);
-    console.log(diaryContent);
-    console.log(btn?.name);
-    console.log(images);
+  const createDiary: React.MouseEventHandler<HTMLButtonElement> = async () => {
+    try {
+      const formData = new FormData();
+      if (!imageSrc) return;
+      formData.append("file", imageSrc);
+      let reqDto = {
+        title: diaryTitle,
+        content: diaryContent,
+        mood: btn?.name,
+        writer: writer,
+      };
+      formData.append(
+        "req",
+        new Blob([JSON.stringify(reqDto)], { type: "application/json" })
+      );
+      const response: any = await Diary.postCreateDiary(
+        formData,
+        TokenService.getLocalAccessToken()
+      );
+
+      if (response.status === 201) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -69,6 +97,7 @@ function CreateDiary() {
             <S.PutImage
               type={"file"}
               onChange={(e) => {
+                setImageSrc(e.target.files![0]);
                 encodeFileToBase64(e.target.files![0]);
               }}
               id={"ImageUpload"}

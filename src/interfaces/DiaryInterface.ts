@@ -7,9 +7,9 @@ export interface diaryDetail {
 }
 
 export interface diaryCreateContent {
-  imgs: [{ imageUrl: "" }];
+  imgs: string[];
   title: string;
   content: string;
-  mood: string;
+  mood: string | undefined;
   writer: string;
 }

@@ -17,18 +17,16 @@ class Diary {
     }
   }
 
-  postCreateDiary(data: diaryCreateContent, token: string) {
+  postCreateDiary(data: FormData, token: string) {
     try {
       return AxiosInstance(
         {
           method: "POST",
           url: getDiary.createDiary(),
-          data: {
-            imgs: data.imgs,
-            title: data.title,
-            content: data.content,
-            mood: data.mood,
-            writer: data.writer,
+          data,
+
+          headers: {
+            "Content-type": "multipart/form-data",
           },
         },
         token
