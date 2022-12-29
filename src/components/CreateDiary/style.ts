@@ -5,13 +5,16 @@ export const PutImage = styled.input`
 `;
 
 export const DeleteImage = styled.div`
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   position: absolute;
   margin: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PutImageLabel = styled.label`

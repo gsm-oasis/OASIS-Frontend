@@ -43,3 +43,9 @@ export const getDiary = {
     return REACT_APP_BASE_URL + "diary/create";
   },
 };
+
+export const getImage = {
+  postImage: () => {
+    return REACT_APP_BASE_URL + "image/";
+  },
+};

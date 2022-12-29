@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import Diary from "../../api/Diary";
 import { Back } from "../../assets/svg";
+import { DeleteButton } from "../../assets/svg/Delete";
 import { BoldPlus } from "../../assets/svg/Plus";
 import { nickNameAtom } from "../../atoms/AtomContainer";
+import { diaryContent } from "../../interfaces/DiaryInterface";
 import TokenService from "../../lib/TokenService";
 import { GradiantButton } from "../Common/Buttons/GradiantButton";
 import { Frame, Setting } from "../Common/Frame";
@@ -20,6 +22,13 @@ function CreateDiary() {
   const [images, setImages] = useState<string[]>([]);
   const [btn, setBtn] = useState<{ name: string }>();
   const writer: string = useRecoilValue(nickNameAtom);
+
+  const content: diaryContent = {
+    title: diaryTitle,
+    content: diaryContent,
+    writer: writer,
+    mood: btn?.name,
+  };
 
   const Moods = [
     { name: "행복" },
@@ -46,7 +55,6 @@ function CreateDiary() {
 
   const deleteImg = (index: number) => {
     const imgArr = images.filter((el, idx) => idx !== index);
-
     setImages([...imgArr]);
   };
 
@@ -61,23 +69,28 @@ function CreateDiary() {
     };
   };
 
-  const createDiary: React.MouseEventHandler<HTMLButtonElement> = async () => {
+  const imageUpload: React.MouseEventHandler<HTMLButtonElement> = async () => {
     try {
       const formData = new FormData();
       if (!imageSrc) return;
       formData.append("file", imageSrc);
-      let reqDto = {
-        title: diaryTitle,
-        content: diaryContent,
-        mood: btn?.name,
-        writer: writer,
-      };
-      formData.append(
-        "req",
-        new Blob([JSON.stringify(reqDto)], { type: "application/json" })
-      );
-      const response: any = await Diary.postCreateDiary(
+      const response: any = await Diary.postImage(
         formData,
+        TokenService.getLocalAccessToken()
+      );
+
+      if (response.status === 200) {
+        createDiary();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createDiary = async () => {
+    try {
+      const response: any = await Diary.postCreateDiary(
+        content,
         TokenService.getLocalAccessToken()
       );
 
@@ -115,9 +128,9 @@ function CreateDiary() {
                     return (
                       <div key={index}>
                         <ImageBox style={{ width: 120 }} image={image}>
-                          <S.DeleteImage
-                            onClick={() => deleteImg(index)}
-                          ></S.DeleteImage>
+                          <S.DeleteImage onClick={() => deleteImg(index)}>
+                            <DeleteButton />
+                          </S.DeleteImage>
                         </ImageBox>
                       </div>
                     );
@@ -164,7 +177,7 @@ function CreateDiary() {
               })}
             </S.MoodCircleBox>
           </S.MoodSelectBox>
-          <GradiantButton style={{ marginTop: 30 }} onClick={createDiary}>
+          <GradiantButton style={{ marginTop: 30 }} onClick={imageUpload}>
             일기 작성
           </GradiantButton>
         </Frame>
