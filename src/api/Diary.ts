@@ -1,10 +1,5 @@
-import {
-  diaryContent,
-  diaryCreateContent,
-  diaryDetail,
-} from "../interfaces/DiaryInterface";
 import AxiosInstance from "../lib/axios";
-import { getDiary, getImage } from "../utils/getUrl";
+import { getDiary } from "../utils/getUrl";
 
 class Diary {
   getDiaryContent(diaryId: number, token: string) {
@@ -21,7 +16,7 @@ class Diary {
     }
   }
 
-  postCreateDiary(data: diaryContent, token: string) {
+  postCreateDiary(data: FormData, token: string) {
     try {
       return AxiosInstance(
         {
@@ -29,25 +24,8 @@ class Diary {
           url: getDiary.createDiary(),
           data,
         },
-        token
-      );
-    } catch (error) {
-      return error;
-    }
-  }
-
-  postImage(data: FormData, token: string) {
-    try {
-      return AxiosInstance(
-        {
-          method: "POST",
-          url: getImage.postImage(),
-          data,
-          headers: {
-            "Content-type": "multipart/form-data",
-          },
-        },
-        token
+        token,
+        true
       );
     } catch (error) {
       return error;

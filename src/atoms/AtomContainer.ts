@@ -21,6 +21,7 @@ export const passwordAtom = atom({
 export const nickNameAtom = atom({
   key: "myName",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const emailAtom = atom({

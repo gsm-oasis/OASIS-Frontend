@@ -14,10 +14,13 @@ import Question from "./Question";
 import DiaryList from "./Diary/Diary";
 import { DiaryContent, DiaryProps } from "../../interfaces/MainInterface";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { nickNameAtom } from "../../atoms/AtomContainer";
 
 function Main() {
   const [mainContent, setContent] = useState<DiaryProps>();
   const navigate = useNavigate();
+  const [name, setName] = useRecoilState(nickNameAtom);
   const [hoverState, setHover] = useState(false);
 
   const PostMain = async () => {
@@ -26,6 +29,7 @@ function Main() {
         TokenService.getLocalAccessToken()
       );
       setContent(response.data);
+      setName(response.data.nickname);
       console.log(response.data);
     } catch (error) {
       return error;

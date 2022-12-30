@@ -1,7 +1,11 @@
 import { AxiosRequestConfig } from "axios";
 import { instance } from "./Interceptor";
 
-const AxiosInstance = (data: AxiosRequestConfig, token?: string) => {
+const AxiosInstance = (
+  data: AxiosRequestConfig,
+  token?: string,
+  image?: boolean
+) => {
   try {
     const request = instance({
       method: data.method,
@@ -10,6 +14,7 @@ const AxiosInstance = (data: AxiosRequestConfig, token?: string) => {
       data: data.data,
       headers: {
         Authorization: token ? "Bearer " + token : "",
+        "Content-type": image ? "multipart/form-data" : "application/json",
       },
       params: data.params,
     });
