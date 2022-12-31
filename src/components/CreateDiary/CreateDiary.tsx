@@ -1,64 +1,44 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import Diary from "../../api/Diary";
 import { Back } from "../../assets/svg";
-import { DeleteButton } from "../../assets/svg/Delete";
-import { BoldPlus } from "../../assets/svg/Plus";
-import { nickNameAtom } from "../../atoms/AtomContainer";
+import {
+  ImagesAtom,
+  ImageSrcAtom,
+  MoodAtom,
+  nickNameAtom,
+} from "../../atoms/AtomContainer";
 import TokenService from "../../lib/TokenService";
 import { GradiantButton } from "../Common/Buttons/GradiantButton";
 import { Frame, Setting } from "../Common/Frame";
 import { EmptyCompo, Title, TitleText } from "../Common/Title";
-import { ImageBox, ImageFrame, ImageWrapper } from "../DiaryDetail/style";
+import InputImage from "./InputImage/InputImage";
+import Mood from "./Mood/Mood";
 import * as S from "./style";
 
 function CreateDiary() {
   const navigate = useNavigate();
   const [diaryTitle, setDiaryTitle] = useState("");
   const [diaryContent, setDiaryContent] = useState("");
-  const [imageSrc, setImageSrc] = useState<File[]>([]);
-  const [images, setImages] = useState<string[]>([]);
-  const [btn, setBtn] = useState<{ name: string }>();
+  const [imageSrc] = useRecoilState<File[]>(ImageSrcAtom);
+  const [btn] = useRecoilState(MoodAtom);
   const myName: string = useRecoilValue(nickNameAtom);
+  const resetMood = useResetRecoilState(MoodAtom);
+  const resetImageSrc = useResetRecoilState(ImageSrcAtom);
+  const resetImages = useResetRecoilState(ImagesAtom);
 
-  const Moods = [
-    { name: "행복" },
-    { name: "슬픔" },
-    { name: "무난" },
-    { name: "후회" },
-    { name: "설렘" },
-  ];
+  const resetRecoil = () => {
+    resetMood();
+    resetImageSrc();
+    resetImages();
+  };
 
   const TitleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setDiaryTitle(e.target.value);
   };
   const ContentChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setDiaryContent(e.target.value);
-  };
-
-  const btnClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const selected = Moods.filter((color) => color.name === value);
-    if (selected) {
-      setBtn(selected[0]);
-    }
-  };
-
-  const deleteImg = (index: number) => {
-    const imgArr = images.filter((el, idx) => idx !== index);
-    setImages([...imgArr]);
-  };
-
-  const encodeFileToBase64 = async (fileBlob: any) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(fileBlob);
-
-    reader.onload = () => {
-      if (reader.result) {
-        setImages([...images, reader.result.toString()]);
-      }
-    };
   };
 
   const createDiary: React.MouseEventHandler<HTMLButtonElement> = async () => {
@@ -72,8 +52,7 @@ function CreateDiary() {
         mood: btn?.name,
         writer: myName,
       };
-      console.log(myName);
-      console.log(imageSrc, reqDto);
+
       formData.append(
         "req",
         new Blob([JSON.stringify(reqDto)], { type: "application/json" })
@@ -84,6 +63,7 @@ function CreateDiary() {
       );
 
       if (response.status === 201) {
+        resetRecoil();
         navigate("/");
       }
     } catch (error) {
@@ -100,39 +80,8 @@ function CreateDiary() {
             <TitleText>공유 일기 쓰기</TitleText>
             <EmptyCompo />
           </Title>
-          <div>
-            <S.PutImage
-              type={"file"}
-              onChange={(e) => {
-                setImageSrc([...imageSrc, e.target.files![0]]);
-                encodeFileToBase64(e.target.files![0]);
-              }}
-              id={"ImageUpload"}
-            ></S.PutImage>
 
-            <ImageFrame>
-              <ImageWrapper>
-                {images &&
-                  images?.map((image, index) => {
-                    return (
-                      <div key={index}>
-                        <ImageBox style={{ width: 120 }} image={image}>
-                          <S.DeleteImage onClick={() => deleteImg(index)}>
-                            <DeleteButton />
-                          </S.DeleteImage>
-                        </ImageBox>
-                      </div>
-                    );
-                  })}
-              </ImageWrapper>
-            </ImageFrame>
-
-            <S.Description>오늘을 대표할 사진을 넣어보세요!</S.Description>
-
-            <S.PutImageLabel htmlFor="ImageUpload">
-              <BoldPlus />
-            </S.PutImageLabel>
-          </div>
+          <InputImage />
 
           <S.TextBox>
             <S.TitleText
@@ -146,26 +95,9 @@ function CreateDiary() {
               value={diaryContent}
             ></S.TextArea>
           </S.TextBox>
-          <S.MoodSelectBox>
-            <S.MoodDesc>오늘의 기분을 선택해주세요!</S.MoodDesc>
-            <S.MoodCircleBox>
-              {Moods.map((mood, index) => {
-                return (
-                  <div key={index}>
-                    <S.MoodCircle
-                      id={mood.name}
-                      name="mood"
-                      value={mood.name}
-                      type="radio"
-                      checked={mood.name === btn?.name}
-                      onChange={btnClick}
-                    ></S.MoodCircle>
-                    <S.MoodButton htmlFor={mood.name}>{mood.name}</S.MoodButton>
-                  </div>
-                );
-              })}
-            </S.MoodCircleBox>
-          </S.MoodSelectBox>
+
+          <Mood />
+
           <GradiantButton style={{ marginTop: 30 }} onClick={createDiary}>
             일기 작성
           </GradiantButton>

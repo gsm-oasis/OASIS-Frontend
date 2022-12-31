@@ -51,3 +51,23 @@ export const DiaryContentAtom = atom({
   },
   effects_UNSTABLE: [persistAtom],
 });
+
+export const MoodAtom = atom({
+  key: "moods",
+  default: {
+    name: "",
+  },
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const ImageSrcAtom = atom({
+  key: "imageSrc",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const ImagesAtom = atom({
+  key: "images",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
