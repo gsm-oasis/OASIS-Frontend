@@ -8,10 +8,6 @@ export const Title = styled.div`
   justify-content: space-between;
 `;
 
-export const Back = styled.div`
-  cursor: pointer;
-`;
-
 export const TitleText = styled.div`
   /* margin-left: 140px; */
   font-weight: 700;

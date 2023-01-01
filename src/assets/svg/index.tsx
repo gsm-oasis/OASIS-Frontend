@@ -7,3 +7,5 @@ export { Heart, BlankHeart, RedHeart } from "./Heart";
 export { SettingIcon } from "./Setting";
 
 export { Plus } from "./Plus";
+
+export { DeleteButton } from "./Delete";

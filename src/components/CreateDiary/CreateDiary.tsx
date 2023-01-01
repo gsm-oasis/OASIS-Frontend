@@ -76,7 +76,9 @@ function CreateDiary() {
       <Setting>
         <Frame>
           <Title>
-            <Back />
+            <div onClick={() => navigate("/")}>
+              <Back />
+            </div>
             <TitleText>공유 일기 쓰기</TitleText>
             <EmptyCompo />
           </Title>
