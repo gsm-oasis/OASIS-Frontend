@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import User from "../../api/User";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import MainQuestion from "../../api/Question";
 import * as I from "../../assets/svg";
 import { QuestionContent } from "../../interfaces/QuestionInterface";
+import TokenService from "../../lib/TokenService";
 import { GradiantButton } from "../Common/Buttons/GradiantButton";
 import { Setting, Frame } from "../Common/Frame";
 import {
@@ -13,10 +15,8 @@ import {
 import { EmptyCompo, Title, TitleText } from "../Common/Title";
 import { TextArea, TextBox } from "../CreateDiary/style";
 import Question from "../Main/Question";
-import * as S from "./style";
 
 const defaultQuestion: QuestionContent = {
-  content: "",
   userName: "",
   coupleName: "",
   answer: "",
@@ -26,6 +26,27 @@ const defaultQuestion: QuestionContent = {
 function WriteDiaryComment() {
   const [questionContent, setQuestionContent] =
     useState<QuestionContent>(defaultQuestion);
+  const location = useLocation();
+
+  const id = location.state.Id;
+  const content = location.state.content;
+
+  const getComment = async () => {
+    try {
+      const response: any = await MainQuestion.getDiaryComment(
+        id,
+        TokenService.getLocalAccessToken()
+      );
+      console.log(response.data);
+      setQuestionContent(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getComment();
+  }, []);
 
   return (
     <>
@@ -37,10 +58,7 @@ function WriteDiaryComment() {
             <EmptyCompo />
           </Title>
 
-          <Question
-            quesitonNum="30"
-            content="Q. 처음 데이트했던 날 무엇을 했나요?"
-          />
+          <Question questionNum={id} content={content} />
 
           <QuestionCommentBox>
             <UserName>{questionContent.coupleName}의 답변</UserName>

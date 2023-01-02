@@ -70,11 +70,22 @@ function Main() {
               <SettingIcon />
             </S.RightBox>
           </S.Top>
-          <Question
-            questionNum={mainContent?.questionId}
-            content={mainContent?.content}
-            description="질문을 클릭해서 답변을 남겨보세요!"
-          />
+          <div
+            onClick={() =>
+              navigate("diaryComment", {
+                state: {
+                  Id: mainContent?.questionId,
+                  content: mainContent?.content,
+                },
+              })
+            }
+          >
+            <Question
+              questionNum={mainContent?.questionId}
+              content={mainContent?.content}
+              description="질문을 클릭해서 답변을 남겨보세요!"
+            />
+          </div>
           <S.Line />
           <S.DiaryFrame>
             <S.DiaryTitleFrame>

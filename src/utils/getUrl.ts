@@ -49,3 +49,9 @@ export const getImage = {
     return REACT_APP_BASE_URL + "image/";
   },
 };
+
+export const getComment = {
+  getComment: () => {
+    return REACT_APP_BASE_URL + "question/";
+  },
+};
