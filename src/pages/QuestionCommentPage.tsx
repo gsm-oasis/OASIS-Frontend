@@ -1,8 +1,8 @@
 import React from "react";
-import WriteQuestionComment from "../components/WriteQuestionComment/WriteQuestionComment";
+import Question from "../components/Question/index";
 
-function DiaryCommentPage() {
-  return <WriteQuestionComment />;
+function QuestionCommentPage() {
+  return <Question />;
 }
 
-export default DiaryCommentPage;
+export default QuestionCommentPage;

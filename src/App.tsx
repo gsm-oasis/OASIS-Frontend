@@ -8,7 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import SetDatePage from "./pages/SetDatePage";
 import SignUpPage from "./pages/SignUpPage";
-import DiaryCommentPage from "./pages/QuestionCommentPage";
+import QuestionCommentPage from "./pages/QuestionCommentPage";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/setdate" element={<SetDatePage />} />
         <Route path="/diary" element={<DiaryDetailPage />} />
         <Route path="/createDiary" element={<CreateDiaryPage />} />
-        <Route path="/diaryComment" element={<DiaryCommentPage />} />
+        <Route path="/questionComment" element={<QuestionCommentPage />} />
       </Routes>
     </>
   );

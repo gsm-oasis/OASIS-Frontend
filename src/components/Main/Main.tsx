@@ -72,7 +72,7 @@ function Main() {
           </S.Top>
           <div
             onClick={() =>
-              navigate("diaryComment", {
+              navigate("/questionComment", {
                 state: {
                   Id: mainContent?.questionId,
                   content: mainContent?.content,
