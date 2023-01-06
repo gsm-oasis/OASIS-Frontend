@@ -46,6 +46,7 @@ function Question() {
           questionContent={questionContent}
         />
       )}
+      {questionContent.answer && <></>}
     </>
   );
 }
