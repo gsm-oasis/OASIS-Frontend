@@ -17,17 +17,17 @@ function Question() {
   const [questionContent, setQuestionContent] =
     useState<QuestionContent>(defaultQuestion);
   const location = useLocation();
-  const [id, setId] = useState<number>(0);
-  const [content, setContent] = useState<string>("");
+  const [id] = useState<number>(location.state.Id);
+  const [content] = useState<string>(location.state.content);
 
   const getComment = async () => {
     try {
       const response: any = await MainQuestion.getDiaryComment(
-        id,
+        id!,
         TokenService.getLocalAccessToken()
       );
       setQuestionContent(response.data);
-      if (response.status === 200) console.log(response.status, response.data);
+      if (response.status === 200) console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -35,8 +35,6 @@ function Question() {
 
   useEffect(() => {
     getComment();
-    setId(location.state.Id);
-    setContent(location.state.content);
   }, []);
 
   return (
