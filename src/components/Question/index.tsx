@@ -16,11 +16,9 @@ const defaultQuestion: QuestionContent = {
 function Question() {
   const [questionContent, setQuestionContent] =
     useState<QuestionContent>(defaultQuestion);
-  const [isTrue, setIsTrue] = useState<boolean>(false);
   const location = useLocation();
-
-  const id = location.state.Id;
-  const content = location.state.content;
+  const [id, setId] = useState<number>(0);
+  const [content, setContent] = useState<string>("");
 
   const getComment = async () => {
     try {
@@ -28,8 +26,8 @@ function Question() {
         id,
         TokenService.getLocalAccessToken()
       );
-      console.log(response.data);
       setQuestionContent(response.data);
+      if (response.status === 200) console.log(response.status, response.data);
     } catch (error) {
       console.log(error);
     }
@@ -37,20 +35,21 @@ function Question() {
 
   useEffect(() => {
     getComment();
-    if (questionContent.answer === "") setIsTrue(false);
+    setId(location.state.Id);
+    setContent(location.state.content);
   }, []);
 
   return (
     <>
-      {!isTrue && (
-        <WriteQuestionComment
+      {questionContent.answer && (
+        <QuestionDetail
           id={id}
           content={content}
           questionContent={questionContent}
         />
       )}
-      {isTrue && (
-        <QuestionDetail
+      {!questionContent.answer && (
+        <WriteQuestionComment
           id={id}
           content={content}
           questionContent={questionContent}

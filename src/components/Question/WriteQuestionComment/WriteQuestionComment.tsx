@@ -34,8 +34,8 @@ function WriteDiaryComment(props: any) {
           myComment,
           TokenService.getLocalAccessToken()
         );
-        if (response.status === 201) navigate("/questionComment");
-        else console.log("ㄴㄴ");
+        console.log(response.status);
+        if (response.status === 201) navigate("/");
       }
     } catch (e) {
       console.log(e);

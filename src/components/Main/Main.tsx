@@ -17,8 +17,19 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { nickNameAtom } from "../../atoms/AtomContainer";
 
+const defaultProps: DiaryProps = {
+  nickname: "",
+  coupleNickname: "",
+  heartLevel: 0,
+  datingDate: 0,
+  anniversary: 0,
+  questionId: 0,
+  content: "",
+  diaryListPageResponse: [],
+};
+
 function Main() {
-  const [mainContent, setContent] = useState<DiaryProps>();
+  const [mainContent, setContent] = useState<DiaryProps>(defaultProps);
   const navigate = useNavigate();
   const [name, setName] = useRecoilState(nickNameAtom);
   const [hoverState, setHover] = useState(false);
@@ -86,6 +97,7 @@ function Main() {
               description="질문을 클릭해서 답변을 남겨보세요!"
             />
           </div>
+
           <S.Line />
           <S.DiaryFrame>
             <S.DiaryTitleFrame>

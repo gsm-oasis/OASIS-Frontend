@@ -20,7 +20,7 @@ function QuestionDetail(props: any) {
             <div onClick={() => navigate("/")}>
               <I.Back />
             </div>
-            <TitleText>질문 답변 작성</TitleText>
+            <TitleText>질문 상세</TitleText>
             <EmptyCompo />
           </Title>
 
