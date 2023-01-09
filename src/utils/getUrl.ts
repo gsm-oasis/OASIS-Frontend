@@ -54,4 +54,8 @@ export const getComment = {
   getComment: () => {
     return REACT_APP_BASE_URL + "question/";
   },
+
+  postComment: () => {
+    return REACT_APP_BASE_URL + "question/answer/";
+  },
 };

@@ -4,6 +4,7 @@ import { QuestionContent } from "../../interfaces/QuestionInterface";
 import TokenService from "../../lib/TokenService";
 import MainQuestion from "../../api/Question";
 import WriteQuestionComment from "./WriteQuestionComment/WriteQuestionComment";
+import QuestionDetail from "./QuestionDetail/QuestionDetail";
 
 const defaultQuestion: QuestionContent = {
   userName: "",
@@ -15,6 +16,7 @@ const defaultQuestion: QuestionContent = {
 function Question() {
   const [questionContent, setQuestionContent] =
     useState<QuestionContent>(defaultQuestion);
+  const [isTrue, setIsTrue] = useState<boolean>(false);
   const location = useLocation();
 
   const id = location.state.Id;
@@ -35,18 +37,25 @@ function Question() {
 
   useEffect(() => {
     getComment();
+    if (questionContent.answer === "") setIsTrue(false);
   }, []);
 
   return (
     <>
-      {!questionContent.answer && (
+      {!isTrue && (
         <WriteQuestionComment
           id={id}
           content={content}
           questionContent={questionContent}
         />
       )}
-      {questionContent.answer && <></>}
+      {isTrue && (
+        <QuestionDetail
+          id={id}
+          content={content}
+          questionContent={questionContent}
+        />
+      )}
     </>
   );
 }

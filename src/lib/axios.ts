@@ -10,7 +10,6 @@ const AxiosInstance = (
     const request = instance({
       method: data.method,
       url: data.url,
-      withCredentials: false,
       data: data.data,
       headers: {
         Authorization: token ? "Bearer " + token : "",

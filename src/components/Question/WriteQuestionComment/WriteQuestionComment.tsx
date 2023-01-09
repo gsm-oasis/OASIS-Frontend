@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as I from "../../../assets/svg";
 import { GradiantButton } from "../../Common/Buttons/GradiantButton";
 import { Setting, Frame } from "../../Common/Frame";
+import MainQuestion from "../../../api/Question";
 import {
   MyCoupleEmptyAnswer,
   QuestionCommentBox,
@@ -11,9 +12,35 @@ import {
 import { EmptyCompo, Title, TitleText } from "../../Common/Title";
 import { TextArea, TextBox } from "../../CreateDiary/style";
 import Question from "../../Main/Question";
+import TokenService from "../../../lib/TokenService";
 
 function WriteDiaryComment(props: any) {
   const navigate = useNavigate();
+  const [myComment, setMyComment] = useState("");
+
+  const onChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
+    setMyComment(e.target.value);
+  };
+
+  const postMyComment = async () => {
+    try {
+      // const response = await
+      //console.log(myComment)
+      if (!myComment) alert("답변을 입력해주세요!");
+      else {
+        console.log(props.id, myComment);
+        const response: any = await MainQuestion.postMyComment(
+          props.id,
+          myComment,
+          TokenService.getLocalAccessToken()
+        );
+        if (response.status === 201) navigate("/questionComment");
+        else console.log("ㄴㄴ");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -40,10 +67,14 @@ function WriteDiaryComment(props: any) {
             <UserName style={{ marginTop: 20 }}>
               {props.questionContent.userName}의 답변
             </UserName>
-            <TextArea placeholder="답변을 작성해주세요!"></TextArea>
+            <TextArea
+              placeholder="답변을 작성해주세요!"
+              onChange={onChange}
+              value={myComment}
+            ></TextArea>
           </TextBox>
 
-          <GradiantButton>답변 저장</GradiantButton>
+          <GradiantButton onClick={postMyComment}>답변 저장</GradiantButton>
         </Frame>
       </Setting>
     </>
