@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   BlankHeart,
   Heart,
+  Mail,
   Plus,
   RedHeart,
   SettingIcon,
@@ -71,14 +72,19 @@ function Main() {
               </S.ToAnniversary>
             </S.LeftBox>
             <S.RightBox>
-              <div
+              <S.IconBox>
+                <Mail />
+              </S.IconBox>
+              <S.IconBox
                 onMouseOver={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
               >
                 {!hoverState && <BlankHeart />}
                 {hoverState && <RedHeart />}
-              </div>
-              <SettingIcon />
+              </S.IconBox>
+              <S.IconBox>
+                <SettingIcon />
+              </S.IconBox>
             </S.RightBox>
           </S.Top>
           <div

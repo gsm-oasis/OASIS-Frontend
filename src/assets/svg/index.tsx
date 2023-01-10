@@ -9,3 +9,5 @@ export { SettingIcon } from "./Setting";
 export { Plus } from "./Plus";
 
 export { DeleteButton } from "./Delete";
+
+export { Mail } from "./Mail";

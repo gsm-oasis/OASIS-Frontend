@@ -41,10 +41,17 @@ export const ToAnniversary = styled.div`
   color: #959595;
 `;
 
+export const IconBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const RightBox = styled.div`
   height: 17px;
   display: flex;
-  width: 45px;
+  align-items: center;
+  width: 70px;
   justify-content: space-between;
 `;
 
