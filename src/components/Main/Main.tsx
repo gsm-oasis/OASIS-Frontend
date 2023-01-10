@@ -72,7 +72,7 @@ function Main() {
               </S.ToAnniversary>
             </S.LeftBox>
             <S.RightBox>
-              <S.IconBox>
+              <S.IconBox onClick={() => navigate("/questionList")}>
                 <Mail />
               </S.IconBox>
               <S.IconBox

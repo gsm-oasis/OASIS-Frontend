@@ -1,6 +1,7 @@
 export const Mail = () => {
   return (
     <svg
+      style={{ cursor: "pointer" }}
       width="20"
       height="20"
       viewBox="0 0 21 21"
