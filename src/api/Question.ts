@@ -1,5 +1,5 @@
 import AxiosInstance from "../lib/axios";
-import { getComment } from "../utils/getUrl";
+import { getQuestion } from "../utils/getUrl";
 
 class MainQuestion {
   getDiaryComment(questionId: number, token: string) {
@@ -7,7 +7,7 @@ class MainQuestion {
       return AxiosInstance(
         {
           method: "GET",
-          url: getComment.getComment() + `${questionId}`,
+          url: getQuestion.getComment() + `${questionId}`,
         },
         token
       );
@@ -21,10 +21,24 @@ class MainQuestion {
       return AxiosInstance(
         {
           method: "POST",
-          url: getComment.postComment() + `${id}`,
+          url: getQuestion.postComment() + `${id}`,
           data: {
             answer: comment,
           },
+        },
+        token
+      );
+    } catch (error) {
+      return error;
+    }
+  }
+
+  getQuestionList(token: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "GET",
+          url: getQuestion.getList(),
         },
         token
       );

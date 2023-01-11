@@ -50,12 +50,16 @@ export const getImage = {
   },
 };
 
-export const getComment = {
+export const getQuestion = {
   getComment: () => {
     return REACT_APP_BASE_URL + "question/";
   },
 
   postComment: () => {
     return REACT_APP_BASE_URL + "question/answer/";
+  },
+
+  getList: () => {
+    return REACT_APP_BASE_URL + "question/list";
   },
 };

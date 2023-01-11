@@ -19,6 +19,7 @@ function Question() {
   const location = useLocation();
   const [id] = useState<number>(location.state.Id);
   const [content] = useState<string>(location.state.content);
+  const [noWrite] = useState<boolean>(location.state.noWrite);
 
   const getComment = async () => {
     try {
@@ -39,19 +40,30 @@ function Question() {
 
   return (
     <>
-      {questionContent.answer && (
+      {noWrite && (
         <QuestionDetail
           id={id}
           content={content}
           questionContent={questionContent}
         />
       )}
-      {!questionContent.answer && (
-        <WriteQuestionComment
-          id={id}
-          content={content}
-          questionContent={questionContent}
-        />
+      {!noWrite && (
+        <>
+          {questionContent.answer && (
+            <QuestionDetail
+              id={id}
+              content={content}
+              questionContent={questionContent}
+            />
+          )}
+          {!questionContent.answer && (
+            <WriteQuestionComment
+              id={id}
+              content={content}
+              questionContent={questionContent}
+            />
+          )}
+        </>
       )}
     </>
   );
