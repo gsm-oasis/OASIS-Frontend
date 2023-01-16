@@ -42,6 +42,10 @@ export const getDiary = {
   createDiary: () => {
     return REACT_APP_BASE_URL + "diary/create";
   },
+
+  getList: () => {
+    return REACT_APP_BASE_URL + "diary/list";
+  },
 };
 
 export const getImage = {

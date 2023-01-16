@@ -107,7 +107,9 @@ function Main() {
           <S.Line />
           <S.DiaryFrame>
             <S.DiaryTitleFrame>
-              <S.DTitle>공유일기</S.DTitle>
+              <S.DTitle onClick={() => navigate("/diaryList")}>
+                공유일기
+              </S.DTitle>
               <div onClick={() => navigate("/createDiary")}>
                 <Plus />
               </div>

@@ -26,7 +26,7 @@ function QuestionList() {
       const response: any = await Question.getQuestionList(
         TokenService.getLocalAccessToken()
       );
-      console.log(response.data.questions);
+      console.log(response.data);
       setQuestionList(response.data.questions);
     } catch (error) {
       console.log(error);
@@ -35,7 +35,6 @@ function QuestionList() {
 
   useEffect(() => {
     getQuestions();
-    console.log(questionList.questions);
   }, []);
 
   return (
