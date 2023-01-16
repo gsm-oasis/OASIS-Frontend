@@ -11,6 +11,7 @@ import SignUpPage from "./pages/SignUpPage";
 import QuestionCommentPage from "./pages/QuestionCommentPage";
 import QuestionListPage from "./pages/QuestionListPage";
 import DiaryListPage from "./pages/DiaryListPage";
+import HeartLevelPage from "./pages/HeartLevelPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/questionComment" element={<QuestionCommentPage />} />
         <Route path="/questionList" element={<QuestionListPage />} />
         <Route path="/diaryList" element={<DiaryListPage />} />
+        <Route path="/heartLevel" element={<HeartLevelPage />} />
       </Routes>
     </>
   );

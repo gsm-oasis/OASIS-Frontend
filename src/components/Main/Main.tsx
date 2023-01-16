@@ -79,6 +79,13 @@ function Main() {
               <S.IconBox
                 onMouseOver={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
+                onClick={() =>
+                  navigate("/heartLevel", {
+                    state: {
+                      level: mainContent?.heartLevel,
+                    },
+                  })
+                }
               >
                 {!hoverState && <BlankHeart />}
                 {hoverState && <RedHeart />}
