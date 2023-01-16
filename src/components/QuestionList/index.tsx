@@ -11,6 +11,7 @@ import {
   QuestionListContent,
 } from "../../interfaces/QuestionInterface";
 import QuestionBox from "./QuestionBox";
+import { ScrollBox } from "../Common/ScrollBox";
 
 const defaultState: QuestionListType = {
   questions: [],
@@ -27,7 +28,7 @@ function QuestionList() {
         TokenService.getLocalAccessToken()
       );
       console.log(response.data);
-      setQuestionList(response.data.questions);
+      setQuestionList(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +50,7 @@ function QuestionList() {
             <EmptyCompo />
           </Title>
 
-          <S.ScrollBox>
+          <ScrollBox>
             {questionList?.questions &&
               questionList?.questions.map((question: QuestionListContent) => (
                 <QuestionBox
@@ -57,7 +58,7 @@ function QuestionList() {
                   QuestionProps={question}
                 />
               ))}
-          </S.ScrollBox>
+          </ScrollBox>
         </Frame>
       </Setting>
     </>

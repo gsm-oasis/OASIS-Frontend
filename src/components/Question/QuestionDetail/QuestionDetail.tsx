@@ -12,12 +12,17 @@ import {
 
 function QuestionDetail(props: any) {
   const navigate = useNavigate();
+  const navi = () => {
+    if (props.back) navigate("/questionList");
+    else navigate("/");
+  };
+
   return (
     <>
       <Setting>
         <Frame>
           <Title>
-            <div onClick={() => navigate("/")}>
+            <div onClick={navi}>
               <I.Back />
             </div>
             <TitleText>질문 상세</TitleText>

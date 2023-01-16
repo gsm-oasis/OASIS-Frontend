@@ -31,6 +31,20 @@ class Diary {
       return error;
     }
   }
+
+  getDiaryList(token: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "GET",
+          url: getDiary.getList(),
+        },
+        token
+      );
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Diary();

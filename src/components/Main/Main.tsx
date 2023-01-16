@@ -12,7 +12,7 @@ import { Setting } from "../Common/Frame";
 import * as S from "./style";
 import main from "../../api/Main";
 import Question from "./Question";
-import DiaryList from "./Diary/Diary";
+import DiaryList from "../Common/Diary/Diary";
 import { DiaryContent, DiaryProps } from "../../interfaces/MainInterface";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -40,6 +40,7 @@ function Main() {
       const response: any = await main.postMain(
         TokenService.getLocalAccessToken()
       );
+      console.log(response.data);
       setContent(response.data);
       setName(response.data.nickname);
       console.log(response.data);

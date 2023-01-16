@@ -18,7 +18,7 @@ function QuestionBox(props: QuestionProps): JSX.Element {
         id!,
         TokenService.getLocalAccessToken()
       );
-      console.log("페이지 이동");
+      console.log("페이지 이동", content);
       navigate("/questionComment", {
         state: {
           Id: id,
@@ -31,10 +31,6 @@ function QuestionBox(props: QuestionProps): JSX.Element {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    console.log("hi", props.QuestionProps.questionId);
-  }, []);
 
   return (
     <div

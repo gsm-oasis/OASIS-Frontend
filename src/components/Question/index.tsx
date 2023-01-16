@@ -45,6 +45,7 @@ function Question() {
           id={id}
           content={content}
           questionContent={questionContent}
+          back={true}
         />
       )}
       {!noWrite && (
