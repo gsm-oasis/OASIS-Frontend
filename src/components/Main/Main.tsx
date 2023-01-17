@@ -83,6 +83,7 @@ function Main() {
                   navigate("/heartLevel", {
                     state: {
                       level: mainContent?.heartLevel,
+                      days: mainContent?.datingDate,
                     },
                   })
                 }

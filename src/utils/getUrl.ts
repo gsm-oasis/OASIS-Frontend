@@ -13,6 +13,12 @@ export const getAuth = {
   sendMail: () => {
     return REACT_APP_BASE_URL + "auth/sendmail";
   },
+  findId: () => {
+    return REACT_APP_BASE_URL + "auth/search/id";
+  },
+  changePw: () => {
+    return REACT_APP_BASE_URL + "auth/search/pw";
+  },
 
   tokenReissuance: () => {
     return REACT_APP_BASE_URL + "auth/refresh";

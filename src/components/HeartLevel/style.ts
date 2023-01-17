@@ -32,6 +32,18 @@ export const Heart = styled.div`
   position: absolute;
   height: 50px;
   width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LevelText = styled.div`
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0px 0px 3px rgba(146, 146, 146, 0.25);
+  position: absolute;
+  margin-top: -3px;
 `;
 
 export const HeartProgress = styled.progress<{ valueColor: string }>`

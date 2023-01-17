@@ -62,6 +62,20 @@ class Auth {
       return error;
     }
   }
+
+  findId(email: string) {
+    try {
+      return AxiosInstance({
+        method: "POST",
+        url: getAuth.findId(),
+        data: {
+          email: email,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Auth();

@@ -10,6 +10,7 @@ function HeartLevel() {
   const navigate = useNavigate();
   const [heartColor, setHeartColor] = useState<string | undefined>("#F2C0C0");
   const [heartLevel] = useState<number>(location.state.level);
+  const [days, setDays] = useState<number>(location.state.days);
 
   const getHeartColor = (heartLevel: number) => {
     switch (heartLevel) {
@@ -24,6 +25,9 @@ function HeartLevel() {
 
   useEffect(() => {
     setHeartColor(() => getHeartColor(heartLevel));
+    if (days > 100) {
+      setDays(days % (100 * heartLevel));
+    }
   });
 
   return (
@@ -42,8 +46,13 @@ function HeartLevel() {
             <S.HeartAndProgress>
               <S.Heart>
                 <Hearts fill={heartColor}></Hearts>
+                <S.LevelText>Lv.{heartLevel}</S.LevelText>
               </S.Heart>
-              <S.HeartProgress value={20} max={100} valueColor={heartColor!} />
+              <S.HeartProgress
+                value={days}
+                max={100}
+                valueColor={heartColor!}
+              />
             </S.HeartAndProgress>
           </S.Box>
         </Frame>
