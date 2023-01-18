@@ -17,7 +17,7 @@ export const getAuth = {
     return REACT_APP_BASE_URL + "auth/search/id";
   },
   changePw: () => {
-    return REACT_APP_BASE_URL + "auth/search/pw";
+    return REACT_APP_BASE_URL + "auth/reset/password";
   },
 
   tokenReissuance: () => {

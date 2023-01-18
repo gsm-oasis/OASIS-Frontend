@@ -76,6 +76,22 @@ class Auth {
       return error;
     }
   }
+
+  postNewPw(email: string, password: string, checkPw: string) {
+    try {
+      return AxiosInstance({
+        method: "PATCH",
+        url: getAuth.changePw(),
+        data: {
+          email: email,
+          newPassword: password,
+          checkPassword: checkPw,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Auth();

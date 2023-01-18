@@ -17,6 +17,7 @@ import { loggedAtom } from "./atoms/AtomContainer";
 import FindPwIdPage from "./pages/FindPwIdPage";
 import FindIdPage from "./pages/FindIdPage";
 import ChangePwPage from "./pages/ChangePwPage";
+import FindPwPage from "./pages/FindPwPage";
 
 function App() {
   const [logged] = useRecoilState(loggedAtom);
@@ -34,6 +35,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/find" element={<FindPwIdPage />} />
         <Route path="/findId" element={<FindIdPage />} />
+        <Route path="/findPw" element={<FindPwPage />} />
         <Route path="/changePw" element={<ChangePwPage />} />
         <Route path="/linkcouple" element={<LinkCouplePage />} />
         <Route path="/setdate" element={<SetDatePage />} />

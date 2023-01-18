@@ -23,7 +23,7 @@ function Find() {
             <S.SelectBox onClick={() => navigate("/findId")}>
               <S.Text>아이디 찾기</S.Text>
             </S.SelectBox>
-            <S.SelectBox onClick={() => navigate("/changePw")}>
+            <S.SelectBox onClick={() => navigate("/findPw")}>
               <S.Text>비밀번호 찾기</S.Text>
             </S.SelectBox>
           </S.Box>
