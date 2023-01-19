@@ -18,14 +18,15 @@ import FindPwIdPage from "./pages/FindPwIdPage";
 import FindIdPage from "./pages/FindIdPage";
 import ChangePwPage from "./pages/ChangePwPage";
 import FindPwPage from "./pages/FindPwPage";
+import SettingPage from "./pages/SettingPage";
 
 function App() {
-  const [logged] = useRecoilState(loggedAtom);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (logged) navigate("/");
-    else navigate("/login");
-  }, [logged]);
+  // const [logged] = useRecoilState(loggedAtom);
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (logged) navigate("/");
+  //   else navigate("/login");
+  // }, [logged]);
 
   return (
     <>
@@ -45,6 +46,7 @@ function App() {
         <Route path="/questionList" element={<QuestionListPage />} />
         <Route path="/diaryList" element={<DiaryListPage />} />
         <Route path="/heartLevel" element={<HeartLevelPage />} />
+        <Route path="/setting" element={<SettingPage />} />
       </Routes>
     </>
   );

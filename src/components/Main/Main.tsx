@@ -91,7 +91,7 @@ function Main() {
                 {!hoverState && <BlankHeart />}
                 {hoverState && <RedHeart />}
               </S.IconBox>
-              <S.IconBox>
+              <S.IconBox onClick={() => navigate("/setting")}>
                 <SettingIcon />
               </S.IconBox>
             </S.RightBox>

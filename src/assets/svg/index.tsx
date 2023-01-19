@@ -11,3 +11,5 @@ export { Plus } from "./Plus";
 export { DeleteButton } from "./Delete";
 
 export { Mail } from "./Mail";
+
+export { Next } from "./Next";
