@@ -5,7 +5,7 @@ export const Title = styled.div`
   font-family: JaldiBold;
   line-height: 51px;
   font-size: 30px;
-  font-weight: 700;
+  /* font-weight: 700; */
   margin-bottom: 20px;
   color: #7b7b7b;
 `;

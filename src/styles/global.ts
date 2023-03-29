@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'JaldiBold';
     font-style: normal;
-    src: url('../font/Jaldi-Bold.ttf') format('truetype');
+    src: url('/font/Jaldi-Bold.woff') format('woff');
   }
 
 
