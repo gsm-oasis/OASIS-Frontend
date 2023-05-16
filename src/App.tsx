@@ -21,12 +21,12 @@ import FindPwPage from "./pages/FindPwPage";
 import SettingPage from "./pages/SettingPage";
 
 function App() {
-  // const [logged] = useRecoilState(loggedAtom);
-  // const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (logged) navigate("/");
-  //   else navigate("/login");
-  // }, [logged]);
+  const [logged] = useRecoilState(loggedAtom);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (logged) navigate("/");
+    else navigate("/login");
+  }, [logged]);
 
   return (
     <>
