@@ -11,7 +11,7 @@ export const getAuth = {
     return REACT_APP_BASE_URL + "auth/mailconfirm";
   },
   sendMail: () => {
-    return REACT_APP_BASE_URL + "auth/sendmail";
+    return REACT_APP_BASE_URL + "auth/email";
   },
   findId: () => {
     return REACT_APP_BASE_URL + "auth/search/id";
