@@ -22,7 +22,7 @@ class Auth {
       return AxiosInstance({
         method: "POST",
         url: getAuth.sendMail(),
-        data: {
+        params: {
           email: email,
         },
       });

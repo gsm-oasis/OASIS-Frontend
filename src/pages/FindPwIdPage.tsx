@@ -1,5 +1,5 @@
 import React from "react";
-import Find from "../components/Find";
+import Find from "../components/auth/Find";
 
 function FindPwIdPage() {
   return <Find></Find>;

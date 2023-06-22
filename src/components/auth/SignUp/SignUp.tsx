@@ -1,6 +1,6 @@
 import { BottomTextBox, Description, InputBox, Title } from "./style";
-import * as I from "../../assets/svg";
-import { SignUpInterface } from "../../interfaces/AuthInterface";
+import * as I from "../../../assets/svg";
+import { SignUpInterface } from "../../../interfaces/AuthInterface";
 import IDPW from "./IDPW";
 import { useRecoilValue } from "recoil";
 import {
@@ -9,15 +9,15 @@ import {
   passwordAtom,
   emailAtom,
   nickNameAtom,
-} from "../../atoms/AtomContainer";
+} from "../../../atoms/AtomContainer";
 
 import EmailNickName from "./EmailNickName";
-import Auth from "../../api/Auth";
+import Auth from "../../../api/Auth";
 import { useNavigate } from "react-router-dom";
-import { Frame, Setting } from "../Common/Frame";
-import { Logo } from "../Common/Logos/BigLogo";
-import { BottomText } from "../Common/Texts/BottomText";
-import { GradiantButton } from "../Common/Buttons/GradiantButton";
+import { Frame, Setting } from "../../Common/Frame";
+import { Logo } from "../../Common/Logos/BigLogo";
+import { BottomText } from "../../Common/Texts/BottomText";
+import { GradiantButton } from "../../Common/Buttons/GradiantButton";
 
 function SignUp(): JSX.Element {
   const next: boolean = useRecoilValue(SignUpPageAtom);
@@ -36,9 +36,7 @@ function SignUp(): JSX.Element {
 
   const PostSignUp = async (data: SignUpInterface) => {
     try {
-      console.log(data);
       const res: any = await Auth.signup(data);
-      console.log(res.status);
       if (res.status === 201) {
         navigate("/login");
       }

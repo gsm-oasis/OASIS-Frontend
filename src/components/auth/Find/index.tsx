@@ -1,7 +1,7 @@
 import React from "react";
-import { Frame, Setting } from "../Common/Frame";
-import { EmptyCompo, Title, TitleText } from "../Common/Title";
-import * as I from "../../assets/svg";
+import { Frame, Setting } from "../../Common/Frame";
+import { EmptyCompo, Title } from "../../Common/Title";
+import * as I from "../../../assets/svg";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 

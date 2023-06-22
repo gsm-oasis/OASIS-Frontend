@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Auth from "../../api/Auth";
-import { GradiantButton } from "../Common/Buttons/GradiantButton";
-import { Input } from "../Common/Inputs/AuthInput";
+import Auth from "../../../api/Auth";
+import { GradiantButton } from "../../Common/Buttons/GradiantButton";
+import { Input } from "../../Common/Inputs/AuthInput";
 import * as S from "./style";
 
 function NewPw(props: any) {

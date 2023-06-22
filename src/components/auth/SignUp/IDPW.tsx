@@ -4,9 +4,9 @@ import {
   passwordAtom,
   SignUpPageAtom,
   userIdAtom,
-} from "../../atoms/AtomContainer";
-import { GradiantButton } from "../Common/Buttons/GradiantButton";
-import { Input } from "../Common/Inputs/AuthInput";
+} from "../../../atoms/AtomContainer";
+import { GradiantButton } from "../../Common/Buttons/GradiantButton";
+import { Input } from "../../Common/Inputs/AuthInput";
 
 function IDPW() {
   const [userId, setIdAtom] = useRecoilState(userIdAtom);
@@ -18,6 +18,13 @@ function IDPW() {
   const PwChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setPwAtom(e.target.value);
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      setNextPage(true);
+    }
+  };
+
   return (
     <>
       <Input
@@ -26,9 +33,11 @@ function IDPW() {
         value={userId}
       />
       <Input
+        type="password"
         placeholder="비밀번호를 입력해주세요"
         onChange={PwChange}
         value={password}
+        onKeyDown={handleKeyPress}
       />
       <GradiantButton onClick={() => setNextPage(true)}>다음</GradiantButton>
     </>

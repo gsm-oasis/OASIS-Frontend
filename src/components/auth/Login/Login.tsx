@@ -1,16 +1,16 @@
 import * as S from "./style";
-import * as I from "../../assets/svg";
-import { LoginInterface } from "../../interfaces/AuthInterface";
+import * as I from "../../../assets/svg";
+import { LoginInterface } from "../../../interfaces/AuthInterface";
 import { useForm } from "react-hook-form";
-import Auth from "../../api/Auth";
+import Auth from "../../../api/Auth";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { isCoupleAtom, loggedAtom } from "../../atoms/AtomContainer";
-import { Frame, Setting } from "../Common/Frame";
+import { isCoupleAtom, loggedAtom } from "../../../atoms/AtomContainer";
+import { Frame, Setting } from "../../Common/Frame";
 import { useNavigate } from "react-router-dom";
-import { Input } from "../Common/Inputs/AuthInput";
-import { Logo } from "../Common/Logos/BigLogo";
-import { BottomText } from "../Common/Texts/BottomText";
-import { GradiantButton } from "../Common/Buttons/GradiantButton";
+import { Input } from "../../Common/Inputs/AuthInput";
+import { Logo } from "../../Common/Logos/BigLogo";
+import { BottomText } from "../../Common/Texts/BottomText";
+import { GradiantButton } from "../../Common/Buttons/GradiantButton";
 import { useEffect } from "react";
 
 function Login() {
@@ -30,11 +30,10 @@ function Login() {
   useEffect(() => {
     if (logged) {
       if (isCouple) {
-        // true이면 커플 연결된 상태
         navigate("/");
       } else navigate("/linkcouple");
     } else navigate("/login");
-  }, [logged]); // 이거 커플이면 메인화면가는건데 다른페이지(일기디테일페이지)도 못들어가게함(확인해보기)
+  }, [logged]);
 
   const onValid = async (data: LoginInterface) => {
     try {

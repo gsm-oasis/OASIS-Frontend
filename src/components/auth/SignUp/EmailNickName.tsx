@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import Auth from "../../api/Auth";
-import { emailAtom, nickNameAtom } from "../../atoms/AtomContainer";
+import Auth from "../../../api/Auth";
+import { emailAtom, nickNameAtom } from "../../../atoms/AtomContainer";
 import { InputAndButton } from "./style";
-import { Input } from "../Common/Inputs/AuthInput";
-import { CheckButton } from "../Common/Buttons/CheckButton";
+import { Input } from "../../Common/Inputs/AuthInput";
+import { CheckButton } from "../../Common/Buttons/CheckButton";
+import { toast } from "react-toastify";
 
 function EmailNickName(): JSX.Element {
   const [nickName, setNickName] = useRecoilState(nickNameAtom);
@@ -20,18 +21,15 @@ function EmailNickName(): JSX.Element {
 
   const postEmail = async (userEmail: string) => {
     try {
-      console.log(userEmail);
       const response: any = await Auth.sendMail(userEmail);
-      console.log(response.status);
-    } catch (error) {
-      console.log(error);
-    }
+      toast.success("전송했습니다!");
+    } catch (error) {}
   };
 
   const emailConfirm = async () => {
     try {
       const response: any = await Auth.mailConfirm(checkNum);
-      console.log(response.status);
+      toast.success("인증되었습니다!");
     } catch (error) {}
   };
 
