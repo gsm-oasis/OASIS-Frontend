@@ -19,6 +19,8 @@ import FindIdPage from "./pages/FindIdPage";
 import ChangePwPage from "./pages/ChangePwPage";
 import FindPwPage from "./pages/FindPwPage";
 import SettingPage from "./pages/SettingPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [logged] = useRecoilState(loggedAtom);
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
