@@ -31,6 +31,21 @@ class Auth {
     }
   }
 
+  sendMailPw(email: string, password: string) {
+    try {
+      return AxiosInstance({
+        method: "POST",
+        url: getAuth.sendMail(),
+        data: {
+          email: email,
+          password: password,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
   login(data: LoginInterface) {
     try {
       return AxiosInstance({
