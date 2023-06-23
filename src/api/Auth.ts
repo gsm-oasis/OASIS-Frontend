@@ -3,12 +3,13 @@ import { LoginInterface, SignUpInterface } from "../interfaces/AuthInterface";
 import AxiosInstance from "../lib/axios";
 
 class Auth {
-  mailConfirm(checkNum: string) {
+  mailConfirm(email: string, checkNum: string) {
     try {
       return AxiosInstance({
-        method: "POST",
+        method: "GET",
         url: getAuth.mailConfirm(),
-        data: {
+        params: {
+          email,
           code: checkNum,
         },
       });
@@ -24,21 +25,6 @@ class Auth {
         url: getAuth.sendMail(),
         params: {
           email: email,
-        },
-      });
-    } catch (error) {
-      return error;
-    }
-  }
-
-  sendMailPw(email: string, password: string) {
-    try {
-      return AxiosInstance({
-        method: "POST",
-        url: getAuth.sendMail(),
-        data: {
-          email: email,
-          password: password,
         },
       });
     } catch (error) {
