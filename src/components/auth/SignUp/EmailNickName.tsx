@@ -21,16 +21,24 @@ function EmailNickName(): JSX.Element {
 
   const postEmail = async (userEmail: string) => {
     try {
-      const response: any = await Auth.sendMail(userEmail);
+      await Auth.sendMail(userEmail);
       toast.success("전송했습니다!");
-    } catch (error) {}
+    } catch (e: any) {
+      if (e.response.status === 400) {
+        toast.error("다시 시도해주세요!");
+      }
+    }
   };
 
   const emailConfirm = async () => {
     try {
-      const response: any = await Auth.mailConfirm(checkNum);
+      await Auth.mailConfirm(email, checkNum);
       toast.success("인증되었습니다!");
-    } catch (error) {}
+    } catch (e: any) {
+      if (e.response.status === 400) {
+        toast.error("다시 시도해주세요!");
+      }
+    }
   };
 
   return (

@@ -7,6 +7,7 @@ import { Input } from "../../Common/Inputs/AuthInput";
 import * as S from "./style";
 import { GradiantButton } from "../../Common/Buttons/GradiantButton";
 import Auth from "../../../api/Auth";
+import { toast } from "react-toastify";
 
 function FindId() {
   const navigate = useNavigate();
@@ -17,11 +18,15 @@ function FindId() {
   const getId = async () => {
     try {
       if (email) {
-        const response: any = await Auth.findId(email);
+        await Auth.findId(email);
         navigate("/login");
-      } else alert("이메일을 입력해주세요");
-    } catch (error) {
-      console.log(error);
+      } else {
+        toast.error("이메일을 입력해주세요!");
+      }
+    } catch (e: any) {
+      if (e.response.status === 404) {
+        toast.error("존재하지 않는 유저입니다!");
+      }
     }
   };
 

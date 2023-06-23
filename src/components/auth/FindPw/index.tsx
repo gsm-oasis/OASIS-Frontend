@@ -8,24 +8,22 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import Auth from "../../../api/Auth";
 import NewPw from "./NewPw";
+import { toast } from "react-toastify";
 
 function FindPw() {
   const navigate = useNavigate();
   const [changePw, setChangePw] = useState<boolean>(false);
   const [emailCheck, setEmailCheck] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
   const [check, setCheck] = useState<string>("");
   const onCheckChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setCheck(e.target.value);
   const onEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setEmail(e.target.value);
-  const OnPasswordChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setPassword(e.target.value);
 
   const postEmail = async () => {
     try {
-      const response: any = await Auth.sendMailPw(email, password);
+      await Auth.sendMail(email);
       setEmailCheck(true);
     } catch (error) {
       console.log(error);
@@ -34,11 +32,10 @@ function FindPw() {
 
   const checkMail = async () => {
     try {
-      const response: any = await Auth.mailConfirm(check);
+      await Auth.mailConfirm(email, check);
       setChangePw(true);
-    } catch (error) {
-      alert("올바른 인증번호를 입력해주세요");
-      console.log(error);
+    } catch (e: any) {
+      toast.error("올바른 인증번호를 입력해주세요!");
     }
   };
 
@@ -62,11 +59,6 @@ function FindPw() {
                     placeholder="이메일을 입력해주세요"
                     onChange={onEmailChange}
                     value={email}
-                  ></Input>
-                  <Input
-                    placeholder="비밀번호를 입력해주세요"
-                    onChange={OnPasswordChange}
-                    value={password}
                   ></Input>
                   <S.Empty />
                   <GradiantButton onClick={postEmail}>다음</GradiantButton>
