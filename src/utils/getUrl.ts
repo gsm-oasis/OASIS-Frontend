@@ -8,7 +8,7 @@ export const getAuth = {
     return REACT_APP_BASE_URL + "auth/login";
   },
   mailConfirm: () => {
-    return REACT_APP_BASE_URL + "auth/mailconfirm";
+    return REACT_APP_BASE_URL + "auth/code";
   },
   sendMail: () => {
     return REACT_APP_BASE_URL + "auth/email";
