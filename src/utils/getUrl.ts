@@ -14,10 +14,10 @@ export const getAuth = {
     return REACT_APP_BASE_URL + "auth/email";
   },
   findId: () => {
-    return REACT_APP_BASE_URL + "auth/search/id";
+    return REACT_APP_BASE_URL + "auth/id";
   },
   changePw: () => {
-    return REACT_APP_BASE_URL + "auth/reset/password";
+    return REACT_APP_BASE_URL + "auth/password";
   },
 
   tokenReissuance: () => {
@@ -27,26 +27,22 @@ export const getAuth = {
 
 export const getUser = {
   linkCouple: () => {
-    return REACT_APP_BASE_URL + "user/connect/couple";
+    return REACT_APP_BASE_URL + "user";
   },
 };
 
 export const getMain = {
   submitDate: () => {
-    return REACT_APP_BASE_URL + "mainpage/enter/datingdate";
+    return REACT_APP_BASE_URL + "couple";
   },
   postMain: () => {
-    return REACT_APP_BASE_URL + "mainpage/";
+    return REACT_APP_BASE_URL + "couple";
   },
 };
 
 export const getDiary = {
-  getDetail: () => {
-    return REACT_APP_BASE_URL + "diary/detail";
-  },
-
-  createDiary: () => {
-    return REACT_APP_BASE_URL + "diary/create";
+  diary: () => {
+    return REACT_APP_BASE_URL + "diary/";
   },
 
   getList: () => {
@@ -54,19 +50,9 @@ export const getDiary = {
   },
 };
 
-export const getImage = {
-  postImage: () => {
-    return REACT_APP_BASE_URL + "image/";
-  },
-};
-
 export const getQuestion = {
-  getComment: () => {
+  comment: () => {
     return REACT_APP_BASE_URL + "question/";
-  },
-
-  postComment: () => {
-    return REACT_APP_BASE_URL + "question/answer/";
   },
 
   getList: () => {
