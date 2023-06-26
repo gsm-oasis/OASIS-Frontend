@@ -31,7 +31,6 @@ function HeartLevel() {
   const getHeartLevel = async () => {
     try {
       const response: any = await Heart.getHeartLevel();
-      console.log(response.data);
       setCurrentBar(response.data.levelBar);
       setMaxBar(response.data.max);
     } catch (error) {
