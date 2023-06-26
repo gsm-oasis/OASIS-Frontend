@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import User from "../../api/User";
-import { Back } from "../../assets/svg";
-import { ContentFrame, Frame, Setting } from "../Common/Frame";
-import { EmptyCompo, Title, TitleText } from "../Common/Title";
-import { Box, BoxDescription, BoxText, Bt } from "../Common/BoxWithInput/style";
+import User from "../../../api/User";
+import { Back } from "../../../assets/svg";
+import { ContentFrame, Frame, Setting } from "../../Common/Frame";
+import { EmptyCompo, Title, TitleText } from "../../Common/Title";
+import {
+  Box,
+  BoxDescription,
+  BoxText,
+  Bt,
+} from "../../Common/BoxWithInput/style";
 import { MyCode } from "./style";
-import { InputCode } from "../Common/Inputs/InputCode";
+import { InputCode } from "../../Common/Inputs/InputCode";
 
 function LinkCouple() {
   const navigate = useNavigate();
