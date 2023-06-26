@@ -1,5 +1,5 @@
 import React from "react";
-import FindPw from "../components/FindPw";
+import FindPw from "../components/auth/FindPw";
 
 function FindPwPage() {
   return <FindPw></FindPw>;

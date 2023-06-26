@@ -5,11 +5,14 @@ import { EmptyCompo, Title, TitleText } from "../Common/Title";
 import * as I from "../../assets/svg";
 import * as S from "./style";
 import { ReactComponent as Hearts } from "../../assets/svg/Hearts.svg";
+import Heart from "../../api/Heart";
 function HeartLevel() {
   const location = useLocation();
   const navigate = useNavigate();
   const [heartColor, setHeartColor] = useState<string | undefined>("#F2C0C0");
   const [heartLevel] = useState<number>(location.state.level);
+  const [currentBar, setCurrentBar] = useState<number>(0);
+  const [maxBar, setMaxBar] = useState<number>(0);
   const [days, setDays] = useState<number>(location.state.days);
 
   const getHeartColor = (heartLevel: number) => {
@@ -20,6 +23,18 @@ function HeartLevel() {
         return "#F2D2C0";
       case 3:
         return "#F2E4C0";
+      case 4:
+        return "#E5F2C0";
+    }
+  };
+
+  const getHeartLevel = async () => {
+    try {
+      const response: any = await Heart.getHeartLevel();
+      setCurrentBar(response.data.levelBar);
+      setMaxBar(response.data.max);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -28,6 +43,7 @@ function HeartLevel() {
     if (days > 100) {
       setDays(days % (100 * heartLevel));
     }
+    getHeartLevel();
   });
 
   return (
@@ -49,8 +65,8 @@ function HeartLevel() {
                 <S.LevelText>Lv.{heartLevel}</S.LevelText>
               </S.Heart>
               <S.HeartProgress
-                value={days}
-                max={100}
+                value={currentBar}
+                max={maxBar}
                 valueColor={heartColor!}
               />
             </S.HeartAndProgress>

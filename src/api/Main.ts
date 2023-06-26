@@ -2,13 +2,13 @@ import AxiosInstance from "../lib/axios";
 import { getMain } from "../utils/getUrl";
 
 class Main {
-  submitDate(firstDay: string) {
+  submitDate(startDay: string) {
     try {
       return AxiosInstance({
         method: "POST",
         url: getMain.submitDate(),
         data: {
-          firstDay: firstDay,
+          startDay,
         },
       });
     } catch (error) {

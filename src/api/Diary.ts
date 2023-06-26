@@ -7,7 +7,7 @@ class Diary {
       return AxiosInstance(
         {
           method: "GET",
-          url: getDiary.getDetail() + `/${diaryId}`,
+          url: getDiary.diary() + `/${diaryId}`,
         },
         token
       );
@@ -21,7 +21,7 @@ class Diary {
       return AxiosInstance(
         {
           method: "POST",
-          url: getDiary.createDiary(),
+          url: getDiary.diary(),
           data,
         },
         token,

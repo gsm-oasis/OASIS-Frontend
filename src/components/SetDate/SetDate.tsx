@@ -15,11 +15,8 @@ function SetDate() {
 
   const SubmitDate = async () => {
     try {
-      const response: any = await Main.submitDate(date);
-      if (response.status === 200) {
-        console.log(response.status);
-        navigate("/");
-      }
+      await Main.submitDate(date);
+      navigate("/");
     } catch (e) {
       console.log(e);
     }

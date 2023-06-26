@@ -1,5 +1,5 @@
 import React from "react";
-import FindId from "../components/FindId";
+import FindId from "../components/auth/FindId";
 
 function FindIdPage() {
   return <FindId></FindId>;

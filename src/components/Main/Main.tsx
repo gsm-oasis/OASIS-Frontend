@@ -26,13 +26,13 @@ const defaultProps: DiaryProps = {
   anniversary: 0,
   questionId: 0,
   content: "",
-  diaryListPageResponse: [],
+  diaries: [],
 };
 
 function Main() {
   const [mainContent, setContent] = useState<DiaryProps>(defaultProps);
   const navigate = useNavigate();
-  const [name, setName] = useRecoilState(nickNameAtom);
+  const [, setName] = useRecoilState(nickNameAtom);
   const [hoverState, setHover] = useState(false);
 
   const PostMain = async () => {
@@ -40,10 +40,8 @@ function Main() {
       const response: any = await main.postMain(
         TokenService.getLocalAccessToken()
       );
-      console.log(response.data);
       setContent(response.data);
       setName(response.data.nickname);
-      console.log(response.data);
     } catch (error) {
       return error;
     }
@@ -124,10 +122,11 @@ function Main() {
               </div>
             </S.DiaryTitleFrame>
             <S.DiaryWrapper>
-              {mainContent?.diaryListPageResponse &&
-                mainContent.diaryListPageResponse.map((diary: DiaryContent) => (
-                  <DiaryList key={diary.diaryId} DiaryProps={diary} />
-                  // 지금 더미데이터가 1개라 key 1로 해도 오류안남 고쳐야됨
+              {mainContent?.diaries &&
+                mainContent.diaries.map((diary: DiaryContent) => (
+                  <div key={diary.diaryId}>
+                    <DiaryList DiaryProps={diary} />
+                  </div>
                 ))}
             </S.DiaryWrapper>
           </S.DiaryFrame>

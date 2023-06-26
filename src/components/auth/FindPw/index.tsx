@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Frame, Setting } from "../Common/Frame";
-import { EmptyCompo, Title } from "../Common/Title";
-import * as I from "../../assets/svg";
-import { Input } from "../Common/Inputs/AuthInput";
-import { GradiantButton } from "../Common/Buttons/GradiantButton";
+import { Frame, Setting } from "../../Common/Frame";
+import { EmptyCompo, Title } from "../../Common/Title";
+import * as I from "../../../assets/svg";
+import { Input } from "../../Common/Inputs/AuthInput";
+import { GradiantButton } from "../../Common/Buttons/GradiantButton";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
-import Auth from "../../api/Auth";
+import Auth from "../../../api/Auth";
 import NewPw from "./NewPw";
+import { toast } from "react-toastify";
 
 function FindPw() {
   const navigate = useNavigate();
@@ -22,9 +23,7 @@ function FindPw() {
 
   const postEmail = async () => {
     try {
-      console.log(email);
-      const response: any = await Auth.sendMail(email);
-      console.log(response.status);
+      await Auth.sendMail(email);
       setEmailCheck(true);
     } catch (error) {
       console.log(error);
@@ -33,12 +32,10 @@ function FindPw() {
 
   const checkMail = async () => {
     try {
-      const response: any = await Auth.mailConfirm(check);
-      console.log(response.status);
+      await Auth.mailConfirm(email, check);
       setChangePw(true);
-    } catch (error) {
-      alert("올바른 인증번호를 입력해주세요");
-      console.log(error);
+    } catch (e: any) {
+      toast.error("올바른 인증번호를 입력해주세요!");
     }
   };
 

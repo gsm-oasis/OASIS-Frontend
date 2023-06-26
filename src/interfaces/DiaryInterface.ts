@@ -1,5 +1,5 @@
 export interface diaryDetail {
-  imgs: [{ id: number; imageUrl: "" }];
+  imgs: [{ idx: number; imageUrl: "" }];
   title: string;
   content: string;
   mood: string;

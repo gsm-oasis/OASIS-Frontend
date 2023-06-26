@@ -7,7 +7,7 @@ class MainQuestion {
       return AxiosInstance(
         {
           method: "GET",
-          url: getQuestion.getComment() + `${questionId}`,
+          url: getQuestion.comment() + `${questionId}`,
         },
         token
       );
@@ -21,7 +21,7 @@ class MainQuestion {
       return AxiosInstance(
         {
           method: "POST",
-          url: getQuestion.postComment() + `${id}`,
+          url: getQuestion.comment() + `${id}`,
           data: {
             answer: comment,
           },
