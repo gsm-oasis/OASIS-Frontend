@@ -26,7 +26,7 @@ const defaultProps: DiaryProps = {
   anniversary: 0,
   questionId: 0,
   content: "",
-  diaryListPageResponse: [],
+  diaries: [],
 };
 
 function Main() {
@@ -122,10 +122,11 @@ function Main() {
               </div>
             </S.DiaryTitleFrame>
             <S.DiaryWrapper>
-              {mainContent?.diaryListPageResponse &&
-                mainContent.diaryListPageResponse.map((diary: DiaryContent) => (
-                  <DiaryList key={diary.diaryId} DiaryProps={diary} />
-                  // 지금 더미데이터가 1개라 key 1로 해도 오류안남 고쳐야됨
+              {mainContent?.diaries &&
+                mainContent.diaries.map((diary: DiaryContent) => (
+                  <div key={diary.diaryId}>
+                    <DiaryList DiaryProps={diary} />
+                  </div>
                 ))}
             </S.DiaryWrapper>
           </S.DiaryFrame>

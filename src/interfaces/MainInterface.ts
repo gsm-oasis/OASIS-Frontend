@@ -6,7 +6,7 @@ export interface DiaryProps {
   anniversary?: number;
   questionId: number;
   content: string;
-  diaryListPageResponse: [];
+  diaries: [];
 }
 
 export interface DiaryContent {
