@@ -48,7 +48,7 @@ function App() {
           <Route path="/changePw" element={<ChangePwPage />} />
           <Route path="/linkcouple" element={<LinkCouplePage />} />
           <Route path="/setdate" element={<SetDatePage />} />
-          <Route path="/diary" element={<DiaryDetailPage />} />
+          <Route path="/diary/:diaryId" element={<DiaryDetailPage />} />
           <Route path="/createDiary" element={<CreateDiaryPage />} />
           <Route path="/questionComment" element={<QuestionCommentPage />} />
           <Route path="/questionList" element={<QuestionListPage />} />
