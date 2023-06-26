@@ -12,9 +12,13 @@ import {
 } from "../../Common/BoxWithInput/style";
 import { MyCode } from "./style";
 import { InputCode } from "../../Common/Inputs/InputCode";
+import TokenService from "../../../lib/TokenService";
+import { useRecoilState } from "recoil";
+import { loggedAtom } from "../../../atoms/AtomContainer";
 
 function LinkCouple() {
   const navigate = useNavigate();
+  const [, setLogged] = useRecoilState(loggedAtom);
   const [coupleCode, setCoupleCode] = useState("");
   const CoupleCodeChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setCoupleCode(e.target.value);
@@ -37,7 +41,13 @@ function LinkCouple() {
         <Frame>
           <ContentFrame>
             <Title>
-              <div onClick={() => navigate("/login")}>
+              <div
+                onClick={() => {
+                  TokenService.removeUser();
+                  setLogged(false);
+                  navigate("/login");
+                }}
+              >
                 <Back />
               </div>
               <TitleText>커플 연결</TitleText>
@@ -50,7 +60,7 @@ function LinkCouple() {
                 입력해주세요!
               </BoxDescription>
               <MyCode>
-                {JSON.parse(localStorage.getItem("token") || "").code}
+                {JSON.parse(localStorage.getItem("token") || "").coupleCode}
               </MyCode>
             </Box>
 
