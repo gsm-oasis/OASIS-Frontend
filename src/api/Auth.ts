@@ -9,7 +9,7 @@ class Auth {
         method: "GET",
         url: getAuth.mailConfirm(),
         params: {
-          email,
+          email: email,
           code: checkNum,
         },
       });
