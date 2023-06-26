@@ -32,7 +32,7 @@ const defaultProps: DiaryProps = {
 function Main() {
   const [mainContent, setContent] = useState<DiaryProps>(defaultProps);
   const navigate = useNavigate();
-  const [name, setName] = useRecoilState(nickNameAtom);
+  const [, setName] = useRecoilState(nickNameAtom);
   const [hoverState, setHover] = useState(false);
 
   const PostMain = async () => {
@@ -40,10 +40,8 @@ function Main() {
       const response: any = await main.postMain(
         TokenService.getLocalAccessToken()
       );
-      console.log(response.data);
       setContent(response.data);
       setName(response.data.nickname);
-      console.log(response.data);
     } catch (error) {
       return error;
     }
