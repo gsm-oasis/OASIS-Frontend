@@ -18,6 +18,7 @@ import { Frame, Setting } from "../../Common/Frame";
 import { Logo } from "../../Common/Logos/BigLogo";
 import { BottomText } from "../../Common/Texts/BottomText";
 import { GradiantButton } from "../../Common/Buttons/GradiantButton";
+import { toast } from "react-toastify";
 
 function SignUp(): JSX.Element {
   const next: boolean = useRecoilValue(SignUpPageAtom);
@@ -36,10 +37,9 @@ function SignUp(): JSX.Element {
 
   const PostSignUp = async (data: SignUpInterface) => {
     try {
-      const res: any = await Auth.signup(data);
-      if (res.status === 201) {
-        navigate("/login");
-      }
+      await Auth.signup(data);
+      toast.success("회원가입 되었습니다!");
+      navigate("/login");
     } catch (e) {
       console.log(e);
     }
