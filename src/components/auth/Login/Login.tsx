@@ -45,11 +45,8 @@ function Login() {
       }
 
       if (response.status === 200) {
-        setisCouple(response.data.couple);
+        setisCouple(response.data.isCouple);
         setLogged(true);
-        console.log(
-          JSON.parse(localStorage.getItem("token") || "").accessToken
-        );
       }
     } catch (e) {
       console.log(e);
