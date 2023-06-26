@@ -42,7 +42,7 @@ export const getMain = {
 
 export const getDiary = {
   diary: () => {
-    return REACT_APP_BASE_URL + "diary/";
+    return REACT_APP_BASE_URL + "diary";
   },
 
   getList: () => {
