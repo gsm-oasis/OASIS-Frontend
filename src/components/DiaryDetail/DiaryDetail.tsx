@@ -26,9 +26,11 @@ function DiaryDetail(): JSX.Element {
           <S.ImageFrame>
             <S.ImageWrapper>
               {diaryContent &&
-                diaryContent?.imgs.map((image) => {
-                  return <S.ImageBox key={image.id} image={image.imageUrl} />;
-                })}
+                diaryContent?.imgs.map((image) => (
+                  <div key={image.idx}>
+                    <S.ImageBox image={image.imageUrl} />
+                  </div>
+                ))}
             </S.ImageWrapper>
           </S.ImageFrame>
 
