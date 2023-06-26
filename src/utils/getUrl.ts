@@ -59,3 +59,9 @@ export const getQuestion = {
     return REACT_APP_BASE_URL + "question/list";
   },
 };
+
+export const getHeart = {
+  getHeart: () => {
+    return REACT_APP_BASE_URL + "heart";
+  },
+};
