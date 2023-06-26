@@ -76,7 +76,12 @@ function CreateDiary() {
       <Setting>
         <Frame>
           <Title>
-            <div onClick={() => navigate("/")}>
+            <div
+              onClick={() => {
+                resetRecoil();
+                navigate("/");
+              }}
+            >
               <Back />
             </div>
             <TitleText>공유 일기 쓰기</TitleText>
