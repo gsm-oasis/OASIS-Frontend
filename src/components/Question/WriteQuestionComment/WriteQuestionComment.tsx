@@ -13,6 +13,7 @@ import { EmptyCompo, Title, TitleText } from "../../Common/Title";
 import { TextArea, TextBox } from "../../CreateDiary/style";
 import Question from "../../Main/Question";
 import TokenService from "../../../lib/TokenService";
+import { toast } from "react-toastify";
 
 function WriteDiaryComment(props: any) {
   const navigate = useNavigate();
@@ -24,9 +25,7 @@ function WriteDiaryComment(props: any) {
 
   const postMyComment = async () => {
     try {
-      // const response = await
-      //console.log(myComment)
-      if (!myComment) alert("답변을 입력해주세요!");
+      if (!myComment) toast.error("답변을 입력해주세요!");
       else {
         console.log(props.id, myComment);
         const response: any = await MainQuestion.postMyComment(
