@@ -1,12 +1,12 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { DiaryContentAtom } from "../../atoms/AtomContainer";
-import { Frame, Setting } from "../Common/Frame";
-import { Back } from "../../assets/svg/Back";
-import { EmptyCompo, Title, TitleText } from "../Common/Title";
+import { DiaryContentAtom } from "../../../atoms/AtomContainer";
+import { Frame, Setting } from "../../Common/Frame";
+import { Back } from "../../../assets/svg/Back";
+import { EmptyCompo, Title, TitleText } from "../../Common/Title";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
-import { diaryDetail } from "../../interfaces/DiaryInterface";
+import { diaryDetail } from "../../../interfaces/DiaryInterface";
 
 function DiaryDetail(): JSX.Element {
   const navigate = useNavigate();

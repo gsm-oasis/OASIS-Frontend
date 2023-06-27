@@ -11,7 +11,7 @@ import {
 } from "../../Common/Question";
 import { EmptyCompo, Title, TitleText } from "../../Common/Title";
 import { TextArea, TextBox } from "../../CreateDiary/style";
-import Question from "../../Main/Question";
+import Question from "../../couple/Main/Question";
 import TokenService from "../../../lib/TokenService";
 import { toast } from "react-toastify";
 

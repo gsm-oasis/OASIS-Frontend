@@ -3,7 +3,11 @@ import { useRecoilState } from "recoil";
 import { DeleteButton } from "../../../assets/svg/Delete";
 import { BoldPlus } from "../../../assets/svg/Plus";
 import { ImagesAtom, ImageSrcAtom } from "../../../atoms/AtomContainer";
-import { ImageBox, ImageFrame, ImageWrapper } from "../../DiaryDetail/style";
+import {
+  ImageBox,
+  ImageFrame,
+  ImageWrapper,
+} from "../../diary/DiaryDetail/style";
 import * as S from "../style";
 
 function InputImage() {
