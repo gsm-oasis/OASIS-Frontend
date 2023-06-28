@@ -29,6 +29,9 @@ export const getUser = {
   linkCouple: () => {
     return REACT_APP_BASE_URL + "user";
   },
+  getInfo: () => {
+    return REACT_APP_BASE_URL + "user";
+  },
 };
 
 export const getMain = {
