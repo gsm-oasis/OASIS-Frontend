@@ -3,7 +3,7 @@ import * as I from "../../../assets/svg";
 import { useNavigate } from "react-router-dom";
 import { Frame, Setting } from "../../Common/Frame";
 import { EmptyCompo, Title, TitleText } from "../../Common/Title";
-import Question from "../../Main/Question";
+import Question from "../../couple/Main/Question";
 import {
   MyCoupleEmptyAnswer,
   QuestionCommentBox,

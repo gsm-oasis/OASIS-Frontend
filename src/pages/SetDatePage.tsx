@@ -1,5 +1,5 @@
 import React from "react";
-import SetDate from "../components/SetDate/SetDate";
+import SetDate from "../components/couple/SetDate/SetDate";
 
 function SetDatePage() {
   return <SetDate />;

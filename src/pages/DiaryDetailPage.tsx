@@ -1,5 +1,5 @@
 import React from "react";
-import DiaryDetail from "../components/DiaryDetail/DiaryDetail";
+import DiaryDetail from "../components/diary/DiaryDetail/DiaryDetail";
 
 function DiaryDetailPage() {
   return <DiaryDetail />;

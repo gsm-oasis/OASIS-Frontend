@@ -1,5 +1,5 @@
 import React from "react";
-import Settings from "../components/Setting";
+import Settings from "../components/user/Setting";
 
 function SettingPage() {
   return <Settings></Settings>;

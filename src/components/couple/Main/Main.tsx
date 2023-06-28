@@ -6,17 +6,17 @@ import {
   Plus,
   RedHeart,
   SettingIcon,
-} from "../../assets/svg";
-import TokenService from "../../lib/TokenService";
-import { Setting } from "../Common/Frame";
+} from "../../../assets/svg";
+import TokenService from "../../../lib/TokenService";
+import { Setting } from "../../Common/Frame";
 import * as S from "./style";
-import main from "../../api/Main";
+import main from "../../../api/Main";
 import Question from "./Question";
-import DiaryList from "../Common/Diary/Diary";
-import { DiaryContent, DiaryProps } from "../../interfaces/MainInterface";
+import DiaryList from "../../Common/Diary/Diary";
+import { DiaryContent, DiaryProps } from "../../../interfaces/MainInterface";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { nickNameAtom } from "../../atoms/AtomContainer";
+import { nickNameAtom } from "../../../atoms/AtomContainer";
 
 const defaultProps: DiaryProps = {
   nickname: "",
