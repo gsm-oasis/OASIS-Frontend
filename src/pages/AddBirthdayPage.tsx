@@ -1,5 +1,7 @@
+import SetBirthday from "../components/user/AddAnniversary";
+
 function AddBirthdayPage() {
-  return <></>;
+  return <SetBirthday></SetBirthday>;
 }
 
 export default AddBirthdayPage;
