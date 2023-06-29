@@ -23,6 +23,7 @@ const defaultProps: DiaryProps = {
   coupleNickname: "",
   heartLevel: 0,
   datingDate: 0,
+  daysLeft: 0,
   anniversary: 0,
   questionId: 0,
   content: "",

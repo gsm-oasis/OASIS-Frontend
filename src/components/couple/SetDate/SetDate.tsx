@@ -21,7 +21,7 @@ function SetDate() {
   const SubmitDate = async () => {
     try {
       await Main.submitDate(date);
-      navigate("/");
+      navigate("/birthday");
     } catch (e) {
       console.log(e);
     }

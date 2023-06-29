@@ -21,6 +21,7 @@ import FindPwPage from "./pages/FindPwPage";
 import SettingPage from "./pages/SettingPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AddBirthdayPage from "./pages/AddBirthdayPage";
 
 function App() {
   const [logged] = useRecoilState(loggedAtom);
@@ -47,6 +48,7 @@ function App() {
           <Route path="/findPw" element={<FindPwPage />} />
           <Route path="/changePw" element={<ChangePwPage />} />
           <Route path="/linkcouple" element={<LinkCouplePage />} />
+          <Route path="/birthday" element={<AddBirthdayPage />} />
           <Route path="/setdate" element={<SetDatePage />} />
           <Route path="/diary/:diaryId" element={<DiaryDetailPage />} />
           <Route path="/createDiary" element={<CreateDiaryPage />} />
