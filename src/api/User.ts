@@ -29,6 +29,20 @@ class User {
       return error;
     }
   }
+
+  getInfo(token: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "GET",
+          url: getUser.getInfo(),
+        },
+        token
+      );
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new User();

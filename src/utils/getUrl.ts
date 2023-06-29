@@ -33,6 +33,10 @@ export const getUser = {
   setBirthday: () => {
     return REACT_APP_BASE_URL + "user/anniversary";
   },
+  
+  getInfo: () => {
+    return REACT_APP_BASE_URL + "user";
+  },
 };
 
 export const getMain = {
