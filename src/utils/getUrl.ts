@@ -29,6 +29,10 @@ export const getUser = {
   linkCouple: () => {
     return REACT_APP_BASE_URL + "user";
   },
+
+  setBirthday: () => {
+    return REACT_APP_BASE_URL + "user/anniversary";
+  },
 };
 
 export const getMain = {
