@@ -36,7 +36,7 @@ function EmailNickName(): JSX.Element {
       toast.success("인증되었습니다!");
     } catch (e: any) {
       if (e.response.status === 400) {
-        toast.error("다시 시도해주세요!");
+        toast.error("올바르지 않은 인증번호 입니다!");
       }
     }
   };
