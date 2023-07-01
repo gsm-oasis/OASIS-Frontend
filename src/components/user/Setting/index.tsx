@@ -6,11 +6,13 @@ import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 import User from "../../../api/User";
 import TokenService from "../../../lib/TokenService";
+import { toast } from "react-toastify";
 
 function Settings() {
   const navigate = useNavigate();
   const [version, setVersion] = useState("");
   const [myCode, setMyCode] = useState("");
+
   const getInfo = async () => {
     const { data }: any = await User.getInfo(
       TokenService.getLocalAccessToken()
@@ -18,6 +20,12 @@ function Settings() {
     setMyCode(data.myCode);
     setVersion(data.version);
   };
+
+  const copyMyCode = () => {
+    navigator.clipboard.writeText(myCode);
+    toast.success("복사되었습니다.");
+  };
+
   useEffect(() => {
     getInfo();
   }, []);
@@ -41,7 +49,7 @@ function Settings() {
               <S.Text>닉네임 변경</S.Text>
               <I.Next />
             </S.Button>
-            <S.Button>
+            <S.Button onClick={copyMyCode}>
               <S.Text>내 코드</S.Text>
               <S.MyCode>{myCode}</S.MyCode>
             </S.Button>

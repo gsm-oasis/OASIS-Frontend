@@ -20,6 +20,7 @@ export const Button = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 25px;
+  cursor: pointer;
 `;
 
 export const Text = styled.div`
@@ -46,6 +47,7 @@ export const ColorButton = styled.div<{ color: string }>`
   align-items: center;
   color: #ffffff;
   margin-bottom: 20px;
+  cursor: pointer;
 `;
 
 export const Version = styled.div`
