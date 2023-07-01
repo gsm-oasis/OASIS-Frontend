@@ -47,3 +47,9 @@ export const ColorButton = styled.div<{ color: string }>`
   color: #ffffff;
   margin-bottom: 20px;
 `;
+
+export const Version = styled.div`
+  margin-top: 30px;
+  color: #737373;
+  font-weight: 600;
+`;

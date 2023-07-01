@@ -9,12 +9,14 @@ import TokenService from "../../../lib/TokenService";
 
 function Settings() {
   const navigate = useNavigate();
+  const [version, setVersion] = useState("");
   const [myCode, setMyCode] = useState("");
   const getInfo = async () => {
     const { data }: any = await User.getInfo(
       TokenService.getLocalAccessToken()
     );
     setMyCode(data.myCode);
+    setVersion(data.version);
   };
   useEffect(() => {
     getInfo();
@@ -47,6 +49,7 @@ function Settings() {
 
           <S.ColorButton color="#D9D9D9">회원 탈퇴</S.ColorButton>
           <S.ColorButton color="#F5CACB">커플 끊기</S.ColorButton>
+          <S.Version>v {version}</S.Version>
         </Frame>
       </Setting>
     </>
