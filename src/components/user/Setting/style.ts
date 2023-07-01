@@ -28,6 +28,11 @@ export const Text = styled.div`
   font-weight: 700;
 `;
 
+export const MyCode = styled.div`
+  font-size: 10px;
+  color: #a9a9a9;
+`;
+
 export const ColorButton = styled.div<{ color: string }>`
   width: 375px;
   height: 50px;

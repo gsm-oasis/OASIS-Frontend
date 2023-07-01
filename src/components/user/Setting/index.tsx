@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Frame, Setting } from "../../Common/Frame";
 import { EmptyCompo, Title, TitleText } from "../../Common/Title";
 import * as I from "../../../assets/svg";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
+import User from "../../../api/User";
+import TokenService from "../../../lib/TokenService";
 
 function Settings() {
   const navigate = useNavigate();
-
+  const [myCode, setMyCode] = useState("");
+  const getInfo = async () => {
+    const { data }: any = await User.getInfo(
+      TokenService.getLocalAccessToken()
+    );
+    setMyCode(data.myCode);
+  };
+  useEffect(() => {
+    getInfo();
+  }, []);
   return (
     <>
       <Setting>
@@ -30,6 +41,7 @@ function Settings() {
             </S.Button>
             <S.Button>
               <S.Text>내 코드</S.Text>
+              <S.MyCode>{myCode}</S.MyCode>
             </S.Button>
           </S.ButtonBox>
 
