@@ -29,7 +29,7 @@ export const Text = styled.div`
 `;
 
 export const MyCode = styled.div`
-  font-size: 10px;
+  font-size: 12px;
   color: #a9a9a9;
 `;
 
