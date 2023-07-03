@@ -31,12 +31,12 @@ class User {
     }
   }
 
-  userWithdrawalModal(token: string) {
+  userWithdrawal(token: string) {
     try {
       return AxiosInstance(
         {
           method: "DELETE",
-          url: getUser.userWithdrawalModal(),
+          url: getUser.userWithdrawal(),
         },
         token
       );

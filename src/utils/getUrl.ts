@@ -32,7 +32,7 @@ export const getUser = {
   getInfo: () => {
     return REACT_APP_BASE_URL + "user";
   },
-  userWithdrawalModal: () => {
+  userWithdrawal: () => {
     return REACT_APP_BASE_URL + "user";
   },
 };
