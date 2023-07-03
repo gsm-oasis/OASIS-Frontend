@@ -15,7 +15,7 @@ const WithdrawalModal = () => {
   const [, setWithdrawalModal] = useRecoilState(WithdrawalModalAtom);
   const userWithdrawalModal = async () => {
     try {
-      User.userWithdrawal(TokenService.getLocalAccessToken());
+      await User.userWithdrawal(TokenService.getLocalAccessToken());
       setLogged(false);
       setWithdrawalModal(false);
       TokenService.removeUser();

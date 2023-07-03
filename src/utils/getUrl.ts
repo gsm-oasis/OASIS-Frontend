@@ -38,6 +38,9 @@ export const getUser = {
   cutOffCouple: () => {
     return REACT_APP_BASE_URL + "user/unconnect";
   },
+  changePassword: () => {
+    return REACT_APP_BASE_URL + "user/password";
+  },
 };
 
 export const getMain = {

@@ -16,7 +16,6 @@ class User {
     }
   }
 
-  // settings
   getInfo(token: string) {
     try {
       return AxiosInstance(
@@ -51,6 +50,24 @@ class User {
         {
           method: "DELETE",
           url: getUser.cutOffCouple(),
+        },
+        token
+      );
+    } catch (error) {
+      return error;
+    }
+  }
+
+  changePassword(originalPassword: string, password: string, token: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "PATCH",
+          url: getUser.changePassword(),
+          data: {
+            originalPassword: originalPassword,
+            password: password,
+          },
         },
         token
       );

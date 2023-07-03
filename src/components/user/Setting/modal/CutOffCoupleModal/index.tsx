@@ -15,7 +15,7 @@ const CutOffCoupleModal = () => {
   const [, setCutOffCoupleModal] = useRecoilState(CutOffCoupleModalAtom);
   const cutOffCouple = async () => {
     try {
-      User.cutOffCouple(TokenService.getLocalAccessToken());
+      await User.cutOffCouple(TokenService.getLocalAccessToken());
       setLogged(false);
       setCutOffCoupleModal(false);
       TokenService.removeUser();
