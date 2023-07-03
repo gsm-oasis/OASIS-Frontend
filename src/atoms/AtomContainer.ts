@@ -71,3 +71,13 @@ export const ImagesAtom = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const WithdrawalModalAtom = atom({
+  key: "withdrawalModal",
+  default: false,
+});
+
+export const CutOffCoupleModalAtom = atom({
+  key: "cutOffCoupleModal",
+  default: false,
+});
