@@ -81,3 +81,8 @@ export const CutOffCoupleModalAtom = atom({
   key: "cutOffCoupleModal",
   default: false,
 });
+
+export const ChangeNameModalAtom = atom({
+  key: "changeNameModal",
+  default: false,
+});

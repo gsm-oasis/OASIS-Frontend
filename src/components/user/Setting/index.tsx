@@ -10,10 +10,12 @@ import { toast } from "react-toastify";
 import WithdrawalModal from "./modal/WithdrawalModal";
 import { useRecoilState } from "recoil";
 import {
+  ChangeNameModalAtom,
   CutOffCoupleModalAtom,
   WithdrawalModalAtom,
 } from "../../../atoms/AtomContainer";
 import CutOffCoupleModal from "./modal/CutOffCoupleModal";
+import ChangeNameModal from "./modal/ChangeNameModal";
 
 function Settings() {
   const navigate = useNavigate();
@@ -24,6 +26,8 @@ function Settings() {
   const [cutOffCoupleModal, setCutOffCoupleModal] = useRecoilState(
     CutOffCoupleModalAtom
   );
+  const [changeNameModal, setChangeNameModal] =
+    useRecoilState(ChangeNameModalAtom);
   const getInfo = async () => {
     const { data }: any = await User.getInfo(
       TokenService.getLocalAccessToken()
@@ -44,6 +48,7 @@ function Settings() {
     <>
       {withdrawalModal && <WithdrawalModal />}
       {cutOffCoupleModal && <CutOffCoupleModal />}
+      {changeNameModal && <ChangeNameModal />}
       <Setting>
         <Frame>
           <Title>
@@ -58,7 +63,7 @@ function Settings() {
               <S.Text>비밀번호 변경</S.Text>
               <I.Next />
             </S.Button>
-            <S.Button>
+            <S.Button onClick={() => setChangeNameModal(true)}>
               <S.Text>닉네임 변경</S.Text>
               <I.Next />
             </S.Button>

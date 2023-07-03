@@ -2,6 +2,7 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import {
+  ChangeNameModalAtom,
   CutOffCoupleModalAtom,
   WithdrawalModalAtom,
 } from "../../../../atoms/AtomContainer";
@@ -18,10 +19,12 @@ const Layout = styled.div`
 const ModalBackground = () => {
   const [, setWithdrawalModal] = useRecoilState(WithdrawalModalAtom);
   const [, setCutOffCoupleModal] = useRecoilState(CutOffCoupleModalAtom);
+  const [, setChangeNameModal] = useRecoilState(ChangeNameModalAtom);
 
   const modalOff = () => {
     setWithdrawalModal(false);
     setCutOffCoupleModal(false);
+    setChangeNameModal(false);
   };
 
   return <Layout onClick={modalOff}></Layout>;
