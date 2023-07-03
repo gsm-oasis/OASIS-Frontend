@@ -2,17 +2,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import User from "../../../../../api/User";
-import { loggedAtom } from "../../../../../atoms/AtomContainer";
+import {
+  loggedAtom,
+  WithdrawalModalAtom,
+} from "../../../../../atoms/AtomContainer";
 import TokenService from "../../../../../lib/TokenService";
 import ModalBackground from "../ModalBackground";
 import * as S from "./style";
 const WithdrawalModal = () => {
   const navigate = useNavigate();
   const [, setLogged] = useRecoilState(loggedAtom);
+  const [, setWithdrawalModal] = useRecoilState(WithdrawalModalAtom);
   const userWithdrawalModal = async () => {
     try {
       User.userWithdrawal(TokenService.getLocalAccessToken());
       setLogged(false);
+      setWithdrawalModal(false);
       TokenService.removeUser();
       navigate("/login");
     } catch (error) {

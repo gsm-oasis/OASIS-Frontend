@@ -2,17 +2,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import User from "../../../../../api/User";
-import { loggedAtom } from "../../../../../atoms/AtomContainer";
+import {
+  CutOffCoupleModalAtom,
+  loggedAtom,
+} from "../../../../../atoms/AtomContainer";
 import TokenService from "../../../../../lib/TokenService";
 import ModalBackground from "../ModalBackground";
 import * as S from "./style";
 const CutOffCoupleModal = () => {
   const navigate = useNavigate();
   const [, setLogged] = useRecoilState(loggedAtom);
+  const [, setCutOffCoupleModal] = useRecoilState(CutOffCoupleModalAtom);
   const cutOffCouple = async () => {
     try {
       User.cutOffCouple(TokenService.getLocalAccessToken());
       setLogged(false);
+      setCutOffCoupleModal(false);
       TokenService.removeUser();
       navigate("/login");
     } catch (error) {
