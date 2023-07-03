@@ -7,11 +7,16 @@ import { useNavigate } from "react-router-dom";
 import User from "../../../api/User";
 import TokenService from "../../../lib/TokenService";
 import { toast } from "react-toastify";
+import WithdrawalModal from "./modal/WithdrawalModal";
+import { useRecoilState } from "recoil";
+import { WithdrawalModalAtom } from "../../../atoms/AtomContainer";
 
 function Settings() {
   const navigate = useNavigate();
   const [version, setVersion] = useState("");
   const [myCode, setMyCode] = useState("");
+  const [withdrawalModal, setWithdrawalModal] =
+    useRecoilState(WithdrawalModalAtom);
 
   const getInfo = async () => {
     const { data }: any = await User.getInfo(
@@ -31,6 +36,7 @@ function Settings() {
   }, []);
   return (
     <>
+      {withdrawalModal && <WithdrawalModal />}
       <Setting>
         <Frame>
           <Title>
@@ -55,7 +61,12 @@ function Settings() {
             </S.Button>
           </S.ButtonBox>
 
-          <S.ColorButton color="#D9D9D9">회원 탈퇴</S.ColorButton>
+          <S.ColorButton
+            color="#D9D9D9"
+            onClick={() => setWithdrawalModal(true)}
+          >
+            회원 탈퇴
+          </S.ColorButton>
           <S.ColorButton color="#F5CACB">커플 끊기</S.ColorButton>
           <S.Version>v {version}</S.Version>
         </Frame>
