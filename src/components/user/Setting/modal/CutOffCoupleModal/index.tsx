@@ -1,14 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import User from "../../../../../api/User";
+import { loggedAtom } from "../../../../../atoms/AtomContainer";
+import TokenService from "../../../../../lib/TokenService";
 import ModalBackground from "../ModalBackground";
 import * as S from "./style";
 const CutOffCoupleModal = () => {
+  const navigate = useNavigate();
+  const [, setLogged] = useRecoilState(loggedAtom);
+  const cutOffCouple = async () => {
+    try {
+      User.cutOffCouple(TokenService.getLocalAccessToken());
+      setLogged(false);
+      TokenService.removeUser();
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <ModalBackground />
       <S.Modal>
         <h3>정말 커플을 끊으시겠습니까?</h3>
         <p>정말 유감입니다. 재회의 마음은 없으신거죠..?</p>
-        <button>커플 끊기</button>
+        <button onClick={cutOffCouple}>커플 끊기</button>
       </S.Modal>
     </>
   );

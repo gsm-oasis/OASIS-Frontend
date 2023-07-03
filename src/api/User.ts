@@ -44,6 +44,20 @@ class User {
       return error;
     }
   }
+
+  cutOffCouple(token: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "DELETE",
+          url: getUser.cutOffCouple(),
+        },
+        token
+      );
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new User();

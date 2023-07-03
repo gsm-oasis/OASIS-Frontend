@@ -9,7 +9,11 @@ import TokenService from "../../../lib/TokenService";
 import { toast } from "react-toastify";
 import WithdrawalModal from "./modal/WithdrawalModal";
 import { useRecoilState } from "recoil";
-import { WithdrawalModalAtom } from "../../../atoms/AtomContainer";
+import {
+  CutOffCoupleModalAtom,
+  WithdrawalModalAtom,
+} from "../../../atoms/AtomContainer";
+import CutOffCoupleModal from "./modal/CutOffCoupleModal";
 
 function Settings() {
   const navigate = useNavigate();
@@ -17,7 +21,9 @@ function Settings() {
   const [myCode, setMyCode] = useState("");
   const [withdrawalModal, setWithdrawalModal] =
     useRecoilState(WithdrawalModalAtom);
-
+  const [cutOffCoupleModal, setCutOffCoupleModal] = useRecoilState(
+    CutOffCoupleModalAtom
+  );
   const getInfo = async () => {
     const { data }: any = await User.getInfo(
       TokenService.getLocalAccessToken()
@@ -37,6 +43,7 @@ function Settings() {
   return (
     <>
       {withdrawalModal && <WithdrawalModal />}
+      {cutOffCoupleModal && <CutOffCoupleModal />}
       <Setting>
         <Frame>
           <Title>
@@ -67,7 +74,12 @@ function Settings() {
           >
             회원 탈퇴
           </S.ColorButton>
-          <S.ColorButton color="#F5CACB">커플 끊기</S.ColorButton>
+          <S.ColorButton
+            color="#F5CACB"
+            onClick={() => setCutOffCoupleModal(true)}
+          >
+            커플 끊기
+          </S.ColorButton>
           <S.Version>v {version}</S.Version>
         </Frame>
       </Setting>

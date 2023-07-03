@@ -35,6 +35,9 @@ export const getUser = {
   userWithdrawal: () => {
     return REACT_APP_BASE_URL + "user";
   },
+  cutOffCouple: () => {
+    return REACT_APP_BASE_URL + "user/unconnect";
+  },
 };
 
 export const getMain = {
