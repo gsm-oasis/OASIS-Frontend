@@ -11,6 +11,7 @@ const ChangePassword = () => {
   const navigate = useNavigate();
   const originalPassword = useRef<HTMLInputElement>(null);
   const newPassword = useRef<HTMLInputElement>(null);
+  const [isError, setIsError] = useState(false);
 
   const changePassword = async (event: any) => {
     event.preventDefault();
@@ -24,8 +25,12 @@ const ChangePassword = () => {
       }
       navigate("/setting");
       toast.success("비밀번호를 변경했습니다.");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error.response.status === 400) {
+        setIsError(true);
+        toast.error("현재 비밀번호를 확인해주세요.");
+      }
     }
   };
 
@@ -41,9 +46,9 @@ const ChangePassword = () => {
         </Title>
         <S.ChangePasswordForm>
           <label>현재 비밀번호</label>
-          <input ref={originalPassword} />
+          <S.Input ref={originalPassword} isError={isError} />
           <label>새 비밀번호</label>
-          <input ref={newPassword} />
+          <S.Input ref={newPassword} />
           <button onClick={changePassword}>변경</button>
         </S.ChangePasswordForm>
       </Frame>

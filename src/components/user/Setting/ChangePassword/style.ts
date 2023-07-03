@@ -12,25 +12,6 @@ export const ChangePasswordForm = styled.form`
     margin-bottom: 10px;
     font-weight: 600;
   }
-  input {
-    border-style: none;
-    width: 340px;
-    height: 60px;
-    background: #ffffff;
-    box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
-    border-radius: 14px;
-    padding: 0px 20px;
-    font-size: 13px;
-    color: #000;
-    line-height: 13px;
-    margin-bottom: 24px;
-    transition: 0.3s;
-    &:focus {
-      border: none;
-      outline: none;
-      box-shadow: 0px 0px 13px #b6d0e8;
-    }
-  }
   button {
     display: block;
     margin: 0 auto;
@@ -45,5 +26,26 @@ export const ChangePasswordForm = styled.form`
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
+  }
+`;
+
+export const Input = styled.input<{ isError?: boolean }>`
+  border-style: none;
+  width: 340px;
+  height: 60px;
+  background: #ffffff;
+  box-shadow: ${(props) =>
+    props.isError ? "0px 0px 13px #F6B3B4" : "0px 0px 13px rgba(0, 0, 0, 0.1)"};
+  border-radius: 14px;
+  padding: 0px 20px;
+  font-size: 13px;
+  color: #000;
+  line-height: 13px;
+  margin-bottom: 24px;
+  transition: 0.3s;
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: ${(props) => (props.isError ? "" : "0px 0px 13px #b6d0e8")};
   }
 `;
