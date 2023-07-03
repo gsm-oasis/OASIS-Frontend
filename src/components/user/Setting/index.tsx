@@ -54,7 +54,7 @@ function Settings() {
             <EmptyCompo />
           </Title>
           <S.ButtonBox>
-            <S.Button>
+            <S.Button onClick={() => navigate("/changePw")}>
               <S.Text>비밀번호 변경</S.Text>
               <I.Next />
             </S.Button>

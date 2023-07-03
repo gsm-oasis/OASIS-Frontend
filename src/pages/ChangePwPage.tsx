@@ -1,7 +1,8 @@
 import React from "react";
+import ChangePassword from "../components/user/Setting/ChangePassword";
 
 function ChangePwPage() {
-  return <></>;
+  return <ChangePassword></ChangePassword>;
 }
 
 export default ChangePwPage;
