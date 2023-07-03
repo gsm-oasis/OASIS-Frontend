@@ -41,6 +41,9 @@ export const getUser = {
   changePassword: () => {
     return REACT_APP_BASE_URL + "user/password";
   },
+  changeNickname: () => {
+    return REACT_APP_BASE_URL + "user/nickname";
+  },
 };
 
 export const getMain = {

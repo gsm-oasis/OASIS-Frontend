@@ -75,6 +75,23 @@ class User {
       return error;
     }
   }
+
+  changeNickname(nickname: string, token: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "PATCH",
+          url: getUser.changePassword(),
+          data: {
+            nickname: nickname,
+          },
+        },
+        token
+      );
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new User();
