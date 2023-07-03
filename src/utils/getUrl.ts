@@ -32,6 +32,9 @@ export const getUser = {
   getInfo: () => {
     return REACT_APP_BASE_URL + "user";
   },
+  userWithdrawalModal: () => {
+    return REACT_APP_BASE_URL + "user";
+  },
 };
 
 export const getMain = {

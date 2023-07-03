@@ -30,6 +30,20 @@ class User {
       return error;
     }
   }
+
+  userWithdrawalModal(token: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "DELETE",
+          url: getUser.userWithdrawalModal(),
+        },
+        token
+      );
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new User();
