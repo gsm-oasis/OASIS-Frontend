@@ -16,6 +16,20 @@ class User {
     }
   }
 
+  setBirthday(birthday: string) {
+    try {
+      return AxiosInstance({
+        method: "POST",
+        url: getUser.setBirthday(),
+        params: {
+          anniversaryDate: birthday,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
   getInfo(token: string) {
     try {
       return AxiosInstance(

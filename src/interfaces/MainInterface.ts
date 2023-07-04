@@ -3,6 +3,7 @@ export interface DiaryProps {
   coupleNickname: string;
   heartLevel: number;
   datingDate: number;
+  daysLeft: number;
   anniversary?: number;
   questionId: number;
   content: string;
