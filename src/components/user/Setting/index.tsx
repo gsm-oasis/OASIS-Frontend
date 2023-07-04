@@ -19,8 +19,8 @@ import ChangeNameModal from "./modal/ChangeNameModal";
 
 function Settings() {
   const navigate = useNavigate();
-  const [version, setVersion] = useState("");
-  const [myCode, setMyCode] = useState("");
+  const [version, setVersion] = useState<string>("");
+  const [myCode, setMyCode] = useState<string>("");
   const [withdrawalModal, setWithdrawalModal] =
     useRecoilState(WithdrawalModalAtom);
   const [cutOffCoupleModal, setCutOffCoupleModal] = useRecoilState(

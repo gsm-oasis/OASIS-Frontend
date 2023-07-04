@@ -11,7 +11,7 @@ const ChangePassword = () => {
   const navigate = useNavigate();
   const originalPassword = useRef<HTMLInputElement>(null);
   const newPassword = useRef<HTMLInputElement>(null);
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
   const changePassword = async (event: any) => {
     event.preventDefault();
