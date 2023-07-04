@@ -124,7 +124,7 @@ function Main() {
           >
             <Question
               questionNum={mainContent?.questionId}
-              content={mainContent?.content}
+              content={"Q. " + mainContent?.content}
               description="질문을 클릭해서 답변을 남겨보세요!"
             />
           </div>
