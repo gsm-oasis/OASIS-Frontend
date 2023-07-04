@@ -13,7 +13,3 @@ export interface diaryCreateContent {
   mood: string | undefined;
   writer: string;
 }
-
-export interface DiaryListType {
-  diaries: [];
-}

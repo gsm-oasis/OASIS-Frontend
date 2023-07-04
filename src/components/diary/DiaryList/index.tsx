@@ -8,15 +8,10 @@ import DiaryList from "../../Common/Diary/Diary";
 import Diary from "../../../api/Diary";
 import TokenService from "../../../lib/TokenService";
 import { DiaryContent } from "../../../interfaces/MainInterface";
-import { DiaryListType } from "../../../interfaces/DiaryInterface";
-
-const defaultState: DiaryListType = {
-  diaries: [],
-};
 
 function SharedDiaryList() {
   const navigate = useNavigate();
-  const [diaryList, setDiaryList] = useState<DiaryListType>(defaultState);
+  const [diaryList, setDiaryList] = useState<[]>([]);
 
   const getDiaryList = async () => {
     try {
@@ -47,8 +42,8 @@ function SharedDiaryList() {
           </Title>
 
           <ScrollBox>
-            {diaryList?.diaries &&
-              diaryList?.diaries.map((diary: DiaryContent) => (
+            {diaryList &&
+              diaryList?.map((diary: DiaryContent) => (
                 <DiaryList key={diary.diaryId} DiaryProps={diary} />
               ))}
           </ScrollBox>
