@@ -82,6 +82,7 @@ export const DTitle = styled.div`
   font-size: 20px;
   color: #7b7b7b;
   font-weight: 700;
+  cursor: pointer;
 `;
 
 export const DiaryWrapper = styled.div`
