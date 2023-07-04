@@ -17,6 +17,7 @@ import { DiaryContent, DiaryProps } from "../../../interfaces/MainInterface";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { nickNameAtom } from "../../../atoms/AtomContainer";
+import { ReactComponent as Hearts } from "../../../assets/svg/Hearts.svg";
 
 const defaultProps: DiaryProps = {
   nickname: "",
@@ -35,6 +36,19 @@ function Main() {
   const navigate = useNavigate();
   const [, setName] = useRecoilState(nickNameAtom);
   const [hoverState, setHover] = useState(false);
+
+  const getHeartColor = (heartLevel: number) => {
+    switch (heartLevel) {
+      case 1:
+        return "#F2C0C0";
+      case 2:
+        return "#F2D2C0";
+      case 3:
+        return "#F2E4C0";
+      case 4:
+        return "#E5F2C0";
+    }
+  };
 
   const PostMain = async () => {
     try {
@@ -60,7 +74,11 @@ function Main() {
             <S.LeftBox>
               <S.CoupleName>
                 <div>{mainContent?.coupleNickname}</div>
-                <Heart />
+                <Hearts
+                  fill={getHeartColor(mainContent?.heartLevel)}
+                  width="20px"
+                  height="20px"
+                />
                 <div>{mainContent?.nickname}</div>
               </S.CoupleName>
               <S.DateDays>{mainContent?.datingDate} DAYS</S.DateDays>
