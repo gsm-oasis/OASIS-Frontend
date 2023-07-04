@@ -17,7 +17,7 @@ function DiaryDetail(): JSX.Element {
       <Setting>
         <Frame>
           <Title>
-            <div onClick={() => navigate("/")}>
+            <div onClick={() => navigate(-1)}>
               <Back />
             </div>
             <TitleText>{diaryContent?.createDate}</TitleText>
