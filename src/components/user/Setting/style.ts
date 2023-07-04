@@ -20,12 +20,18 @@ export const Button = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 25px;
+  cursor: pointer;
 `;
 
 export const Text = styled.div`
   font-size: 14px;
   color: #414141;
   font-weight: 700;
+`;
+
+export const MyCode = styled.div`
+  font-size: 12px;
+  color: #a9a9a9;
 `;
 
 export const ColorButton = styled.div<{ color: string }>`
@@ -41,4 +47,11 @@ export const ColorButton = styled.div<{ color: string }>`
   align-items: center;
   color: #ffffff;
   margin-bottom: 20px;
+  cursor: pointer;
+`;
+
+export const Version = styled.div`
+  margin-top: 30px;
+  color: #737373;
+  font-weight: 600;
 `;

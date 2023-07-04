@@ -37,6 +37,18 @@ export const getUser = {
   getInfo: () => {
     return REACT_APP_BASE_URL + "user";
   },
+  userWithdrawal: () => {
+    return REACT_APP_BASE_URL + "user";
+  },
+  cutOffCouple: () => {
+    return REACT_APP_BASE_URL + "user/unconnect";
+  },
+  changePassword: () => {
+    return REACT_APP_BASE_URL + "user/password";
+  },
+  changeNickname: () => {
+    return REACT_APP_BASE_URL + "user/nickname";
+  },
 };
 
 export const getMain = {
