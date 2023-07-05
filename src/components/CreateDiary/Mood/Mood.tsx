@@ -7,11 +7,11 @@ function Mood() {
   const [btn, setBtn] = useRecoilState(MoodAtom);
 
   const Moods = [
-    { name: "행복" },
-    { name: "슬픔" },
-    { name: "무난" },
-    { name: "후회" },
-    { name: "설렘" },
+    { name: "행복", color: "#fa898b" },
+    { name: "설렘", color: "#f5cacb" },
+    { name: "무난", color: "#a0e5a3" },
+    { name: "슬픔", color: "#c1d9f0" },
+    { name: "후회", color: "#80abd3" },
   ];
 
   const btnClick = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +33,7 @@ function Mood() {
                 id={mood.name}
                 name="mood"
                 value={mood.name}
+                color={mood.color}
                 type="radio"
                 checked={mood.name === btn?.name}
                 onChange={btnClick}

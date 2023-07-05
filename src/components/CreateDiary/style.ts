@@ -111,17 +111,17 @@ export const MoodButton = styled.label`
   justify-content: center;
   font-size: 14px;
   font-weight: 700;
-
+  cursor: pointer;
   background: #fafafa;
   border: 0.4px solid #e4e4e4;
   color: #969696;
 `;
 
-export const MoodCircle = styled.input`
+export const MoodCircle = styled.input<{ color: string }>`
   display: none;
 
   &:checked + ${MoodButton} {
-    background: #f5cacb;
+    background: ${(props) => props.color};
     color: white;
     border: none;
   }
