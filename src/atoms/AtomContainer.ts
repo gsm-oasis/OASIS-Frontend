@@ -48,6 +48,7 @@ export const DiaryContentAtom = atom({
     content: "",
     mood: "",
     createDate: "",
+    moodColor: "",
   },
   effects_UNSTABLE: [persistAtom],
 });
@@ -56,6 +57,7 @@ export const MoodAtom = atom({
   key: "moods",
   default: {
     name: "",
+    moodColor: "",
   },
   effects_UNSTABLE: [persistAtom],
 });
@@ -85,4 +87,10 @@ export const CutOffCoupleModalAtom = atom({
 export const ChangeNameModalAtom = atom({
   key: "changeNameModal",
   default: false,
+});
+
+export const WroteDiaryAtom = atom({
+  key: "wroteDiary",
+  default: false,
+  effects_UNSTABLE: [persistAtom],
 });

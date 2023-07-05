@@ -4,6 +4,7 @@ export interface diaryDetail {
   content: string;
   mood: string;
   createDate: string;
+  moodColor: string;
 }
 
 export interface diaryCreateContent {
@@ -12,6 +13,7 @@ export interface diaryCreateContent {
   content: string;
   mood: string | undefined;
   writer: string;
+  moodColor: string;
 }
 
 export interface DiaryListType {

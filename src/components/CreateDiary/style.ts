@@ -52,26 +52,37 @@ export const TitleText = styled.input`
   font-weight: 700;
   font-size: 15px;
   margin-top: 25px;
-  margin-left: 25px;
+  margin-left: 21px;
   width: 250px;
   height: 22px;
   border-style: none;
+  padding: 3px 6px;
+  border-radius: 10px;
+  &:focus {
+    background: #eeeeee;
+    outline: 0px solid #999999;
+  }
 `;
 
 export const TextArea = styled.textarea`
   resize: none;
   width: 325px;
   min-height: 100px;
-  color: #b9b9b9;
+  color: #555555;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   border: none;
-  margin: 10px 25px 25px 25px;
-
+  margin: 6px 21px 25px 21px;
+  border-radius: 10px;
+  padding: 6px;
   &::placeholder {
     color: #b9b9b9;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12px;
+  }
+  &:focus {
+    background: #eeeeee;
+    outline: 0px solid #999999;
   }
 `;
 
@@ -111,18 +122,38 @@ export const MoodButton = styled.label`
   justify-content: center;
   font-size: 14px;
   font-weight: 700;
-
+  cursor: pointer;
   background: #fafafa;
   border: 0.4px solid #e4e4e4;
   color: #969696;
 `;
 
-export const MoodCircle = styled.input`
+export const MoodCircle = styled.input<{ moodColor: string }>`
   display: none;
 
   &:checked + ${MoodButton} {
-    background: #f5cacb;
+    background: ${(props) => props.moodColor};
     color: white;
     border: none;
+  }
+`;
+
+export const IsWroteDiary = styled.div`
+  margin-top: 50px;
+  width: 375px;
+  height: 110px;
+  border-radius: 20px;
+  border: 0.5px solid #e8e8e8;
+  box-shadow: 0 4px 20px #ededed;
+
+  h3 {
+    color: #646464;
+    font-size: 15px;
+    margin-top: 30px;
+    margin-bottom: -6px;
+  }
+  p {
+    color: #959595;
+    font-size: 13.4px;
   }
 `;

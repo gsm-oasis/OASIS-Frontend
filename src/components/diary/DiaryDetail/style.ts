@@ -65,13 +65,13 @@ export const Text = styled.div`
   margin: 15px 0 25px 25px;
 `;
 
-export const MoodCircle = styled.div`
+export const MoodCircle = styled.div<{ moodColor: string }>`
   right: 0;
   position: absolute;
   margin-right: -25px;
   width: 50px;
   height: 50px;
-  background: #f5cdca;
+  background: ${(props) => props.moodColor};
   border-radius: 50%;
   display: flex;
   justify-content: center;
