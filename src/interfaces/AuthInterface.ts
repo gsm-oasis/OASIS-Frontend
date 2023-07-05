@@ -12,6 +12,8 @@ export interface SignUpInterface {
 
 export interface TokenInterface {
   accessToken: string;
-  refreshToken: string;
+  coupleCode: string;
   expiredAt: string;
+  isCouple: boolean;
+  refreshToken: string;
 }
