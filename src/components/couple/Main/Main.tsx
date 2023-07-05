@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BlankHeart,
-  Mail,
   Plus,
   RedHeart,
   SettingIcon,
+  Mail,
 } from "../../../assets/svg";
 import TokenService from "../../../lib/TokenService";
 import { Setting } from "../../Common/Frame";
@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { nickNameAtom } from "../../../atoms/AtomContainer";
 import { ReactComponent as Hearts } from "../../../assets/svg/Hearts.svg";
+import { ColorMail } from "../../../assets/svg/Mail";
 
 const defaultProps: DiaryProps = {
   nickname: "",
@@ -35,6 +36,7 @@ function Main() {
   const navigate = useNavigate();
   const [, setName] = useRecoilState(nickNameAtom);
   const [hoverState, setHover] = useState(false);
+  const [hoverMail, setHoverMail] = useState(false);
 
   const getHeartColor = (heartLevel: number) => {
     switch (heartLevel) {
@@ -89,8 +91,13 @@ function Main() {
               </S.ToAnniversary>
             </S.LeftBox>
             <S.RightBox>
-              <S.IconBox onClick={() => navigate("/questionList")}>
-                <Mail />
+              <S.IconBox
+                onMouseOver={() => setHoverMail(true)}
+                onMouseLeave={() => setHoverMail(false)}
+                onClick={() => navigate("/questionList")}
+              >
+                {!hoverMail && <Mail />}
+                {hoverMail && <ColorMail />}
               </S.IconBox>
               <S.IconBox
                 onMouseOver={() => setHover(true)}
