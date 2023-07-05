@@ -105,7 +105,10 @@ function CreateDiary() {
 
           <Mood />
 
-          <GradiantButton style={{ marginTop: 30 }} onClick={createDiary}>
+          <GradiantButton
+            style={{ marginTop: 30, marginBottom: 40 }}
+            onClick={createDiary}
+          >
             일기 작성
           </GradiantButton>
         </Frame>
