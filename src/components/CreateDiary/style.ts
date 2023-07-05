@@ -128,11 +128,11 @@ export const MoodButton = styled.label`
   color: #969696;
 `;
 
-export const MoodCircle = styled.input<{ color: string }>`
+export const MoodCircle = styled.input<{ moodColor: string }>`
   display: none;
 
   &:checked + ${MoodButton} {
-    background: ${(props) => props.color};
+    background: ${(props) => props.moodColor};
     color: white;
     border: none;
   }

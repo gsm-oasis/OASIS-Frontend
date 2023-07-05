@@ -35,7 +35,9 @@ function DiaryDetail(): JSX.Element {
           </S.ImageFrame>
 
           <S.ContentBox>
-            <S.MoodCircle>{diaryContent?.mood}</S.MoodCircle>
+            <S.MoodCircle moodColor={diaryContent.moodColor}>
+              {diaryContent?.mood}
+            </S.MoodCircle>
             <S.TextBox>
               <S.TitleText>{diaryContent?.title}</S.TitleText>
               <S.Text>{diaryContent?.content}</S.Text>

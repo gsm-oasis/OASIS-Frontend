@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import Diary from "../../api/Diary";
@@ -23,7 +23,7 @@ function CreateDiary() {
   const [diaryTitle, setDiaryTitle] = useState("");
   const [diaryContent, setDiaryContent] = useState("");
   const [imageSrc] = useRecoilState<File[]>(ImageSrcAtom);
-  const [btn] = useRecoilState(MoodAtom);
+  const [moods] = useRecoilState(MoodAtom);
   const myName: string = useRecoilValue(nickNameAtom);
   const resetMood = useResetRecoilState(MoodAtom);
   const resetImageSrc = useResetRecoilState(ImageSrcAtom);
@@ -51,8 +51,9 @@ function CreateDiary() {
       let reqDto = {
         title: diaryTitle,
         content: diaryContent,
-        mood: btn?.name,
+        mood: moods?.name,
         writer: myName,
+        moodColor: moods?.moodColor,
       };
 
       formData.append(
