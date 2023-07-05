@@ -2,8 +2,6 @@ import axios from "axios";
 import { getAuth } from "../utils/getUrl";
 import { REACT_APP_BASE_URL } from "../shared/config";
 import TokenService from "./TokenService";
-import { useRecoilState } from "recoil";
-import { loggedAtom } from "../atoms/AtomContainer";
 
 export const instance = axios.create({
   baseURL: REACT_APP_BASE_URL,
@@ -49,10 +47,7 @@ function getAuthToken() {
     authTokenRequest = makeActualAuthenticationRequest(); // 재발급요청
     authTokenRequest
       .catch(function () {
-        // 요청에 실패하면 남아있는 토큰 지우고 로그인페이지로 가기
-        const [, setLogged] = useRecoilState(loggedAtom);
         TokenService.removeUser();
-        setLogged(false);
         window.location.replace("/login");
       })
       .then(resetAuthTokenRequest, resetAuthTokenRequest); // return하고 초기화
