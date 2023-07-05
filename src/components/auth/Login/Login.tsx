@@ -12,6 +12,7 @@ import { Logo } from "../../Common/Logos/BigLogo";
 import { BottomText } from "../../Common/Texts/BottomText";
 import { GradiantButton } from "../../Common/Buttons/GradiantButton";
 import { useEffect } from "react";
+import TokenService from "../../../lib/TokenService";
 
 function Login() {
   const {
@@ -39,10 +40,7 @@ function Login() {
     try {
       const response: any = await Auth.login(data);
 
-      localStorage.setItem("token", JSON.stringify(response.data));
-      if (localStorage.getItem("token") === null) {
-        throw new Error(`No token`);
-      }
+      TokenService.setUser(response.data);
 
       if (response.status === 200) {
         setisCouple(response.data.isCouple);
