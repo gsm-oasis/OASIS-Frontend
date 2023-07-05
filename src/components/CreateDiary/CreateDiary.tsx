@@ -97,7 +97,7 @@ function CreateDiary() {
               value={diaryTitle}
             />
             <S.TextArea
-              placeholder="여기에 입력해주세요.."
+              placeholder="오늘 무슨일이 있었나요?"
               onChange={ContentChange}
               value={diaryContent}
             ></S.TextArea>

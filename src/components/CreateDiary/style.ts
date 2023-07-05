@@ -52,26 +52,37 @@ export const TitleText = styled.input`
   font-weight: 700;
   font-size: 15px;
   margin-top: 25px;
-  margin-left: 25px;
+  margin-left: 21px;
   width: 250px;
   height: 22px;
   border-style: none;
+  padding: 3px 6px;
+  border-radius: 10px;
+  &:focus {
+    background: #eeeeee;
+    outline: 0px solid #999999;
+  }
 `;
 
 export const TextArea = styled.textarea`
   resize: none;
   width: 325px;
   min-height: 100px;
-  color: #b9b9b9;
+  color: #555555;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   border: none;
-  margin: 10px 25px 25px 25px;
-
+  margin: 6px 21px 25px 21px;
+  border-radius: 10px;
+  padding: 6px;
   &::placeholder {
     color: #b9b9b9;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12px;
+  }
+  &:focus {
+    background: #eeeeee;
+    outline: 0px solid #999999;
   }
 `;
 
