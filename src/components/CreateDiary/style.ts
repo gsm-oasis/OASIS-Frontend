@@ -137,3 +137,23 @@ export const MoodCircle = styled.input<{ color: string }>`
     border: none;
   }
 `;
+
+export const IsWroteDiary = styled.div`
+  margin-top: 50px;
+  width: 375px;
+  height: 110px;
+  border-radius: 20px;
+  border: 0.5px solid #e8e8e8;
+  box-shadow: 0 4px 20px #ededed;
+
+  h3 {
+    color: #646464;
+    font-size: 15px;
+    margin-top: 30px;
+    margin-bottom: -6px;
+  }
+  p {
+    color: #959595;
+    font-size: 13.4px;
+  }
+`;

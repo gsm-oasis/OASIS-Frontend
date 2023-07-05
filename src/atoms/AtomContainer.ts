@@ -86,3 +86,9 @@ export const ChangeNameModalAtom = atom({
   key: "changeNameModal",
   default: false,
 });
+
+export const WroteDiaryAtom = atom({
+  key: "wroteDiary",
+  default: true,
+  effects_UNSTABLE: [persistAtom],
+});
