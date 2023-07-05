@@ -69,8 +69,10 @@ function CreateDiary() {
         resetRecoil();
         navigate("/");
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      if (error.response.status === 409) {
+        setWroteDiary(true);
+      }
     }
   };
 
