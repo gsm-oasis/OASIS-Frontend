@@ -58,7 +58,7 @@ function WriteDiaryComment(props: any) {
           <QuestionCommentBox>
             <UserName>{props.questionContent.coupleName}의 답변</UserName>
             <MyCoupleEmptyAnswer>
-              {props.questionContent.coupleAnswer}
+              답변을 작성해야 상대방의 답변을 볼 수 있어요!
             </MyCoupleEmptyAnswer>
           </QuestionCommentBox>
 

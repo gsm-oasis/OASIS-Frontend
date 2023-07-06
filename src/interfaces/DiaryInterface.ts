@@ -15,7 +15,3 @@ export interface diaryCreateContent {
   writer: string;
   moodColor: string;
 }
-
-export interface DiaryListType {
-  diaries: [];
-}

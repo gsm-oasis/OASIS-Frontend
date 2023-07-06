@@ -61,7 +61,7 @@ function HeartLevel() {
             <S.Text>현재 회원님의 하트 레벨은 {heartLevel}입니다.</S.Text>
             <S.HeartAndProgress>
               <S.Heart>
-                <Hearts fill={heartColor}></Hearts>
+                <Hearts fill={heartColor} width="50px" height="50px"></Hearts>
                 <S.LevelText>Lv.{heartLevel}</S.LevelText>
               </S.Heart>
               <S.HeartProgress

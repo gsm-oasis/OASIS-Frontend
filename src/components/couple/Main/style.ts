@@ -18,6 +18,7 @@ export const Top = styled.div`
 export const LeftBox = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: start;
 `;
 
 export const CoupleName = styled.div`
@@ -26,6 +27,8 @@ export const CoupleName = styled.div`
   align-items: center;
   font-weight: 600;
   color: #6f6f6f;
+  font-size: 18px;
+  width: 110px;
 `;
 
 export const DateDays = styled.div`

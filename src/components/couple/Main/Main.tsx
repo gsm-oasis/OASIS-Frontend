@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BlankHeart,
-  Heart,
-  Mail,
   Plus,
   RedHeart,
   SettingIcon,
+  Mail,
 } from "../../../assets/svg";
 import TokenService from "../../../lib/TokenService";
 import { Setting } from "../../Common/Frame";
@@ -17,6 +16,8 @@ import { DiaryContent, DiaryProps } from "../../../interfaces/MainInterface";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { nickNameAtom } from "../../../atoms/AtomContainer";
+import { ReactComponent as Hearts } from "../../../assets/svg/Hearts.svg";
+import { ColorMail } from "../../../assets/svg/Mail";
 
 const defaultProps: DiaryProps = {
   nickname: "",
@@ -35,6 +36,20 @@ function Main() {
   const navigate = useNavigate();
   const [, setName] = useRecoilState(nickNameAtom);
   const [hoverState, setHover] = useState(false);
+  const [hoverMail, setHoverMail] = useState(false);
+
+  const getHeartColor = (heartLevel: number) => {
+    switch (heartLevel) {
+      case 1:
+        return "#F2C0C0";
+      case 2:
+        return "#F2D2C0";
+      case 3:
+        return "#F2E4C0";
+      case 4:
+        return "#E5F2C0";
+    }
+  };
 
   const PostMain = async () => {
     try {
@@ -60,7 +75,11 @@ function Main() {
             <S.LeftBox>
               <S.CoupleName>
                 <div>{mainContent?.coupleNickname}</div>
-                <Heart />
+                <Hearts
+                  fill={getHeartColor(mainContent?.heartLevel)}
+                  width="20px"
+                  height="20px"
+                />
                 <div>{mainContent?.nickname}</div>
               </S.CoupleName>
               <S.DateDays>{mainContent?.datingDate} DAYS</S.DateDays>
@@ -72,8 +91,13 @@ function Main() {
               </S.ToAnniversary>
             </S.LeftBox>
             <S.RightBox>
-              <S.IconBox onClick={() => navigate("/questionList")}>
-                <Mail />
+              <S.IconBox
+                onMouseOver={() => setHoverMail(true)}
+                onMouseLeave={() => setHoverMail(false)}
+                onClick={() => navigate("/questionList")}
+              >
+                {!hoverMail && <Mail />}
+                {hoverMail && <ColorMail />}
               </S.IconBox>
               <S.IconBox
                 onMouseOver={() => setHover(true)}
@@ -107,7 +131,7 @@ function Main() {
           >
             <Question
               questionNum={mainContent?.questionId}
-              content={mainContent?.content}
+              content={"Q. " + mainContent?.content}
               description="질문을 클릭해서 답변을 남겨보세요!"
             />
           </div>

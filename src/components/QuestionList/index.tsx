@@ -3,24 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { Frame, Setting } from "../Common/Frame";
 import { EmptyCompo, Title, TitleText } from "../Common/Title";
 import * as I from "../../assets/svg/index";
-import * as S from "./style";
 import Question from "../../api/Question";
 import TokenService from "../../lib/TokenService";
-import {
-  QuestionListType,
-  QuestionListContent,
-} from "../../interfaces/QuestionInterface";
+import { QuestionListContent } from "../../interfaces/QuestionInterface";
 import QuestionBox from "./QuestionBox";
 import { ScrollBox } from "../Common/ScrollBox";
 
-const defaultState: QuestionListType = {
-  questions: [],
-};
-
 function QuestionList() {
   const navigate = useNavigate();
-  const [questionList, setQuestionList] =
-    useState<QuestionListType>(defaultState);
+  const [questionList, setQuestionList] = useState<[]>([]);
 
   const getQuestions = async () => {
     try {
@@ -51,8 +42,8 @@ function QuestionList() {
           </Title>
 
           <ScrollBox>
-            {questionList?.questions &&
-              questionList?.questions.map((question: QuestionListContent) => (
+            {questionList &&
+              questionList?.map((question: QuestionListContent) => (
                 <QuestionBox
                   key={question.questionId}
                   QuestionProps={question}

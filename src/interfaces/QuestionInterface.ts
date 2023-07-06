@@ -5,10 +5,6 @@ export interface QuestionContent {
   coupleAnswer: string;
 }
 
-export interface QuestionListType {
-  questions: [];
-}
-
 export interface QuestionListContent {
   questionId: number;
   content: string;
