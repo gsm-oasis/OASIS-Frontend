@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import * as I from "../../../assets/svg";
 import { useNavigate } from "react-router-dom";
 import { Frame, Setting } from "../../Common/Frame";
@@ -35,8 +35,8 @@ function QuestionDetail(props: any) {
             <UserName>{props.questionContent.coupleName}의 답변</UserName>
             <MyCoupleEmptyAnswer>
               {props.questionContent.coupleAnswer === ""
-                ? "상대방이 아직 답변을 등록하지 않았어요!"
-                : `${props.questionContent.coupleAnswer}`}
+                ? "상대방이 아직 답변을 작성하지 않았어요."
+                : props.questionContent.coupleAnswer}
             </MyCoupleEmptyAnswer>
           </QuestionCommentBox>
 

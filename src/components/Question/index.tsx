@@ -40,15 +40,14 @@ function Question() {
 
   return (
     <>
-      {noWrite && (
+      {noWrite ? (
         <QuestionDetail
           id={id}
           content={content}
           questionContent={questionContent}
           back={true}
         />
-      )}
-      {!noWrite && (
+      ) : (
         <>
           {questionContent.answer && (
             <QuestionDetail

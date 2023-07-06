@@ -45,6 +45,8 @@ export const TextBox = styled.div`
   flex-direction: column;
   text-align: left;
   justify-content: center;
+  padding-bottom: 24px;
+  position: relative;
 `;
 
 export const TitleText = styled.input`
@@ -84,6 +86,13 @@ export const TextArea = styled.textarea`
     background: #eeeeee;
     outline: 0px solid #999999;
   }
+`;
+
+export const Count = styled.p<{ isError: boolean }>`
+  position: absolute;
+  right: 20px;
+  color: ${(props) => (props.isError ? "#e10000" : "#4b4b4b")};
+  bottom: 0;
 `;
 
 export const MoodDesc = styled.div`
