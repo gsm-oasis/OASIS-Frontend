@@ -44,7 +44,8 @@ export const QuestionDescription = styled.div`
 `;
 
 export const QuestionCommentBox = styled.div`
-  width: 375px;
+  width: 360px;
+  padding-right: 15px;
   margin-top: 25px;
   min-height: 60px;
   background: #ffffff;
@@ -55,6 +56,7 @@ export const QuestionCommentBox = styled.div`
 `;
 
 export const UserName = styled.div`
+  width: 80px;
   color: #4b4b4b;
   font-size: 14px;
   margin-left: 20px;
@@ -62,8 +64,8 @@ export const UserName = styled.div`
 `;
 
 export const MyCoupleEmptyAnswer = styled.div`
-  font-size: 10px;
+  font-size: 12px;
   margin-left: 16px;
-  color: #000000;
-  font-weight: 300;
+  font-weight: 700;
+  color: #777777;
 `;
