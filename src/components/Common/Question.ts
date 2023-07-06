@@ -56,7 +56,6 @@ export const QuestionCommentBox = styled.div`
 `;
 
 export const UserName = styled.div`
-  width: 79px;
   color: #4b4b4b;
   font-size: 14px;
   margin-left: 20px;
@@ -67,5 +66,7 @@ export const MyCoupleEmptyAnswer = styled.div`
   font-size: 12px;
   margin-left: 8px;
   font-weight: 700;
+  padding: 10px 0;
+  max-width: 250px;
   color: #777777;
 `;
