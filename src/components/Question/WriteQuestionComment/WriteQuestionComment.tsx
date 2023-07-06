@@ -10,22 +10,28 @@ import {
   UserName,
 } from "../../Common/Question";
 import { EmptyCompo, Title, TitleText } from "../../Common/Title";
-import { TextArea, TextBox } from "../../CreateDiary/style";
+import { TextArea, TextBox, Count } from "../../CreateDiary/style";
 import Question from "../../couple/Main/Question";
 import TokenService from "../../../lib/TokenService";
 import { toast } from "react-toastify";
 
 function WriteDiaryComment(props: any) {
   const navigate = useNavigate();
-  const [myComment, setMyComment] = useState("");
+  const [myComment, setMyComment] = useState<string>("");
+  const [answerCount, setAnswerCount] = useState<number>(0);
+  const [isError, setIsError] = useState<boolean>(false);
 
   const onChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setMyComment(e.target.value);
+    setAnswerCount(e.target.value.length);
+    if (e.target.value.length > 100) setIsError(true);
+    else setIsError(false);
   };
 
   const postMyComment = async () => {
     try {
       if (!myComment) toast.error("답변을 입력해주세요!");
+      else if (isError) toast.error("답변 글자 수를 확인해주세요!");
       else {
         console.log(props.id, myComment);
         const response: any = await MainQuestion.postMyComment(
@@ -70,7 +76,9 @@ function WriteDiaryComment(props: any) {
               placeholder="답변을 작성해주세요!"
               onChange={onChange}
               value={myComment}
+              maxLength={100}
             ></TextArea>
+            <Count isError={isError}>{answerCount} / 100</Count>
           </TextBox>
 
           <GradiantButton onClick={postMyComment}>답변 저장</GradiantButton>
