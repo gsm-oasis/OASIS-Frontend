@@ -25,8 +25,8 @@ function FindPw() {
     try {
       await Auth.sendMail(email);
       setEmailCheck(true);
-    } catch (error) {
-      console.log(error);
+    } catch (e: any) {
+      toast.error("올바르지 않은 이메일입니다!");
     }
   };
 

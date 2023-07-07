@@ -4,6 +4,7 @@ import Auth from "../../../api/Auth";
 import { GradiantButton } from "../../Common/Buttons/GradiantButton";
 import { Input } from "../../Common/Inputs/AuthInput";
 import * as S from "./style";
+import { toast } from "react-toastify";
 
 function NewPw(props: any) {
   const navigate = useNavigate();
@@ -17,11 +18,12 @@ function NewPw(props: any) {
   const checkMail = async () => {
     try {
       if (pw === checkPw) {
-        const response: any = await Auth.postNewPw(props.email, pw, checkPw);
-        if (response.status === 200) navigate("/login");
-      } else alert("비밀번호를 다시 입력해주세요");
-    } catch (error) {
-      console.log(error);
+        await Auth.postNewPw(props.email, pw, checkPw);
+        navigate("/login");
+      } else toast.error("비밀번호가 일치하지 않아요!");
+    } catch (e: any) {
+      toast.error("존재하지 않는 유저입니다.");
+      navigate("/login");
     }
   };
 
