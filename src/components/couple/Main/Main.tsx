@@ -128,6 +128,7 @@ function Main() {
                 },
               })
             }
+            style={{ cursor: "pointer" }}
           >
             <Question
               questionNum={mainContent?.questionId}
@@ -149,7 +150,7 @@ function Main() {
             <S.DiaryWrapper>
               {mainContent?.diaries &&
                 mainContent.diaries.map((diary: DiaryContent) => (
-                  <div key={diary.diaryId}>
+                  <div key={diary.diaryId} style={{ cursor: "pointer" }}>
                     <DiaryList DiaryProps={diary} />
                   </div>
                 ))}
