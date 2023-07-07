@@ -19,12 +19,15 @@ function FindId() {
     try {
       if (email) {
         await Auth.findId(email);
+        toast.success("이메일을 확인해주세요!");
         navigate("/login");
       } else {
         toast.error("이메일을 입력해주세요!");
       }
     } catch (e: any) {
-      if (e.response.status === 404) {
+      if (e.response.status === 400) {
+        toast.error("잘못된 이메일입니다!");
+      } else if (e.response.status === 404) {
         toast.error("존재하지 않는 유저입니다!");
       }
     }
