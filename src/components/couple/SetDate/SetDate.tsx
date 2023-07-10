@@ -11,6 +11,7 @@ import {
 } from "../../Common/BoxWithInput/style";
 import { InputCode } from "../../Common/Inputs/InputCode";
 import Main from "../../../api/Main";
+import { toast } from "react-toastify";
 
 function SetDate() {
   const navigate = useNavigate();
@@ -22,8 +23,12 @@ function SetDate() {
     try {
       await Main.submitDate(date);
       navigate("/birthday");
-    } catch (e) {
-      console.log(e);
+    } catch (e: any) {
+      if (e.response.status === 400) {
+        toast.error("올바른 형식의 날짜를 입력해주세요");
+      } else if (e.response.status === 404) {
+        toast.error("404 Not Found");
+      }
     }
   };
   return (
