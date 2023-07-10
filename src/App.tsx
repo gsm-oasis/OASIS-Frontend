@@ -22,6 +22,7 @@ import SettingPage from "./pages/SettingPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddBirthdayPage from "./pages/AddBirthdayPage";
+import AnniversaryListPage from "./pages/AnniversaryListPage";
 
 function App() {
   const [logged] = useRecoilState(loggedAtom);
@@ -57,6 +58,7 @@ function App() {
           <Route path="/diaryList" element={<DiaryListPage />} />
           <Route path="/heartLevel" element={<HeartLevelPage />} />
           <Route path="/setting" element={<SettingPage />} />
+          <Route path="/anniversary" element={<AnniversaryListPage />} />
         </Routes>
       </RecoilRoot>
     </>
