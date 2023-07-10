@@ -18,6 +18,7 @@ import { useRecoilState } from "recoil";
 import { nickNameAtom } from "../../../atoms/AtomContainer";
 import { ReactComponent as Hearts } from "../../../assets/svg/Hearts.svg";
 import { ColorMail } from "../../../assets/svg/Mail";
+import { Calender, ColorCalender } from "../../../assets/svg/calender";
 
 const defaultProps: DiaryProps = {
   nickname: "",
@@ -37,6 +38,7 @@ function Main() {
   const [, setName] = useRecoilState(nickNameAtom);
   const [hoverState, setHover] = useState(false);
   const [hoverMail, setHoverMail] = useState(false);
+  const [hoverCalender, setHoverCalender] = useState(false);
 
   const getHeartColor = (heartLevel: number) => {
     switch (heartLevel) {
@@ -91,6 +93,13 @@ function Main() {
               </S.ToAnniversary>
             </S.LeftBox>
             <S.RightBox>
+              <S.IconBox
+                onMouseOver={() => setHoverCalender(true)}
+                onMouseLeave={() => setHoverCalender(false)}
+                onClick={() => navigate("/questionList")}
+              >
+                {!hoverCalender ? <Calender /> : <ColorCalender />}
+              </S.IconBox>
               <S.IconBox
                 onMouseOver={() => setHoverMail(true)}
                 onMouseLeave={() => setHoverMail(false)}
