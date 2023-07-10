@@ -96,7 +96,7 @@ function Main() {
               <S.IconBox
                 onMouseOver={() => setHoverCalender(true)}
                 onMouseLeave={() => setHoverCalender(false)}
-                onClick={() => navigate("/calenderList")}
+                onClick={() => navigate("/calendarList")}
               >
                 {!hoverCalender ? <Calender /> : <ColorCalender />}
               </S.IconBox>
