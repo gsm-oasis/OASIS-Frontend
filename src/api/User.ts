@@ -95,7 +95,7 @@ class User {
       return AxiosInstance(
         {
           method: "PATCH",
-          url: getUser.changePassword(),
+          url: getUser.changeNickname(),
           data: {
             nickname: nickname,
           },

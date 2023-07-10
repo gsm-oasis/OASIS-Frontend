@@ -48,13 +48,14 @@ export const IconBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 export const RightBox = styled.div`
   height: 17px;
   display: flex;
   align-items: center;
-  width: 70px;
+  width: 90px;
   justify-content: space-between;
 `;
 

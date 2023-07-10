@@ -94,3 +94,8 @@ export const WroteDiaryAtom = atom({
   default: false,
   effects_UNSTABLE: [persistAtom],
 });
+
+export const AddAnniversaryModalAtom = atom({
+  key: "addAnniversaryModal",
+  default: false,
+});
