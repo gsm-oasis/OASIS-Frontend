@@ -9,6 +9,7 @@ import {
 import TokenService from "../../../../../lib/TokenService";
 import ModalBackground from "../ModalBackground";
 import * as S from "./style";
+import { toast } from "react-toastify";
 const WithdrawalModal = () => {
   const navigate = useNavigate();
   const [, setLogged] = useRecoilState(loggedAtom);
@@ -20,8 +21,10 @@ const WithdrawalModal = () => {
       setWithdrawalModal(false);
       TokenService.removeUser();
       navigate("/login");
-    } catch (error) {
-      console.log(error);
+    } catch (e: any) {
+      if (e.response.status === 404) {
+        toast.error("404 Not Found");
+      }
     }
   };
 

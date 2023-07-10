@@ -11,8 +11,10 @@ import { Input } from "../../Common/Inputs/AuthInput";
 import { Logo } from "../../Common/Logos/BigLogo";
 import { BottomText } from "../../Common/Texts/BottomText";
 import { GradiantButton } from "../../Common/Buttons/GradiantButton";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TokenService from "../../../lib/TokenService";
+import { toast } from "react-toastify";
+import Loading from "../../Common/Loading";
 
 function Login() {
   const {
@@ -22,6 +24,7 @@ function Login() {
     formState: { errors },
   } = useForm<LoginInterface>();
   const navigate = useNavigate();
+  const [isLoad, setIsLoad] = useState<boolean>(false);
   const [, setLogged] = useRecoilState(loggedAtom);
   const [, setisCouple] = useRecoilState(isCoupleAtom);
 
@@ -38,25 +41,31 @@ function Login() {
 
   const onValid = async (data: LoginInterface) => {
     try {
+      setIsLoad(true);
       const response: any = await Auth.login(data);
 
       TokenService.setUser(response.data);
 
-      if (response.status === 200) {
-        setisCouple(response.data.isCouple);
-        setLogged(true);
+      setisCouple(response.data.isCouple);
+      setLogged(true);
+      setIsLoad(false);
+    } catch (e: any) {
+      setIsLoad(false);
+      if (e.response.status === 400) {
+        toast.error("잘못된 비밀번호입니다!");
+      } else if (e.response.status === 404) {
+        toast.error("존재하지 않는 아이디에요!");
       }
-    } catch (e) {
-      console.log(e);
     }
   };
 
-  const inValid = (error: any) => {
-    console.log(error);
+  const inValid = (e: any) => {
+    console.log(e);
   };
 
   return (
     <>
+      {isLoad && <Loading />}
       <Setting>
         <Frame>
           <Logo>

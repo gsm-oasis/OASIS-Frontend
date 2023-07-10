@@ -21,8 +21,10 @@ const ChangeNameModal = () => {
       }
       setChangeNameModal(false);
       toast.success(`닉네임을 ${nickname.current?.value}님으로 변경했습니다.`);
-    } catch (error) {
-      console.log(error);
+    } catch (e: any) {
+      if (e.response.status === 404) {
+        toast.error("404 Not Found");
+      }
     }
   };
   return (

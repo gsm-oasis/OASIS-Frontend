@@ -22,7 +22,7 @@ function EmailNickName(): JSX.Element {
   const postEmail = async (userEmail: string) => {
     try {
       await Auth.sendMail(userEmail);
-      toast.success("전송했습니다!");
+      toast.success("인증번호를 전송했어요!");
     } catch (e: any) {
       if (e.response.status === 400) {
         toast.error("다시 시도해주세요!");

@@ -40,8 +40,10 @@ function SignUp(): JSX.Element {
       await Auth.signup(data);
       toast.success("회원가입 되었습니다!");
       navigate("/login");
-    } catch (e) {
-      console.log(e);
+    } catch (e: any) {
+      if (e.response.status === 409) {
+        toast.error("이미 존재하는 아이디에요!");
+      }
     }
   };
 

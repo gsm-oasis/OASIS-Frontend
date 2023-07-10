@@ -22,14 +22,18 @@ import SettingPage from "./pages/SettingPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddBirthdayPage from "./pages/AddBirthdayPage";
+import TokenService from "./lib/TokenService";
 import AnniversaryListPage from "./pages/AnniversaryListPage";
 
 function App() {
   const [logged] = useRecoilState(loggedAtom);
   const navigate = useNavigate();
   useEffect(() => {
-    if (logged) navigate("/");
-    else navigate("/login");
+    if (TokenService.getLocalAccessToken() && logged) navigate("/");
+    else {
+      localStorage.removeItem("recoil-persist");
+      navigate("/login");
+    }
   }, [logged]);
 
   return (

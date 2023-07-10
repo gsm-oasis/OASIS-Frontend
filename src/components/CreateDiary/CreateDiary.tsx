@@ -66,6 +66,7 @@ function CreateDiary() {
     } catch (error: any) {
       if (error.response.status === 409) {
         setWroteDiary(true);
+        toast.error("오늘은 일기를 더 작성할 수 없어요");
       }
     }
   };
