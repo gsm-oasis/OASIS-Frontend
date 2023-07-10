@@ -25,9 +25,9 @@ const AnniversaryList = () => {
     try {
       const res: any = await Anniversary.getAnniversaryList();
       setAnniversaryList(res.data);
-
-      console.log(res.data);
-    } catch (error) {}
+    } catch (error) {
+      navigate("/");
+    }
   };
   useEffect(() => {
     getAnniversary();
