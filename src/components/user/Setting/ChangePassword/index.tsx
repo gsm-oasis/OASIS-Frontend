@@ -26,7 +26,6 @@ const ChangePassword = () => {
       navigate("/setting");
       toast.success("비밀번호를 변경했습니다.");
     } catch (error: any) {
-      console.log(error);
       if (error.response.status === 400) {
         setIsError(true);
         toast.error("현재 비밀번호를 확인해주세요.");
