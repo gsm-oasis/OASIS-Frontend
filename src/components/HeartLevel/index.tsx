@@ -6,6 +6,7 @@ import * as I from "../../assets/svg";
 import * as S from "./style";
 import { ReactComponent as Hearts } from "../../assets/svg/Hearts.svg";
 import Heart from "../../api/Heart";
+import { toast } from "react-toastify";
 function HeartLevel() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function HeartLevel() {
       setCurrentBar(response.data.levelBar);
       setMaxBar(response.data.max);
     } catch (error) {
-      console.log(error);
+      toast.error("404 Not Found");
     }
   };
 
@@ -44,7 +45,7 @@ function HeartLevel() {
       setDays(days % (100 * heartLevel));
     }
     getHeartLevel();
-  });
+  }, []);
 
   return (
     <>
