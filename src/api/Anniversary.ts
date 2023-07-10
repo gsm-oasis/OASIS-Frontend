@@ -13,6 +13,24 @@ class Anniversary {
       return error;
     }
   }
+
+  addAnniversary(anniversaryName: string, anniversaryDate: string) {
+    try {
+      return AxiosInstance(
+        {
+          method: "POST",
+          url: getAnniversary.getaAnniversary(),
+          data: {
+            anniversaryName: anniversaryName,
+            anniversaryDate: anniversaryDate,
+          },
+        },
+        TokenService.getLocalAccessToken()
+      );
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Anniversary();

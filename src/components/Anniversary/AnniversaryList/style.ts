@@ -27,3 +27,16 @@ export const Anniversary = styled.div`
     font-weight: 600;
   }
 `;
+
+export const Add = styled.div`
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #f5cacb;
+  transition: 0.2s;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;

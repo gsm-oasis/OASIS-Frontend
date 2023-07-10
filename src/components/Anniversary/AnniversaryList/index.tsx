@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Frame, Setting } from "../Common/Frame";
-import { EmptyCompo, Title, TitleText } from "../Common/Title";
+import { Frame, Setting } from "../../Common/Frame";
+import { EmptyCompo, Title, TitleText } from "../../Common/Title";
 import * as S from "./style";
-import * as I from "../../assets/svg";
-import Anniversary from "../../api/Anniversary";
+import * as I from "../../../assets/svg";
+import Anniversary from "../../../api/Anniversary";
+import { useRecoilState } from "recoil";
+import { AddAnniversaryModalAtom } from "../../../atoms/AtomContainer";
+import AddAnniversaryModal from "../AddAnniversaryModal";
 
 interface anniversaryType {
   idx: number;
@@ -14,6 +17,9 @@ interface anniversaryType {
 const AnniversaryList = () => {
   const [anniversaryList, setAnniversaryList] = useState<anniversaryType[]>([]);
   const navigate = useNavigate();
+  const [addAnniversaryModal, setAddAnniversaryModal] = useRecoilState(
+    AddAnniversaryModalAtom
+  );
 
   const getAnniversary = async () => {
     try {
@@ -29,6 +35,9 @@ const AnniversaryList = () => {
 
   return (
     <>
+      {addAnniversaryModal && (
+        <AddAnniversaryModal list={anniversaryList.length} />
+      )}
       <Setting>
         <Frame>
           <Title>
@@ -40,7 +49,9 @@ const AnniversaryList = () => {
           </Title>
           <S.Layout>
             <>
-              <I.Plus />
+              <S.Add onClick={() => setAddAnniversaryModal(true)}>
+                <I.Plus />
+              </S.Add>
               {anniversaryList.length !== 0 ? (
                 anniversaryList.map((anniversary: anniversaryType) => (
                   <S.Anniversary key={anniversary.idx}>
