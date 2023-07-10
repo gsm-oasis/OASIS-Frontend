@@ -13,6 +13,7 @@ import { BottomText } from "../../Common/Texts/BottomText";
 import { GradiantButton } from "../../Common/Buttons/GradiantButton";
 import { useEffect } from "react";
 import TokenService from "../../../lib/TokenService";
+import { toast } from "react-toastify";
 
 function Login() {
   const {
@@ -46,13 +47,17 @@ function Login() {
         setisCouple(response.data.isCouple);
         setLogged(true);
       }
-    } catch (e) {
-      console.log(e);
+    } catch (e: any) {
+      if (e.response.status === 400) {
+        toast.error("잘못된 비밀번호입니다!");
+      } else if (e.response.status === 404) {
+        toast.error("존재하지 않는 아이디에요!");
+      }
     }
   };
 
-  const inValid = (error: any) => {
-    console.log(error);
+  const inValid = (e: any) => {
+    console.log(e);
   };
 
   return (
