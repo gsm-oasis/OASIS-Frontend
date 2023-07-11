@@ -46,7 +46,7 @@ const AddAnniversaryModal = ({ list }: { list: number }) => {
   return (
     <>
       <S.ModalBackground onClick={() => setAddAnniversaryModal(false)} />
-      {count >= 0 ? (
+      {count > 0 ? (
         <S.Modal>
           <h3>기념일 추가</h3>
           <p>기념일을 {count}개 더 추가할 수 있어요!</p>
