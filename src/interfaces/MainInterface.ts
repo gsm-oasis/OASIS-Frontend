@@ -3,8 +3,9 @@ export interface DiaryProps {
   coupleNickname: string;
   heartLevel: number;
   datingDate: number;
+  severalHundredDays: number;
   daysLeft: number;
-  anniversary?: number;
+  anniversaryName?: number;
   questionId: number;
   content: string;
   diaries: [];

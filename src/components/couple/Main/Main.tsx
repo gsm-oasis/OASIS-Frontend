@@ -25,8 +25,9 @@ const defaultProps: DiaryProps = {
   coupleNickname: "",
   heartLevel: 0,
   datingDate: 0,
+  severalHundredDays: 0,
   daysLeft: 0,
-  anniversary: 0,
+  anniversaryName: 0,
   questionId: 0,
   content: "",
   diaries: [],
@@ -58,6 +59,8 @@ function Main() {
       const response: any = await main.postMain(
         TokenService.getLocalAccessToken()
       );
+      console.log(response);
+
       setContent(response.data);
       setName(response.data.nickname);
     } catch (error) {
@@ -86,10 +89,12 @@ function Main() {
               </S.CoupleName>
               <S.DateDays>{mainContent?.datingDate} DAYS</S.DateDays>
               <S.ToAnniversary>
-                {mainContent?.anniversary}일만큼
-                {mainContent?.anniversary &&
-                  mainContent.anniversary - mainContent.datingDate}
-                일 남았어요!
+                {mainContent?.severalHundredDays}일만큼
+                {mainContent?.datingDate}일 남았어요!
+              </S.ToAnniversary>
+              <S.ToAnniversary>
+                {mainContent?.anniversaryName}까지
+                {mainContent?.daysLeft}일 남았어요!
               </S.ToAnniversary>
             </S.LeftBox>
             <S.RightBox>
