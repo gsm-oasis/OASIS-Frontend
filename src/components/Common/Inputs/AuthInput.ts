@@ -11,6 +11,7 @@ export const Input = styled.input`
   font-size: 12px;
   color: #8d8d8d;
   line-height: 13px;
+  outline: none;
 
   &:nth-child(2) {
     margin-top: 20px;

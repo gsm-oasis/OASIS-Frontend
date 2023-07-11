@@ -59,7 +59,6 @@ function Main() {
       const response: any = await main.postMain(
         TokenService.getLocalAccessToken()
       );
-      console.log(response);
 
       setContent(response.data);
       setName(response.data.nickname);
