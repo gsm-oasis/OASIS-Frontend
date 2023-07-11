@@ -88,14 +88,27 @@ function Main() {
                 <div>{mainContent?.nickname}</div>
               </S.CoupleName>
               <S.DateDays>{mainContent?.datingDate} DAYS</S.DateDays>
-              <S.ToAnniversary>
-                {mainContent?.severalHundredDays}일만큼
-                {mainContent?.datingDate}일 남았어요!
-              </S.ToAnniversary>
-              <S.ToAnniversary>
-                {mainContent?.anniversaryName}까지
-                {mainContent?.daysLeft}일 남았어요!
-              </S.ToAnniversary>
+              {mainContent?.severalHundredDays === mainContent.datingDate ? (
+                <S.ToAnniversary>
+                  오늘은 {mainContent?.severalHundredDays}일째 되는 날이에요!
+                </S.ToAnniversary>
+              ) : (
+                <S.ToAnniversary>
+                  {mainContent?.severalHundredDays}일만큼{" "}
+                  {mainContent?.severalHundredDays - mainContent.datingDate}일
+                  남았어요!
+                </S.ToAnniversary>
+              )}
+              {mainContent?.daysLeft === 0 ? (
+                <S.ToAnniversary>
+                  오늘은 {mainContent.anniversaryName} 날이에요
+                </S.ToAnniversary>
+              ) : (
+                <S.ToAnniversary>
+                  {mainContent?.anniversaryName}까지 {mainContent?.daysLeft}일
+                  남았어요!
+                </S.ToAnniversary>
+              )}
             </S.LeftBox>
             <S.RightBox>
               <S.IconBox
