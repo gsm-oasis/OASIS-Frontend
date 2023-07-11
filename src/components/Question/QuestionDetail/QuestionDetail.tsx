@@ -1,4 +1,4 @@
-import React from "react";
+import * as S from "./style";
 import * as I from "../../../assets/svg";
 import { useNavigate } from "react-router-dom";
 import { Frame, Setting } from "../../Common/Frame";
@@ -31,21 +31,24 @@ function QuestionDetail(props: any) {
 
           <Question questionNum={props.id} content={props.content} />
 
-          <QuestionCommentBox>
-            <UserName>{props.questionContent.coupleName}의 답변</UserName>
-            <MyCoupleEmptyAnswer>
-              {props.questionContent.coupleAnswer === ""
-                ? "상대방이 아직 답변을 작성하지 않았어요."
-                : props.questionContent.coupleAnswer}
-            </MyCoupleEmptyAnswer>
-          </QuestionCommentBox>
+          {props.questionContent.coupleAnswer === "" ? (
+            <QuestionCommentBox>
+              <UserName>{props.questionContent.coupleName}의 답변</UserName>
+              <MyCoupleEmptyAnswer>
+                상대방이 아직 답변을 작성하지 않았어요.
+              </MyCoupleEmptyAnswer>
+            </QuestionCommentBox>
+          ) : (
+            <S.CommentBox>
+              <S.Name>{props.questionContent.coupleName}의 답변</S.Name>
+              <S.Answer>{props.questionContent.coupleAnswer}</S.Answer>
+            </S.CommentBox>
+          )}
 
-          <QuestionCommentBox>
-            <UserName>{props.questionContent.userName}의 답변</UserName>
-            <MyCoupleEmptyAnswer>
-              {props.questionContent.answer}
-            </MyCoupleEmptyAnswer>
-          </QuestionCommentBox>
+          <S.CommentBox>
+            <S.Name>{props.questionContent.userName}의 답변</S.Name>
+            <S.Answer>{props.questionContent.answer}</S.Answer>
+          </S.CommentBox>
         </Frame>
       </Setting>
     </>
