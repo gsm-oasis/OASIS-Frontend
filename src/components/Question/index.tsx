@@ -28,7 +28,6 @@ function Question() {
         TokenService.getLocalAccessToken()
       );
       setQuestionContent(response.data);
-      if (response.status === 200) console.log(response.data);
     } catch (error) {
       console.log(error);
     }
