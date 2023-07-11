@@ -18,7 +18,6 @@ function QuestionList() {
       const response: any = await Question.getQuestionList(
         TokenService.getLocalAccessToken()
       );
-      console.log(response.data);
       setQuestionList(response.data);
     } catch (error) {
       console.log(error);

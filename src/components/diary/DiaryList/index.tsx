@@ -18,7 +18,6 @@ function SharedDiaryList() {
       const response: any = await Diary.getDiaryList(
         TokenService.getLocalAccessToken()
       );
-      console.log(response.data);
       setDiaryList(response.data);
     } catch (error) {
       console.log(error);

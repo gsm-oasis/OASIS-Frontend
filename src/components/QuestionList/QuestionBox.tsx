@@ -26,7 +26,6 @@ function QuestionBox(props: QuestionProps): JSX.Element {
           noWrite: true,
         },
       });
-      if (response.status === 200) console.log(response.data);
     } catch (error) {
       console.log(error);
     }
