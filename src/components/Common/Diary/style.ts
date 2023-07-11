@@ -40,6 +40,7 @@ export const DiaryBody = styled.div`
   margin-top: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: left;
 `;
 
 export const CreatePersonWrapper = styled.div`
