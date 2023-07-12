@@ -47,8 +47,8 @@ function Login() {
       TokenService.setUser(response.data);
 
       setisCouple(response.data.isCouple);
-      setLogged(true);
       setIsLoad(false);
+      setLogged(true);
     } catch (e: any) {
       setIsLoad(false);
       if (e.response.status === 400) {
