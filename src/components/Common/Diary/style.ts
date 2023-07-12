@@ -51,10 +51,10 @@ export const CreatePersonWrapper = styled.div`
   font-weight: 600;
 `;
 
-export const Circle = styled.div`
+export const Circle = styled.div<{ isMine: boolean }>`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #bbd1e4;
+  background: ${(props) => (props.isMine ? "#bbd1e4" : "#F2C3C3")};
   margin-right: 5px;
 `;

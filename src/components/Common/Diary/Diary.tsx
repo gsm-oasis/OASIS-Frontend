@@ -10,6 +10,7 @@ import * as S from "./style";
 
 interface DiaryProps {
   DiaryProps: DiaryContent;
+  nickname?: string;
 }
 
 function DiaryList(props: DiaryProps): JSX.Element {
@@ -23,7 +24,6 @@ function DiaryList(props: DiaryProps): JSX.Element {
         TokenService.getLocalAccessToken()
       );
       setDiaryContent(response.data);
-      console.log(response.data);
       navigate(`/diary/` + props.DiaryProps.diaryId);
     } catch (error) {
       return error;
@@ -40,7 +40,7 @@ function DiaryList(props: DiaryProps): JSX.Element {
           </S.DiaryTitleFrame>
           <S.DiaryBody>{props.DiaryProps.content}</S.DiaryBody>
           <S.CreatePersonWrapper>
-            <S.Circle />
+            <S.Circle isMine={props.nickname === props.DiaryProps.writer} />
             {props.DiaryProps.writer}
           </S.CreatePersonWrapper>
         </S.DiaryTextFrame>

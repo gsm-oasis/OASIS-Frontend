@@ -177,7 +177,10 @@ function Main() {
               {mainContent?.diaries &&
                 mainContent.diaries.map((diary: DiaryContent) => (
                   <div key={diary.diaryId} style={{ cursor: "pointer" }}>
-                    <DiaryList DiaryProps={diary} />
+                    <DiaryList
+                      DiaryProps={diary}
+                      nickname={mainContent.nickname}
+                    />
                   </div>
                 ))}
             </S.DiaryWrapper>
