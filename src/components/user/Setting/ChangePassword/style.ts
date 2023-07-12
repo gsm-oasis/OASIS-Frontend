@@ -6,8 +6,7 @@ export const ChangePasswordForm = styled.form`
   label {
     display: block;
     font-size: 14px;
-    text-align: left;
-    margin-left: 70px;
+    margin-left: -270px;
     color: #939393;
     margin-bottom: 10px;
     font-weight: 600;
