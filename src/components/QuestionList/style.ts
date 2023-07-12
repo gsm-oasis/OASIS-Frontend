@@ -10,6 +10,12 @@ export const QuestionBox = styled.div`
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0px 0px 18px rgba(169, 169, 169, 0.43);
+  }
 `;
 
 export const IdCircle = styled.div`
